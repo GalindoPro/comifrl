@@ -8,9 +8,8 @@ import visionImg from "../assets/images/vision.png";
 export function AboutUs() {
     return (
         <div className="flex flex-col">
-            {/* Historia del Municipio - White Section */}
-            <section id="nosotros" className="py-16 bg-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-50/50 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <section id="nosotros" className="py-20 bg-brand-blue overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3" />
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
@@ -18,11 +17,11 @@ export function AboutUs() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white p-6 md:p-8 rounded-2xl shadow-xl flex flex-col-reverse md:flex-row items-center gap-8 border border-brand-mustard/20"
+                            className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col-reverse md:flex-row items-center gap-10"
                         >
                             <div className="flex-1">
-                                <h3 className="text-xl md:text-3xl font-black text-brand-blue mb-4 text-center md:text-left">Nebaj, corazón ixil</h3>
-                                <p className="text-gray-700 leading-relaxed text-base text-center md:text-left font-medium">
+                                <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-6 text-center md:text-left uppercase tracking-tighter leading-none">Nebaj, <span className="text-brand-mustard">corazón ixil</span></h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-base md:text-lg text-center md:text-left font-medium">
                                     Santa María Nebaj, "Na’b’a’" en idioma ixil, significa ‘lugar donde nace el agua’. Es un municipio cultural y económico clave del departamento de Quiché, donde nuestras raíces se entrelazan con la historia de un pueblo resiliente.
                                 </p>
                             </div>
@@ -38,9 +37,8 @@ export function AboutUs() {
                 </div>
             </section>
 
-            {/* Raíces ixiles y origen institucional - Dark Section */}
+            {/* Raíces ixiles y origen institucional - Light Contrast Section */}
             <section className="py-16 bg-brand-blue overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
@@ -48,9 +46,9 @@ export function AboutUs() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="bg-brand-blue p-6 md:p-8 flex flex-col md:flex-row items-center gap-8"
+                            className="bg-white p-8 md:p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-10 shadow-2xl relative z-10"
                         >
-                            <div className="flex-shrink-0 bg-brand-mustard p-3 rounded-2xl shadow-xl border border-brand-mustard">
+                            <div className="flex-shrink-0 bg-brand-mustard p-4 rounded-3xl shadow-2xl shadow-brand-mustard/20 ring-4 ring-brand-mustard/20">
                                 <img
                                     src={raizIxilImg}
                                     alt="Raíces Ixiles"
@@ -58,9 +56,9 @@ export function AboutUs() {
                                 />
                             </div>
                             <div className="flex-1">
-                                <h3 className="text-xl md:text-3xl font-black text-white mb-4 text-center md:text-left uppercase tracking-tight">Raíces ixiles y origen institucional</h3>
-                                <p className="text-white/90 leading-relaxed text-base md:text-lg text-center md:text-left italic font-medium">
-                                    "Desde <span className="text-brand-mustard font-black">2008</span>, 28 visionarios locales dieron vida a <span className="font-black not-italic text-brand-mustard">COMIF, R.L.</span>, hoy referente de confianza en la región Ixil."
+                                <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-6 text-center md:text-left uppercase tracking-tighter">Raíces ixiles y <span className="text-brand-mustard">origen institucional</span></h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-lg md:text-xl text-center md:text-left italic font-medium">
+                                    "Desde <span className="text-brand-mustard font-black">2008</span>, 28 visionarios locales dieron vida a <span className="font-black not-italic text-brand-mustard underline decoration-brand-blue/20 underline-offset-4">COMIF, R.L.</span>, hoy referente de confianza en la región Ixil."
                                 </p>
                             </div>
                         </motion.div>
@@ -68,26 +66,27 @@ export function AboutUs() {
                 </div>
             </section>
 
-            {/* Misión & Visión - White Section */}
-            <section className="py-16 bg-white overflow-hidden relative">
+            {/* Misión & Visión - Dark Section */}
+            <section className="py-20 bg-brand-blue overflow-hidden relative">
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white text-brand-blue p-8 rounded-3xl relative flex flex-col md:flex-row items-center gap-6 shadow-xl border border-brand-mustard/20 hover:shadow-2xl transition-shadow"
+                            className="bg-white p-8 rounded-[2rem] relative flex flex-col md:flex-row items-center gap-6 shadow-2xl border border-gray-100 hover:border-brand-mustard/30 transition-all duration-500"
                         >
-                            <div className="flex-shrink-0 bg-brand-mustard/10 p-3 rounded-2xl border border-brand-mustard/20 shadow-lg">
+                            <div className="flex-shrink-0 bg-brand-mustard/20 p-4 rounded-2xl border border-brand-mustard/30 shadow-lg">
                                 <img
                                     src={misionImg}
                                     alt="Misión"
-                                    className="w-16 h-16 md:w-24 md:h-24 object-contain rounded-lg"
+                                    className="w-16 h-16 md:w-20 md:h-20 object-contain"
                                 />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black mb-3 text-brand-blue uppercase tracking-wider">Misión</h3>
-                                <p className="text-gray-700 leading-relaxed text-base font-medium">
+                                <h3 className="text-2xl font-black mb-3 text-brand-blue uppercase tracking-widest">Misión</h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-base font-medium">
                                     Fomentar el ahorro, facilitar financiamiento productivo y contribuir al desarrollo socioeconómico con honestidad y responsabilidad.
                                 </p>
                             </div>
@@ -98,18 +97,18 @@ export function AboutUs() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white text-brand-blue p-8 rounded-3xl relative flex flex-col md:flex-row items-center gap-6 shadow-xl border border-brand-mustard/20 hover:shadow-2xl transition-shadow"
+                            className="bg-white p-8 rounded-[2rem] relative flex flex-col md:flex-row items-center gap-6 shadow-2xl border border-gray-100 hover:border-brand-mustard/30 transition-all duration-500"
                         >
-                            <div className="flex-shrink-0 bg-brand-mustard/10 p-3 rounded-2xl border border-brand-mustard/20 shadow-lg">
+                            <div className="flex-shrink-0 bg-brand-mustard/20 p-4 rounded-2xl border border-brand-mustard/30 shadow-lg">
                                 <img
                                     src={visionImg}
                                     alt="Visión"
-                                    className="w-16 h-16 md:w-24 md:h-24 object-contain rounded-lg"
+                                    className="w-16 h-16 md:w-20 md:h-20 object-contain"
                                 />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black mb-3 text-brand-blue uppercase tracking-wider">Visión</h3>
-                                <p className="text-gray-700 leading-relaxed text-base font-medium">
+                                <h3 className="text-2xl font-black mb-3 text-brand-blue uppercase tracking-widest">Visión</h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-base font-medium">
                                     Ser la cooperativa líder en financiamiento rural, con equidad de género y servicios que promuevan el desarrollo integral.
                                 </p>
                             </div>
@@ -133,9 +132,9 @@ export function AboutUs() {
                                 Autoridades y Estructura
                             </h3>
                             <ul className="space-y-4">
-                                <li className="flex items-start gap-4 p-5 bg-white/5 border border-brand-mustard/20 rounded-2xl">
+                                <li className="flex items-start gap-4 p-5 bg-white border border-gray-100 rounded-2xl shadow-lg">
                                     <Users className="w-5 h-5 text-brand-mustard mt-1 flex-shrink-0" />
-                                    <div className="text-white">
+                                    <div className="text-brand-blue">
                                         <strong className="block text-lg font-bold">Asamblea General</strong>
                                         <span className="text-xs text-brand-mustard uppercase tracking-widest font-bold">Máxima autoridad</span>
                                     </div>
@@ -160,17 +159,17 @@ export function AboutUs() {
                                 Principios
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {[
-                                    { title: "Responsabilidad", desc: "construye futuro", color: "bg-white", textColor: "text-brand-blue", accent: "text-brand-mustard" },
-                                    { title: "Honestidad", desc: "genera confianza", color: "bg-white", textColor: "text-brand-blue", accent: "text-brand-mustard" },
-                                    { title: "Igualdad", desc: "para todos", color: "bg-brand-mustard", textColor: "text-brand-blue", accent: "text-brand-blue/70" },
-                                    { title: "Integridad", desc: "en cada acción", color: "bg-white/5 border border-brand-mustard/20", textColor: "text-white", accent: "text-brand-mustard" }
+                                { [
+                                    { title: "Responsabilidad", desc: "construye futuro", color: "bg-white border border-gray-100", textColor: "text-brand-blue", accent: "text-brand-mustard" },
+                                    { title: "Honestidad", desc: "genera confianza", color: "bg-white border border-gray-100", textColor: "text-brand-blue", accent: "text-brand-mustard" },
+                                    { title: "Igualdad", desc: "para todos", color: "bg-brand-mustard shadow-brand-mustard/20", textColor: "text-brand-blue", accent: "text-brand-blue/70" },
+                                    { title: "Integridad", desc: "en cada acción", color: "bg-white border border-gray-100", textColor: "text-brand-blue", accent: "text-brand-mustard" }
                                 ].map((val, idx) => (
-                                    <div key={idx} className={`${val.color} p-5 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1 duration-300`}>
+                                    <div key={idx} className={`${val.color} p-6 rounded-[1.5rem] shadow-xl flex flex-col items-center justify-center text-center transition-all hover:-translate-y-2 duration-300`}>
                                         <span className={`font-black uppercase tracking-widest text-sm md:text-base mb-1 ${val.textColor}`}>{val.title}</span>
-                                        <span className={`text-[10px] md:text-xs font-bold opacity-80 ${val.textColor}`}>{val.desc}</span>
+                                        <span className={`text-[10px] md:text-xs font-bold uppercase tracking-tighter opacity-60 ${val.textColor}`}>{val.desc}</span>
                                     </div>
-                                ))}
+                                )) }
                             </div>
                         </motion.div>
                     </div>

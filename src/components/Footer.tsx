@@ -11,47 +11,28 @@ const MessengerIcon = ({ className }: { className?: string }) => (
 export function Footer() {
     return (
         <footer className="relative bg-brand-blue text-gray-100 pt-4 pb-1" id="contacto">
-            {/* Wave SVG at the top */}
-            <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-                <svg
-                    className="relative block w-full h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                >
-                    <motion.path
-                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                        fill="#ffffff"
-                        initial={{ y: 0 }}
-                        animate={{ y: [0, -3, 0] }}
-                        transition={{
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    />
-                </svg>
-            </div>
+            {/* Gradient Top Border */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 border-b border-white/20/50 pb-4 mt-2">
                     {/* Colon 1: Identidad */}
-                    <div className="space-y-1">
-                        <h4 className="text-lg font-bold text-brand-mustard tracking-tight">COMIF, R.L.</h4>
-                        <p className="text-xs text-gray-300 leading-relaxed max-w-xs">
+                    <div className="space-y-2">
+                        <h4 className="text-xl font-black text-brand-mustard tracking-tighter uppercase">COMIF, R.L.</h4>
+                        <p className="text-[11px] text-white/50 font-bold uppercase tracking-widest leading-relaxed max-w-xs">
                             Desde 2008, impulsando el bienestar financiero de nuestra comunidad con honestidad y transparencia.
                         </p>
                     </div>
 
                     {/* Colon 2: Contacto */}
-                    <div className="space-y-1">
-                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Contacto</h4>
-                        <div className="space-y-1">
-                            <p className="flex items-start gap-2 text-xs text-gray-300">
+                    <div className="space-y-3">
+                        <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.2em]">Sede Central</h4>
+                        <div className="space-y-2">
+                            <p className="flex items-start gap-3 text-xs text-white/80 font-medium">
                                 <Building2 className="w-4 h-4 text-brand-mustard flex-shrink-0" />
                                 Cantón Vipila, Nebaj, Quiché
                             </p>
-                            <a href="mailto:comifrl@gmail.com" className="flex items-center gap-2 text-xs text-gray-300 hover:text-brand-mustard/90 transition-colors">
+                            <a href="mailto:comifrl@gmail.com" className="flex items-center gap-3 text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
                                 <Mail className="w-4 h-4 text-brand-mustard" />
                                 comifrl@gmail.com
                             </a>
@@ -59,22 +40,22 @@ export function Footer() {
                     </div>
 
                     {/* Colon 3: Acciones Rápidas */}
-                    <div className="space-y-1">
-                        <h4 className="text-sm font-bold text-white uppercase tracking-widest">Únete</h4>
-                        <div className="flex flex-col sm:flex-row md:flex-col gap-1.5">
+                    <div className="space-y-3">
+                        <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.2em]">Acciones</h4>
+                        <div className="flex flex-col gap-2">
                             <Link
                                 to="/afiliacion"
-                                className="inline-flex items-center justify-center gap-2 bg-brand-mustard text-white px-3 py-1.5 rounded-lg font-bold text-xs hover:bg-brand-mustard/90 transition-all shadow-md hover:scale-105 active:scale-95"
+                                className="inline-flex items-center justify-center gap-2 bg-brand-mustard text-brand-blue px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-brand-mustard/90 transition-all shadow-glow active:scale-95"
                             >
                                 <UserPlus className="w-4 h-4" />
                                 Hazte socio
                             </Link>
                             <Link
                                 to="/agencias"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-3 py-1.5 rounded-lg font-bold text-xs hover:bg-white/20 transition-all border border-white/10"
+                                className="inline-flex items-center justify-center gap-2 bg-brand-blue/30 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-brand-blue/50 transition-all border border-white/20"
                             >
                                 <Building2 className="w-4 h-4 text-brand-mustard" />
-                                Nuestras Agencias
+                                Agencias
                             </Link>
                         </div>
                     </div>

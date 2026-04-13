@@ -35,29 +35,30 @@ export function FinancialContributions() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl font-bold text-white tracking-tight"
+                        className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase mb-4"
                     >
-                        Tu aporte, nuestra fuerza
+                        Tu aporte, <span className="text-brand-mustard">nuestra fuerza</span>
                     </motion.h3>
+                    <div className="h-1 w-20 bg-brand-mustard mx-auto rounded-full" />
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
                     {[
-                        { val: 100, label: "Aportación Externa", icon: <Wallet className="w-8 h-8 text-brand-blue" />, color: "text-brand-blue", bg: "bg-brand-mustard" },
-                        { val: 50, label: "Cuota de Ingreso", icon: <PiggyBank className="w-8 h-8 text-brand-mustard" />, color: "text-brand-blue", bg: "bg-white border-2 border-brand-mustard/20" },
-                        { val: 25, label: "Infanto-Juvenil", icon: <Users className="w-8 h-8 text-brand-mustard" />, color: "text-brand-blue", bg: "bg-white border-2 border-brand-mustard/20" },
+                        { val: 100, label: "Aportación Externa", icon: <Wallet className="w-8 h-8 text-brand-blue" />, color: "text-brand-blue", bg: "bg-brand-mustard", labelColor: "text-brand-blue" },
+                        { val: 50, label: "Cuota de Ingreso", icon: <PiggyBank className="w-8 h-8 text-brand-mustard" />, color: "text-brand-blue", bg: "bg-white border border-gray-100", labelColor: "text-brand-mustard" },
+                        { val: 25, label: "Infanto-Juvenil", icon: <Users className="w-8 h-8 text-brand-mustard" />, color: "text-brand-blue", bg: "bg-white border border-gray-100", labelColor: "text-brand-mustard" },
                     ].map((item, idx) => (
-                        <div key={idx} className={`${item.bg || 'bg-white'} p-4 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center group relative overflow-hidden z-10`}>
+                        <div key={idx} className={`${item.bg} p-6 rounded-3xl shadow-2xl hover:shadow-brand-mustard/10 hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center group relative overflow-hidden z-10`}>
                             <div className="mb-3 bg-brand-mustard/10 p-2 rounded-full group-hover:scale-110 transition-transform duration-300">
                                 {item.icon}
                             </div>
                             <div className="flex flex-col items-center justify-center mb-1">
-                                <span className={`text-lg font-bold mb-[-2px] ${item.bg === 'bg-brand-mustard' ? 'text-brand-blue/70' : 'text-brand-blue/70'}`}>Q</span>
-                                <span className={`text-3xl font-black ${item.color} tracking-tight`}>
+                                <span className={`text-lg font-black mb-[-2px] ${item.bg === 'bg-brand-mustard' ? 'text-brand-blue/60' : 'text-brand-blue/40'}`}>Q</span>
+                                <span className={`text-4xl font-black ${item.color} tracking-tight`}>
                                     <Counter from={0} to={item.val} duration={2.5} />
                                 </span>
                             </div>
-                            <h4 className={`text-[10px] font-black uppercase tracking-wider ${item.bg === 'bg-brand-mustard' ? 'text-brand-blue' : 'text-brand-blue'}`}>{item.label}</h4>
+                            <h4 className={`text-xs font-black uppercase tracking-widest ${item.labelColor}`}>{item.label}</h4>
                         </div>
                     ))}
                 </div>

@@ -4,16 +4,16 @@ import { ArrowRight, UserPlus, Building2 } from "lucide-react";
 
 export function CTASection() {
     return (
-        <section className="py-12 relative overflow-hidden">
+        <section className="py-16 bg-brand-blue relative overflow-hidden">
             {/* Artistic Background */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-white to-yellow-50/50">
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #BF9903 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-mustard rounded-full blur-[120px] opacity-20" />
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-mustard rounded-full blur-[120px] opacity-20" />
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #BF9903 0.5px, transparent 0)', backgroundSize: '30px 30px' }} />
+                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-mustard rounded-full blur-[140px] opacity-10" />
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-mustard rounded-full blur-[140px] opacity-10" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-3xl mx-auto bg-white backdrop-blur-xl rounded-[2rem] border border-brand-mustard/20 p-6 md:p-8 shadow-2xl shadow-brand-mustard/10 overflow-hidden">
+                <div className="max-w-4xl mx-auto bg-white rounded-[2.5rem] border border-gray-100 p-8 md:p-12 shadow-2xl relative overflow-hidden">
                     <div className="grid lg:grid-cols-2 gap-6 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
@@ -21,17 +21,17 @@ export function CTASection() {
                             viewport={{ once: true }}
                             className="space-y-3"
                         >
-                            <h2 className="text-2xl md:text-4xl font-black text-brand-blue leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-black text-brand-blue leading-tight uppercase tracking-tighter">
                                 ¿Listo para <span className="text-brand-mustard">hacer crecer</span> tu futuro?
                             </h2>
-                            <p className="text-base text-gray-700 leading-relaxed font-medium">
+                            <p className="text-base md:text-lg text-brand-blue/70 leading-relaxed font-medium">
                                 Únete a los más de miles de asociados que confían en COMIF, R.L. para asegurar su estabilidad financiera.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-2 pt-2">
                                 <Link
                                     to="/afiliacion"
-                                    className="group bg-brand-mustard text-white px-4 py-2 rounded-lg font-black text-base flex items-center justify-center gap-2 hover:bg-brand-mustard/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-mustard/20"
+                                    className="group bg-brand-mustard text-brand-blue px-4 py-2 rounded-lg font-black text-base flex items-center justify-center gap-2 hover:bg-brand-mustard/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-mustard/20"
                                 >
                                     <UserPlus className="w-4 h-4" />
                                     Hazte Socio Ahora
@@ -39,9 +39,9 @@ export function CTASection() {
                                 </Link>
                                 <Link
                                     to="/agencias"
-                                    className="bg-brand-blue/5 text-brand-blue border border-brand-blue/10 px-4 py-2 rounded-lg font-bold text-base flex items-center justify-center gap-2 hover:bg-brand-blue/10 transition-all shadow-sm"
+                                    className="bg-brand-blue/5 text-brand-blue border border-brand-blue/10 px-6 py-3 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-brand-blue/10 transition-all shadow-sm"
                                 >
-                                    <Building2 className="w-4 h-4" />
+                                    <Building2 className="w-5 h-5 text-brand-mustard" />
                                     Visítanos
                                 </Link>
                             </div>
@@ -54,21 +54,21 @@ export function CTASection() {
                             transition={{ delay: 0.2 }}
                             className="relative hidden lg:block"
                         >
-                            <div className="relative z-10 bg-gradient-to-br from-brand-mustard/90 to-brand-mustard p-0.5 rounded-[1.5rem] shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                                <div className="bg-white rounded-[1.3rem] p-4 space-y-3">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 bg-brand-mustard rounded-full flex items-center justify-center font-black text-white text-sm">1</div>
-                                        <p className="text-brand-blue font-bold text-sm">Acércate a una agencia</p>
+                            <div className="relative z-10 bg-gradient-to-br from-brand-mustard/40 to-brand-mustard/10 p-px rounded-[2rem] shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+                                <div className="bg-white rounded-[2rem] p-6 space-y-4 border border-gray-100">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-brand-mustard rounded-xl flex items-center justify-center font-black text-brand-blue text-base shadow-lg">1</div>
+                                        <p className="text-brand-blue font-black text-xs uppercase tracking-widest">Acércate a una agencia</p>
                                     </div>
-                                    <div className="w-px h-4 bg-brand-mustard/20 ml-4" />
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 bg-brand-mustard/10 rounded-full flex items-center justify-center font-black text-brand-mustard text-sm">2</div>
-                                        <p className="text-gray-700 font-bold text-sm">Presenta documentos</p>
+                                    <div className="w-px h-6 bg-brand-mustard/30 ml-5" />
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-brand-blue/5 rounded-xl flex items-center justify-center font-black text-brand-mustard text-base">2</div>
+                                        <p className="text-brand-blue/70 font-bold text-xs uppercase">Presenta documentos</p>
                                     </div>
-                                    <div className="w-px h-4 bg-brand-mustard/20 ml-4" />
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 bg-brand-mustard/10 rounded-full flex items-center justify-center font-black text-brand-mustard text-sm">3</div>
-                                        <p className="text-gray-700 font-bold text-sm">¡Eres parte!</p>
+                                    <div className="w-px h-6 bg-brand-mustard/30 ml-5" />
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-brand-blue/5 rounded-xl flex items-center justify-center font-black text-brand-mustard text-base">3</div>
+                                        <p className="text-brand-blue/70 font-bold text-xs uppercase tracking-tighter">¡Eres parte de COMIF!</p>
                                     </div>
                                 </div>
                             </div>

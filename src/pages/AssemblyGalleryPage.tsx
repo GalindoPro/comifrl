@@ -350,8 +350,8 @@ export function AssemblyGalleryPage() {
           </div>
         </div>
 
-        {/* Bottom fade-into-white */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        {/* Bottom fade-into-dark */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-brand-blue to-transparent pointer-events-none" />
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════ */}
@@ -360,7 +360,7 @@ export function AssemblyGalleryPage() {
       <section
         id="galeria"
         ref={gallerySectionRef}
-        className="bg-white py-10 sm:py-14"
+        className="bg-brand-blue py-16 sm:py-20 relative"
         aria-label="Galería fotográfica"
       >
         <div className="container mx-auto px-4">
@@ -370,12 +370,12 @@ export function AssemblyGalleryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-8"
+            className="text-center mb-10"
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
-              Galería Fotográfica
+            <h2 className="text-3xl sm:text-5xl font-black text-white mb-4 uppercase tracking-tighter">
+              Galería <span className="text-brand-mustard">Fotográfica</span>
             </h2>
-            <div className="h-0.5 w-16 bg-brand-mustard mx-auto rounded-full" />
+            <div className="h-1.5 w-20 bg-brand-mustard mx-auto rounded-full" />
           </motion.div>
 
           {/* ── Filter tabs ───────────────────────────────────────────── */}
@@ -401,22 +401,22 @@ export function AssemblyGalleryPage() {
                   aria-controls="gallery-grid"
                   onClick={() => handleFilterChange(id)}
                   className={cn(
-                    "relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold",
-                    "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2",
-                    "focus-visible:ring-brand-blue focus-visible:ring-offset-2",
+                    "relative inline-flex items-center gap-3 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest",
+                    "transition-all duration-300 focus-visible:outline-none focus-visible:ring-2",
+                    "focus-visible:ring-brand-mustard focus-visible:ring-offset-2 focus-visible:ring-offset-brand-blue",
                     isActive
-                      ? "bg-brand-blue text-white shadow-md shadow-brand-blue/30 active:scale-95"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 active:scale-95",
+                      ? "bg-brand-mustard text-brand-blue shadow-glow active:scale-95"
+                      : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white active:scale-95",
                   )}
                 >
                   <Icon className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
                   <span>{label}</span>
                   <span
                     className={cn(
-                      "text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center",
+                      "text-[9px] font-black w-5 h-5 rounded-lg flex items-center justify-center transition-colors",
                       isActive
-                        ? "bg-brand-mustard/40 text-white"
-                        : "bg-gray-300 text-gray-600",
+                        ? "bg-brand-blue/20 text-brand-blue"
+                        : "bg-white/10 text-white/40",
                     )}
                     aria-label={`${count} fotos`}
                   >
@@ -449,10 +449,10 @@ export function AssemblyGalleryPage() {
             key={activeFilter}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-gray-400 text-xs font-medium mb-6"
+            className="text-center text-white/30 text-xs font-black uppercase tracking-[0.2em] mb-10"
           >
             Mostrando{" "}
-            <span className="text-brand-blue font-bold">{filteredPhotos.length}</span>
+            <span className="text-brand-mustard font-black">{filteredPhotos.length}</span>
             {" "}de {PHOTOS.length} fotografías
           </motion.p>
 
@@ -501,7 +501,7 @@ export function AssemblyGalleryPage() {
           </div>
 
           {/* Click hint */}
-          <p className="text-center text-gray-400 text-xs mt-5" aria-hidden="true">
+          <p className="text-center text-white/20 text-[10px] font-black uppercase tracking-widest mt-12" aria-hidden="true">
             Haz clic en cualquier foto para verla en pantalla completa
           </p>
         </div>
@@ -555,17 +555,17 @@ export function AssemblyGalleryPage() {
                 key={i}
                 custom={i * 0.08}
                 variants={fadeUp}
-                className="bg-white/5 border border-white/8 rounded-2xl p-6 text-center hover:bg-white/8 transition-colors duration-200"
+                className="bg-white border border-gray-100 rounded-2xl p-6 text-center hover:bg-gray-50 transition-colors duration-200 shadow-xl"
               >
                 <div className="flex justify-center mb-3">
-                  <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
-                    <Icon className={cn("w-5 h-5", color)} aria-hidden="true" />
+                  <div className="w-11 h-11 rounded-xl bg-brand-blue/5 flex items-center justify-center">
+                    <Icon className={cn("w-5 h-5", color === "text-brand-mustard" ? "text-brand-mustard" : "text-brand-blue")} aria-hidden="true" />
                   </div>
                 </div>
-                <p className={cn("text-3xl font-bold mb-1 tabular-nums", color)}>
+                <p className={cn("text-3xl font-bold mb-1 tabular-nums", color === "text-brand-mustard" ? "text-brand-mustard" : "text-brand-blue")}>
                   {value}
                 </p>
-                <p className="text-white/55 text-xs font-medium uppercase tracking-wide leading-snug">
+                <p className="text-brand-blue/55 text-xs font-medium uppercase tracking-wide leading-snug">
                   {label}
                 </p>
               </motion.div>
@@ -580,9 +580,9 @@ export function AssemblyGalleryPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-7"
+              className="bg-white border border-gray-100 rounded-2xl p-7 shadow-xl"
             >
-              <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+              <h3 className="text-brand-blue font-bold text-lg mb-4 flex items-center gap-2">
                 <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
                 Sobre la Asamblea
               </h3>
@@ -594,7 +594,7 @@ export function AssemblyGalleryPage() {
                   "Elección de nuevos miembros del Consejo de Administración",
                   "Aprobación del presupuesto y plan operativo 2025",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-white/70 text-sm">
+                  <li key={i} className="flex items-start gap-3 text-brand-blue/70 text-sm">
                     <CheckCircle2
                       className="w-4 h-4 text-brand-mustard flex-shrink-0 mt-0.5"
                       aria-hidden="true"
@@ -611,9 +611,9 @@ export function AssemblyGalleryPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-7"
+              className="bg-white border border-gray-100 rounded-2xl p-7 shadow-xl"
             >
-              <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+              <h3 className="text-brand-blue font-bold text-lg mb-4 flex items-center gap-2">
                 <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
                 Detalles del Evento
               </h3>
@@ -626,10 +626,10 @@ export function AssemblyGalleryPage() {
                   { label: "Resoluciones aprobadas", value: "8 resoluciones" },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between items-center gap-4">
-                    <dt className="text-white/45 text-xs uppercase tracking-wide font-semibold flex-shrink-0">
+                    <dt className="text-brand-blue/45 text-xs uppercase tracking-wide font-semibold flex-shrink-0">
                       {label}
                     </dt>
-                    <dd className="text-white/85 text-sm font-medium text-right">{value}</dd>
+                    <dd className="text-brand-blue/85 text-sm font-medium text-right">{value}</dd>
                   </div>
                 ))}
               </dl>

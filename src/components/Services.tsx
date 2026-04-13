@@ -13,7 +13,7 @@ const services = [
             "Retiros disponibles",
             "Seguridad garantizada"
         ],
-        color: "bg-brand-mustard text-brand-blue",
+        color: "bg-brand-mustard text-brand-blue shadow-brand-mustard/20",
         iconColor: "text-brand-blue",
         buttonText: "Abrir cuenta",
         buttonColor: "bg-brand-blue hover:bg-brand-blue/80 text-white",
@@ -30,7 +30,7 @@ const services = [
             "Aprobación rápida",
             "Sin penalización por pago"
         ],
-        color: "bg-white border-b border-brand-mustard/20 text-brand-blue",
+        color: "bg-white text-brand-blue border-b border-gray-100",
         iconColor: "text-brand-mustard",
         buttonText: "Solicitar crédito",
         buttonColor: "bg-brand-mustard hover:bg-brand-mustard/90 text-white",
@@ -47,7 +47,7 @@ const services = [
             "Tasas competitivas",
             "Asesoría personalizada"
         ],
-        color: "bg-white border-b border-brand-mustard/20 text-brand-blue",
+        color: "bg-white text-brand-blue border-b border-gray-100",
         iconColor: "text-brand-mustard",
         buttonText: "Solicitar crédito",
         buttonColor: "bg-brand-mustard hover:bg-brand-mustard/90 text-white",
@@ -58,28 +58,35 @@ const services = [
 export function Services() {
     return (
         <div className="flex flex-col">
-            <section id="servicios" className="py-12 bg-white">
-            <div className="container mx-auto px-4">
-                {/* Header */}
-                <div className="text-center mb-8 max-w-3xl mx-auto">
-                    <motion.h2
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-2xl md:text-3xl font-bold text-brand-blue mb-2"
-                    >
-                        Nuestros Servicios
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        viewport={{ once: true }}
-                        className="text-base text-gray-600"
-                    >
-                        Soluciones financieras para tu familia y comunidad.
-                    </motion.p>
-                </div>
+            <section id="servicios" className="py-16 bg-brand-blue overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+                <div className="container mx-auto px-4">
+                    {/* Header */}
+                    <div className="text-center mb-12 max-w-3xl mx-auto">
+                        <motion.h2
+                            initial={{ opacity: 0, y: -20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
+                        >
+                            Nuestros <span className="text-brand-mustard">Servicios</span>
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            viewport={{ once: true }}
+                            className="text-lg text-white/70 font-medium"
+                        >
+                            Soluciones financieras para tu familia y comunidad.
+                        </motion.p>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true }}
+                            className="h-1 w-20 bg-brand-mustard mx-auto mt-4 rounded-full"
+                        />
+                    </div>
                 </div>
             </section>
 
@@ -98,8 +105,8 @@ export function Services() {
                             className="flex flex-col h-full bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
                         >
                             {/* Card Header */}
-                            <div className={`p-5 ${service.color} transition-colors duration-300`}>
-                                <div className={`mb-3 p-3 bg-white rounded-xl w-fit shadow-sm ${service.iconColor}`}>
+                            <div className={`p-6 ${service.color} transition-colors duration-300 relative overflow-hidden`}>
+                                <div className={`mb-4 p-4 bg-white/20 backdrop-blur-md rounded-2xl w-fit shadow-xl ${service.iconColor} border border-white/20`}>
                                     {service.icon}
                                 </div>
                                 <h3 className="text-xl font-bold mb-1">{service.title}</h3>
@@ -107,16 +114,16 @@ export function Services() {
                             </div>
 
                             {/* Card Body */}
-                            <div className="p-5 flex-grow flex flex-col">
-                                <p className="text-gray-600 mb-4 text-sm font-medium">
+                            <div className="p-6 flex-grow flex flex-col bg-white">
+                                <p className="text-brand-blue/80 mb-5 text-sm md:text-base font-semibold">
                                     {service.description}
                                 </p>
 
-                                <ul className="space-y-2 mb-6 flex-grow">
+                                <ul className="space-y-3 mb-8 flex-grow">
                                     {service.benefits.map((benefit, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-gray-700">
-                                            <CheckCircle2 className={`w-4 h-4 flex-shrink-0 mt-0.5 ${service.iconColor}`} />
-                                            <span className="text-[13px] font-semibold">{benefit}</span>
+                                        <li key={i} className="flex items-start gap-3 text-brand-blue/90">
+                                            <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${service.iconColor}`} />
+                                            <span className="text-[14px] font-bold tracking-tight">{benefit}</span>
                                         </li>
                                     ))}
                                 </ul>

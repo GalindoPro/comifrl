@@ -11,15 +11,21 @@ export function Quote() {
     return (
         <div className="flex flex-col">
             {/* Header Section */}
-            <section className="py-12 bg-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-50/50 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <section className="py-16 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4 text-center">
-                    <motion.h2 className="text-2xl md:text-3xl font-bold text-brand-blue mb-2">
-                        Simulador Financiero
+                    <motion.h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter">
+                        Simulador <span className="text-brand-mustard">Financiero</span>
                     </motion.h2>
-                    <motion.p className="text-base text-gray-600 mb-0">
+                    <motion.p className="text-lg text-white/70 font-medium max-w-2xl mx-auto">
                         Simula tus proyectos con nuestras tasas competitivas y transparentes.
                     </motion.p>
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        className="h-1 w-20 bg-brand-mustard mx-auto mt-6 rounded-full"
+                    />
                 </div>
             </section>
 
@@ -41,22 +47,22 @@ export function Quote() {
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     onClick={() => setView('loan')}
-                                    className="bg-white p-8 rounded-3xl shadow-md border border-brand-mustard/20 cursor-pointer group relative overflow-hidden"
+                                    className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
                                 >
-                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform text-brand-mustard">
-                                        <TableIcon className="w-24 h-24" />
+                                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all text-brand-blue">
+                                        <TableIcon className="w-32 h-32" />
                                     </div>
-                                    <div className="bg-brand-mustard/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-brand-mustard">
-                                        <Calculator className="w-8 h-8" />
+                                    <div className="bg-brand-mustard w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-brand-blue shadow-lg shadow-brand-mustard/20">
+                                        <Calculator className="w-9 h-9" />
                                     </div>
-                                    <h3 className="text-2xl font-bold text-brand-blue mb-3 uppercase tracking-tight">
+                                    <h3 className="text-2xl md:text-3xl font-black text-brand-blue mb-4 uppercase tracking-tighter">
                                         Proyección de Pagos
                                     </h3>
-                                    <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                                    <p className="text-brand-blue/60 mb-8 text-base font-medium leading-relaxed italic">
                                         Simula un préstamo con tasa del 24% anual y genera tu tabla de amortización detallada.
                                     </p>
-                                    <div className="flex items-center gap-2 text-brand-mustard font-bold uppercase text-xs tracking-widest">
-                                        Generar Tabla <ArrowRight className="w-4 h-4" />
+                                    <div className="flex items-center gap-3 text-brand-mustard font-black uppercase text-xs tracking-[0.2em]">
+                                        Generar Tabla <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                                     </div>
                                 </motion.div>
 
@@ -64,22 +70,22 @@ export function Quote() {
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     onClick={() => setView('investment')}
-                                    className="bg-white p-8 rounded-3xl shadow-md border border-brand-mustard/20 cursor-pointer group relative overflow-hidden"
+                                    className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
                                 >
-                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform text-brand-mustard">
-                                        <TrendingUp className="w-24 h-24" />
+                                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all text-brand-blue">
+                                        <TrendingUp className="w-32 h-32" />
                                     </div>
-                                    <div className="bg-brand-mustard/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-brand-mustard">
-                                        <TrendingUp className="w-8 h-8" />
+                                    <div className="bg-brand-mustard w-16 h-16 rounded-2xl flex items-center justify-center mb-8 text-brand-blue shadow-lg shadow-brand-mustard/20">
+                                        <TrendingUp className="w-9 h-9" />
                                     </div>
-                                    <h3 className="text-2xl font-bold text-brand-blue mb-3 uppercase tracking-tight">
+                                    <h3 className="text-2xl md:text-3xl font-black text-brand-blue mb-4 uppercase tracking-tighter">
                                         Inversión Plazo Fijo
                                     </h3>
-                                    <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                                    <p className="text-brand-blue/60 mb-8 text-base font-medium leading-relaxed italic">
                                         Calcula tu rendimiento con un 14% de interés anual garantizado para tu capital.
                                     </p>
-                                    <div className="flex items-center gap-2 text-brand-mustard font-bold uppercase text-xs tracking-widest">
-                                        Calcular Rendimiento <ArrowRight className="w-4 h-4" />
+                                    <div className="flex items-center gap-3 text-brand-mustard font-black uppercase text-xs tracking-[0.2em]">
+                                        Calcular Rendimiento <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                                     </div>
                                 </motion.div>
                             </div>
@@ -183,34 +189,34 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
             <div className="grid lg:grid-cols-4 gap-6">
                 {/* Inputs Sidebar */}
                 <div className="lg:col-span-1 space-y-4">
-                    <div className="bg-white p-6 rounded-3xl shadow-md border border-brand-mustard/20">
-                        <div className="flex items-center gap-2 mb-6 text-brand-blue border-b border-brand-mustard/20 pb-4">
-                            <h3 className="text-sm font-bold uppercase tracking-tight">Ingreso de Datos</h3>
+                    <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+                        <div className="flex items-center gap-2 mb-8 text-brand-blue border-b border-gray-100 pb-4">
+                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-mustard">Ingreso de Datos</h3>
                         </div>
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Fecha de Inicio</label>
-                                <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-sm focus:ring-2 focus:ring-brand-blue outline-none" />
+                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Fecha de Inicio</label>
+                                <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Monto solicitado (Q)</label>
-                                <input placeholder="50000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-sm focus:ring-2 focus:ring-brand-blue outline-none" />
+                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Monto solicitado (Q)</label>
+                                <input placeholder="50000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">Plazo del Crédito (Años)</label>
-                                <input placeholder="1" type="number" min="0" value={years} onChange={(e) => { setYears(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-sm focus:ring-2 focus:ring-brand-blue outline-none" />
+                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Plazo del Crédito (Años)</label>
+                                <input placeholder="1" type="number" min="0" value={years} onChange={(e) => { setYears(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-bold text-brand-blue uppercase mb-1 opacity-70 text-nowrap">Tasa de Interés Anual (Fija)</label>
-                                <div className="w-full bg-white border border-gray-200 rounded-xl p-3 font-black text-brand-blue text-sm flex items-center justify-between">
+                                <label className="block text-[10px] font-black text-brand-blue/50 uppercase mb-2 tracking-widest">Tasa Anual (Fija)</label>
+                                <div className="w-full bg-brand-blue/5 border border-brand-blue/10 rounded-xl p-4 font-black text-brand-blue text-sm flex items-center justify-between">
                                     <span>{FIXED_RATE}%</span>
-                                    <Percent className="w-4 h-4 opacity-30" />
+                                    <Percent className="w-4 h-4 text-brand-mustard opacity-60" />
                                 </div>
                             </div>
                             <div className="relative pt-2">
-                                <label className="block text-[10px] font-bold text-brand-blue uppercase mb-1 opacity-70 text-nowrap">Cuotas Estimadas</label>
-                                <div className="w-full bg-brand-mustard/10 border border-brand-mustard rounded-xl p-3 font-black text-brand-blue text-sm">
-                                    {years ? Number(years) * 12 : 0} Cuotas
+                                <label className="block text-[10px] font-black text-white/40 uppercase mb-2 tracking-widest text-nowrap">Cuotas Estimadas</label>
+                                <div className="w-full bg-brand-mustard text-brand-blue rounded-xl p-4 font-black text-sm shadow-lg">
+                                    {years ? Number(years) * 12 : 0} Cuotas Mensuales
                                 </div>
                             </div>
 
@@ -230,21 +236,21 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
                 <div className="lg:col-span-3">
                     <AnimatePresence mode="wait">
                         {!isCalculated ? (
-                            <motion.div
-                                key="placeholder"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="h-full min-h-[400px] bg-white rounded-3xl border border-dashed border-brand-mustard/30 flex flex-col items-center justify-center p-12 text-center"
-                            >
-                                <div className="bg-brand-mustard/5 w-20 h-20 rounded-full flex items-center justify-center mb-6">
-                                    <TableIcon className="w-10 h-10 text-gray-300" />
-                                </div>
-                                <h4 className="text-xl font-bold text-brand-blue mb-2">Tabla de Proyección</h4>
-                                <p className="text-gray-500 text-sm max-w-sm leading-relaxed uppercase font-bold text-[10px] tracking-wider">
-                                    Ingresa el monto y el plazo deseado para generar tu plan de pagos personalizado.
-                                </p>
-                            </motion.div>
+                                <motion.div
+                                    key="placeholder"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="h-full min-h-[500px] bg-white rounded-[2.5rem] border-2 border-dashed border-gray-200 flex flex-col items-center justify-center p-12 text-center"
+                                >
+                                    <div className="bg-brand-mustard/10 w-24 h-24 rounded-full flex items-center justify-center mb-8">
+                                        <TableIcon className="w-12 h-12 text-brand-blue/20" />
+                                    </div>
+                                    <h4 className="text-2xl font-black text-brand-blue mb-3 uppercase tracking-tighter leading-none">Tabla de Proyección</h4>
+                                    <p className="text-brand-blue/40 text-sm max-w-sm leading-relaxed uppercase font-black text-[10px] tracking-[0.2em]">
+                                        Ingresa el monto y el plazo deseado para generar tu plan de pagos personalizado.
+                                    </p>
+                                </motion.div>
                         ) : (
                             <motion.div
                                 key="table"
@@ -254,58 +260,58 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
                             >
                                 {/* Summary Metrics */}
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <div className="bg-white p-4 rounded-2xl shadow-sm border border-brand-mustard/20">
-                                        <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Cuotas Totales</p>
-                                        <p className="text-xl font-black text-brand-blue">{Number(years) * 12}</p>
+                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Cuotas Totales</p>
+                                        <p className="text-2xl font-black text-brand-blue">{Number(years) * 12}</p>
                                     </div>
-                                    <div className="bg-white p-4 rounded-2xl shadow-sm border border-brand-mustard/20">
-                                        <p className="text-[10px] font-bold text-gray-500 uppercase mb-1 text-nowrap">Cuota de Capital</p>
-                                        <p className="text-xl font-black text-brand-blue">Q {(Number(amount) / (Number(years) * 12)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Cuota Capital</p>
+                                        <p className="text-2xl font-black text-brand-blue">Q {(Number(amount) / (Number(years) * 12)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
-                                    <div className="bg-white p-4 rounded-2xl shadow-sm border border-brand-mustard/20">
-                                        <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Interés Total</p>
-                                        <p className="text-xl font-black text-red-600">Q {schedule.reduce((acc, row) => acc + row.interest, 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Interés Total</p>
+                                        <p className="text-2xl font-black text-red-500">Q {schedule.reduce((acc, row) => acc + row.interest, 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
-                                    <div className="bg-brand-mustard p-4 rounded-2xl shadow-md border border-brand-mustard">
-                                        <p className="text-[10px] font-bold text-white/70 uppercase mb-1 text-nowrap">Total Estimado</p>
-                                        <p className="text-xl font-black text-white">Q {(Number(amount) + schedule.reduce((acc, row) => acc + row.interest, 0)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-brand-mustard p-6 rounded-2xl shadow-2xl shadow-brand-mustard/20">
+                                        <p className="text-[10px] font-black text-brand-blue/60 uppercase mb-2 tracking-widest">Total Estimado</p>
+                                        <p className="text-2xl font-black text-brand-blue">Q {(Number(amount) + schedule.reduce((acc, row) => acc + row.interest, 0)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-white rounded-3xl shadow-md border border-brand-mustard/20 overflow-hidden">
-                                    <div className="px-6 py-5 bg-brand-blue text-white flex justify-between items-center border-b border-brand-mustard/20">
+                                <div className="bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden">
+                                    <div className="px-8 py-6 bg-gray-50 text-brand-blue flex justify-between items-center border-b border-gray-100">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-2 h-2 bg-brand-mustard rounded-full animate-pulse" />
-                                            <h3 className="font-black uppercase tracking-widest text-[11px]">Proyección de Pagos (Detalle)</h3>
+                                            <div className="w-2.5 h-2.5 bg-brand-mustard rounded-full animate-pulse shadow-glow" />
+                                            <h3 className="font-black uppercase tracking-[0.2em] text-xs">Tabla de Proyección Detallada</h3>
                                         </div>
                                     </div>
-                                    <div className="overflow-x-auto max-h-[500px] overflow-y-auto custom-scrollbar">
+                                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto custom-scrollbar">
                                         <table className="w-full text-left border-collapse">
-                                            <thead className="sticky top-0 bg-white z-20 border-b border-brand-mustard/20 shadow-sm">
+                                            <thead className="sticky top-0 bg-white z-20 border-b border-gray-200 shadow-sm">
                                                 <tr>
-                                                    <th className="p-4 text-[10px] font-black text-gray-500 uppercase text-center">Pago No.</th>
-                                                    <th className="p-4 text-[10px] font-black text-gray-500 uppercase text-center">Fecha de Pago</th>
-                                                    <th className="p-4 text-[10px] font-black text-gray-500 uppercase text-center">Pagos Mensuales</th>
-                                                    <th className="p-4 text-[10px] font-black text-gray-500 uppercase text-center">Intereses</th>
-                                                    <th className="p-4 text-[10px] font-black text-gray-500 uppercase text-center">Abonos a Capital</th>
-                                                    <th className="p-4 text-[10px] font-black text-brand-blue uppercase text-center bg-brand-mustard/10 border-l border-brand-mustard/10">Saldo de Préstamo</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago No.</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Fecha</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago Mensual</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Intereses</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Capital</th>
+                                                    <th className="p-5 text-[10px] font-black text-brand-mustard uppercase text-center bg-brand-blue/5 border-l border-gray-100">Saldo Actual</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {schedule.map((row) => (
-                                                    <tr key={row.no} className={cn("hover:bg-gray-50 transition-colors group border-b border-brand-mustard/10 last:border-0", row.no === 0 && "bg-brand-mustard/10")}>
-                                                        <td className="p-4 text-[11px] font-bold text-gray-600 text-center">{row.no}</td>
-                                                        <td className="p-4 text-[11px] font-black text-brand-blue text-center">{row.date}</td>
-                                                        <td className="p-4 text-[11px] font-black text-brand-blue text-center">
+                                                    <tr key={row.no} className={cn("hover:bg-brand-blue/5 transition-all group border-b border-gray-100 last:border-0", row.no === 0 && "bg-brand-mustard/10")}>
+                                                        <td className="p-5 text-[12px] font-bold text-brand-blue/40 text-center">{row.no}</td>
+                                                        <td className="p-5 text-[12px] font-black text-brand-blue text-center">{row.date}</td>
+                                                        <td className="p-5 text-[12px] font-black text-brand-blue text-center">
                                                             {row.no > 0 ? `Q ${row.payment.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-4 text-[11px] font-bold text-gray-800 text-center">
-                                                            {row.no > 0 ? `Q ${row.interest.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
+                                                        <td className="p-5 text-[12px] font-bold text-red-500/80 text-center">
+                                                            {row.no > 0 ? `- Q ${row.interest.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-4 text-[11px] font-bold text-gray-800 text-center">
+                                                        <td className="p-5 text-[12px] font-bold text-brand-blue/60 text-center">
                                                             {row.no > 0 ? `Q ${row.principal.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-4 text-[11px] font-black text-brand-blue text-center bg-brand-mustard/5 border-l border-brand-mustard/10 group-hover:bg-brand-mustard/10">
+                                                        <td className="p-5 text-[13px] font-black text-brand-mustard text-center bg-brand-blue/5 border-l border-gray-100 group-hover:bg-brand-mustard/10 transition-colors">
                                                             Q {row.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                                                         </td>
                                                     </tr>
@@ -356,25 +362,25 @@ function InvestmentCalculator({ onBack }: { onBack: () => void }) {
                 <ChevronLeft className="w-4 h-4" /> Volver a selección
             </button>
 
-            <div className="grid md:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-5 gap-6">
                 <div className="md:col-span-2 space-y-4">
-                    <div className="bg-white p-5 rounded-3xl shadow-md border border-brand-mustard/20">
-                        <h3 className="text-base font-bold text-brand-blue mb-5 uppercase tracking-tight">Plan de Inversión</h3>
+                    <div className="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-gray-100">
+                        <h3 className="text-xs font-black text-brand-mustard mb-8 uppercase tracking-[0.2em] border-b border-gray-100 pb-4">Plan de Inversión</h3>
                         <div className="space-y-6">
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-2">Capital (Q)</label>
-                                <input placeholder="500000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-base focus:ring-2 focus:ring-brand-mustard outline-none" />
+                                <label className="block text-[10px] font-black text-white/50 uppercase mb-3 tracking-widest">Capital (Q)</label>
+                                <input placeholder="500000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-base focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-500 uppercase mb-2">Plazo (Meses)</label>
-                                <input placeholder="12" type="number" min="0" max="100" value={months} onChange={(e) => { setMonths(e.target.value === '' ? '' : Math.min(100, Math.max(0, Number(e.target.value)))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-base focus:ring-2 focus:ring-brand-mustard outline-none" />
-                                <p className="text-[9px] text-gray-500 mt-1 uppercase font-bold">* Máximo 100 meses</p>
+                                <label className="block text-[10px] font-black text-white/50 uppercase mb-3 tracking-widest">Plazo (Meses)</label>
+                                <input placeholder="12" type="number" min="0" max="100" value={months} onChange={(e) => { setMonths(e.target.value === '' ? '' : Math.min(100, Math.max(0, Number(e.target.value)))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-base focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
+                                <p className="text-[9px] text-white/30 mt-2 uppercase font-black italic">* Máximo 100 meses</p>
                             </div>
                             <div className="pt-2">
-                                <label className="block text-[10px] font-bold text-brand-blue uppercase mb-2 opacity-70">Tasa Anual</label>
-                                <div className="w-full bg-white border border-gray-200 rounded-xl p-3 font-bold text-brand-blue text-base flex items-center justify-between">
+                                <label className="block text-[10px] font-black text-white/30 uppercase mb-3 tracking-widest">Tasa Anual Garantizada</label>
+                                <div className="w-full bg-brand-mustard/10 border border-brand-mustard/30 rounded-xl p-4 font-black text-brand-mustard text-lg flex items-center justify-between shadow-glow-sm">
                                     <span>{FIXED_RATE}%</span>
-                                    <TrendingUp className="w-4 h-4 opacity-30" />
+                                    <TrendingUp className="w-6 h-6 opacity-60" />
                                 </div>
                             </div>
 
@@ -393,21 +399,21 @@ function InvestmentCalculator({ onBack }: { onBack: () => void }) {
                 <div className="md:col-span-3">
                     <AnimatePresence mode="wait">
                         {!isCalculated ? (
-                            <motion.div
-                                key="placeholder-inv"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="h-full bg-white/5 rounded-3xl border border-dashed border-white/20 flex flex-col items-center justify-center p-12 text-center"
-                            >
-                                <div className="bg-brand-mustard/10 w-20 h-20 rounded-full flex items-center justify-center mb-6">
-                                    <TrendingUp className="w-10 h-10 text-brand-mustard/60" />
-                                </div>
-                                <h4 className="text-xl font-bold text-brand-blue mb-2">Proyección de Inversión</h4>
-                                <p className="text-gray-500 text-sm max-w-sm leading-relaxed uppercase font-bold text-[10px] tracking-wider">
-                                    Define el capital y el tiempo para visualizar el crecimiento de tus ahorros con nuestra tasa preferencial.
-                                </p>
-                            </motion.div>
+                                <motion.div
+                                    key="placeholder-inv"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="h-full bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 flex flex-col items-center justify-center p-12 text-center"
+                                >
+                                    <div className="bg-brand-mustard/10 w-24 h-24 rounded-full flex items-center justify-center mb-8">
+                                        <TrendingUp className="w-12 h-12 text-brand-blue/20" />
+                                    </div>
+                                    <h4 className="text-2xl font-black text-brand-blue mb-3 uppercase tracking-tighter leading-none">Proyección de Inversión</h4>
+                                    <p className="text-brand-blue/40 text-sm max-w-sm leading-relaxed uppercase font-black text-[10px] tracking-[0.2em]">
+                                        Define el capital y el tiempo para visualizar el crecimiento de tus ahorros con nuestra tasa preferencial.
+                                    </p>
+                                </motion.div>
                         ) : (
                             <motion.div
                                 key="results-inv"

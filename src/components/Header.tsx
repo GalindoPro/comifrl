@@ -6,15 +6,15 @@ import { cn } from '../lib/utils';
 import logoImg from '../assets/images/logotiporl.png';
 
 const navItems = [
-    { name: 'Inicio', href: '/', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Nosotros', href: '/nosotros', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Servicios', href: '/servicios', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Contacto', href: '/contacto', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Cotizar', href: '/cotizar', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Agencias', href: '/agencias', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
-    { name: 'Asóciate', href: '/afiliacion', color: 'text-brand-mustard/90', hColor: 'hover:text-brand-mustard/80', bgColor: 'bg-brand-mustard' },
+    { name: 'Inicio', href: '/', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Nosotros', href: '/nosotros', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Servicios', href: '/servicios', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Contacto', href: '/contacto', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Cotizar', href: '/cotizar', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Agencias', href: '/agencias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Asóciate', href: '/afiliacion', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
 ];
 
 export function Header() {
@@ -48,55 +48,53 @@ export function Header() {
             animate={{ y: visible ? 0 : -100 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+                'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
                 scrolled
-                    ? 'py-2 bg-brand-blue/95 backdrop-blur-md shadow-xl border-b border-white/20/20'
-                    : 'py-4 bg-brand-blue shadow-lg'
+                    ? 'py-2 bg-brand-blue/80 backdrop-blur-xl shadow-2xl border-b border-white/10'
+                    : 'py-4 bg-transparent'
             )}
         >
             <div className="container mx-auto px-4 flex items-center justify-between">
                 {/* Logo and Name */}
                 <Link
                     to="/"
-                    className="flex items-center gap-3 group"
+                    className="flex items-center gap-3 group transition-transform duration-300 hover:scale-105"
                     onClick={() => handleNavClick('/')}
                 >
-                    <div className="relative w-48 h-12 sm:w-64 sm:h-16 md:w-72 md:h-20 overflow-hidden rounded-xl bg-brand-blue flex items-center justify-center shadow-xl p-1.5 group-hover:scale-105 transition-transform duration-300">
-                        <img
-                            src={logoImg}
-                            alt="COMIF Logo"
-                            className="w-full h-full object-contain"
-                            onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                e.currentTarget.parentElement?.classList.add('bg-brand-mustard');
-                                e.currentTarget.parentElement!.innerHTML = '<span class="text-white font-bold text-xs uppercase">COMIF</span>';
-                            }}
-                        />
-                    </div>
+                    <img
+                        src={logoImg}
+                        alt="COMIF Logo"
+                        className="w-48 h-12 sm:w-64 sm:h-16 md:w-72 md:h-20 object-contain filter brightness-110 contrast-110"
+                        onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const parent = e.currentTarget.parentElement;
+                            if (parent) {
+                                parent.innerHTML = '<span class="text-brand-mustard font-black text-xl uppercase tracking-tighter">COMIF</span>';
+                            }
+                        }}
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden xl:flex gap-1">
+                <nav className="hidden xl:flex gap-4">
                     {navItems.map((item) => (
                         <Link
                             key={item.name}
                             to={item.href}
                             className={cn(
-                                "text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg transition-all duration-300 relative group",
+                                "text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 transition-all duration-300 relative group",
                                 location.pathname === item.href
-                                    ? `${item.color} bg-white/5`
-                                    : `text-gray-100 ${item.hColor} hover:bg-white/5`
+                                    ? `${item.color}`
+                                    : `text-white/60 ${item.hColor} hover:text-white`
                             )}
                             onClick={() => item.href === '/' && window.scrollTo({ top: 0, behavior: 'smooth' })}
                         >
                             {item.name}
                             <motion.span
                                 className={cn(
-                                    "absolute bottom-1 left-4 right-4 h-0.5 rounded-full origin-left bg-current",
-                                    location.pathname === item.href ? "scale-x-100" : "scale-x-0"
+                                    "absolute -bottom-1 left-0 right-0 h-0.5 rounded-full origin-left bg-current transition-transform duration-300",
+                                    location.pathname === item.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                                 )}
-                                whileHover={{ scaleX: 1 }}
-                                transition={{ duration: 0.3 }}
                             />
                         </Link>
                     ))}
@@ -106,7 +104,7 @@ export function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="xl:hidden p-2 rounded-xl bg-white/10 text-gray-100 hover:bg-white/20 transition-colors"
+                    className="xl:hidden p-2 rounded-xl bg-brand-mustard/20 text-brand-mustard hover:bg-brand-mustard/30 transition-colors"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
@@ -133,7 +131,7 @@ export function Header() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.2 }}
-                            className="xl:hidden absolute top-full left-0 right-0 bg-brand-blue border-t border-white/20/80 shadow-2xl overflow-hidden"
+                            className="xl:hidden absolute top-full left-0 right-0 bg-brand-blue border-t border-white/20 shadow-2xl overflow-hidden"
                         >
                             <nav className="flex flex-col p-3 gap-1">
                                 {navItems.map((item, index) => (
@@ -149,7 +147,7 @@ export function Header() {
                                                 "flex items-center justify-between font-bold py-3 px-4 rounded-xl transition-all group",
                                                 location.pathname === item.href
                                                     ? `${item.bgColor} ${item.name === 'Servicios' || item.name === 'Agencias' || item.name === 'Asóciate' ? 'text-white' : 'text-white'}`
-                                                    : "text-gray-100 hover:bg-white/10"
+                                                    : "text-gray-100 hover:bg-white/20"
                                             )}
                                             onClick={() => handleNavClick(item.href)}
                                         >

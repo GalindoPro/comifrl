@@ -6,12 +6,12 @@ const advantages = [
         icon: (
             <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M9 12L11 14L15 10" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M9 12L11 14L15 10" stroke="#BF9903" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         ),
         title: "SEGURIDAD",
         description: "Responsabilidad que construye futuro. Respaldo institucional garantizado para tu tranquilidad.",
-        color: "bg-white",
+        color: "bg-white border-gray-100",
         textColor: "text-brand-blue",
         iconContainer: "bg-brand-mustard/10 border-brand-mustard/20",
         iconColor: "text-brand-mustard",
@@ -28,7 +28,7 @@ const advantages = [
         description: "Rendimiento superior en tus ahorros y condiciones justas en todos tus créditos.",
         color: "bg-brand-mustard",
         textColor: "text-brand-blue",
-        iconContainer: "bg-white/20 border-white/40",
+        iconContainer: "bg-white/30 border-white/50",
         iconColor: "text-brand-blue",
         accent: "bg-white"
     },
@@ -36,13 +36,13 @@ const advantages = [
         icon: (
             <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H12M17 20V19C17 19.0666 17 19.1332 17 19.2M12 20H7L3 24V6C3 4.89543 3.89543 4 5 4H12M12 20V14M12 14V4M12 14C12 14 12 12 12 12C12 9.79086 13.7909 8 16 8C18.2091 8 20 9.79086 20 12C20 14.2091 18.2091 16 16 16C15.9334 16 15.8668 16 15.8 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="16" cy="12" r="3" stroke="#f59e0b" strokeWidth="2" />
+                <circle cx="16" cy="12" r="3" stroke="#BF9903" strokeWidth="2" />
                 <path d="M8 12C8 12 9 13 10 13C11 13 12 12 12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         ),
         title: "ATENCIÓN PERSONALIZADA",
         description: "Honestidad que genera confianza. Asesores expertos siempre dispuestos a guiarte.",
-        color: "bg-white",
+        color: "bg-white border-gray-100",
         textColor: "text-brand-blue",
         iconContainer: "bg-brand-mustard/10 border-brand-mustard/20",
         iconColor: "text-brand-mustard",
@@ -59,9 +59,9 @@ export function Advantages() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl font-extrabold text-white uppercase tracking-tight"
+                        className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter"
                     >
-                        Nuestra Ventaja
+                        Nuestra <span className="text-brand-mustard">Ventaja</span>
                     </motion.h2>
                     <motion.div
                         initial={{ scaleX: 0 }}
