@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# COMIF R.L. - Sitio Web Oficial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el repositorio oficial del sitio web de **COMIF R.L.**, desarrollado con tecnologías modernas para ofrecer una experiencia de usuario fluida y profesional.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**: Biblioteca principal para la interfaz de usuario.
+- **TypeScript**: Para un desarrollo más robusto y seguro.
+- **Vite**: Herramienta de construcción rápida y servidor de desarrollo.
+- **Tailwind CSS**: Framework de CSS para un diseño moderno y responsive.
+- **Framer Motion**: Para animaciones fluidas y atractivas.
+- **Lucide React**: Set de iconos elegantes y minimalistas.
 
-## React Compiler
+## 📂 Estructura de Ramas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Para mantener un flujo de trabajo organizado en **Vercel** y **GitHub**, utilizamos las siguientes ramas:
 
-## Expanding the ESLint configuration
+- **`main`**: Rama de producción. Todo lo que esté aquí se despliega automáticamente en el sitio en vivo.
+- **`development`**: Rama de desarrollo y pruebas (Staging). Se utiliza para probar nuevas funcionalidades antes de pasarlas a producción.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Instalación y Desarrollo
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Para ejecutar el proyecto localmente, sigue estos pasos:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [url-del-repositorio]
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. **Construir para producción:**
+   ```bash
+   npm run build
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🌐 Despliegue en Vercel
+
+El proyecto está configurado para desplegarse automáticamente en Vercel. 
+
+> [!NOTE]
+> Si la rama `development` no aparece en tu panel de Vercel, asegúrate de que en la configuración del proyecto (**Settings > Git**) esté habilitada la opción para desplegar todas las ramas o habilita los **Preview Deployments** para la rama `development` específicamente.
+
+---
+
+Desarrollado con ❤️ para COMIF R.L.
