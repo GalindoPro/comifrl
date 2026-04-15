@@ -14,6 +14,7 @@ const navItems = [
     { name: 'Agencias', href: '/agencias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Transparencia', href: '/transparencia', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asóciate', href: '/afiliacion', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
 ];
 
@@ -151,7 +152,9 @@ export function Header() {
                                             )}
                                             onClick={() => handleNavClick(item.href)}
                                         >
-                                            <span className="uppercase tracking-widest text-sm">{item.name}</span>
+                                            <span className="uppercase tracking-widest text-sm">
+                                                {item.name === 'Transparencia' ? `📊 ${item.name}` : item.name}
+                                            </span>
                                             <ArrowRight className={cn("w-4 h-4 opacity-0 transition-opacity", location.pathname === item.href ? "opacity-0" : "group-hover:opacity-100")} />
                                         </Link>
                                     </motion.div>

@@ -13,6 +13,7 @@ import { Footer } from "./components/Footer";
 import { Preloader } from "./components/Preloader";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { FinancialPage } from "./pages/FinancialPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/contacto" element={<Contact />} />
             <Route path="/agencias" element={<Agencies />} />
             <Route path="/asamblea" element={<AssemblyGalleryPage />} />
+            <Route path="/transparencia" element={<FinancialPage />} />
             {/* Add other routes as needed or use placeholders */}
             <Route path="*" element={<Home />} />
           </Routes>
