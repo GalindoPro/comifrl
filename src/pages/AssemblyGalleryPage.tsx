@@ -23,13 +23,13 @@ import type { LightboxPhoto } from "../components/PhotoLightbox";
 import { GalleryCard } from "../components/GalleryCard";
 
 // ─── Images ───────────────────────────────────────────────────────────────────
-import asamblea1 from "../assets/images/assembly/1.png";
-import asamblea2 from "../assets/images/assembly/2.png";
-import asamblea3 from "../assets/images/assembly/3.png";
-import asamblea4 from "../assets/images/assembly/4.png";
-import asamblea5 from "../assets/images/assembly/5.png";
-import asamblea6 from "../assets/images/assembly/6.png";
-import asamblea8 from "../assets/images/assembly/8.png";
+import asamblea1 from "../assets/images/assembly/asamblea-1.png";
+import asamblea2 from "../assets/images/assembly/asamblea-2.png";
+import asamblea3 from "../assets/images/assembly/asamblea-3.png";
+import asamblea4 from "../assets/images/assembly/asamblea-4.png";
+import asamblea5 from "../assets/images/assembly/asamblea-5.png";
+import asamblea6 from "../assets/images/assembly/asamblea-6.png";
+import asamblea8 from "../assets/images/assembly/asamblea-4.png";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Category = "all" | "general" | "directiva" | "participacion" | "gerente";
