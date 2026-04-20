@@ -12,6 +12,7 @@ const navItems = [
     { name: 'Contacto', href: '/contacto', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Cotizar', href: '/cotizar', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Agencias', href: '/agencias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: '📍 Ubicaciones', href: '/maps', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Transparencia', href: '/transparencia', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
