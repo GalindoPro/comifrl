@@ -108,22 +108,38 @@ const STATS = [
   },
   {
     icon: CheckCircle2,
-    value: "8",
-    label: "Resoluciones aprobadas",
-    color: "text-yellow-400",
+    value: "13",
+    label: "Puntos de agenda",
+    color: "text-brand-mustard",
   },
   {
     icon: BarChart2,
-    value: "3",
-    label: "Nuevos proyectos",
+    value: "2026",
+    label: "Ejercicio fiscal",
     color: "text-brand-mustard",
   },
   {
     icon: Banknote,
-    value: "Q1.2M",
-    label: "Capital social",
-    color: "text-yellow-400",
+    value: "8:00",
+    label: "AM — hora de inicio",
+    color: "text-brand-mustard",
   },
+];
+
+const AGENDA = [
+  { titulo: "Bienvenida", responsable: "Presidenta del Consejo" },
+  { titulo: "Comprobación de Quórum", responsable: "Comisión de Vigilancia" },
+  { titulo: "Invocación", responsable: "Vocal II del Consejo" },
+  { titulo: "Lectura y aprobación de agenda", responsable: "Secretario del Consejo" },
+  { titulo: "Lectura del acta 2025", responsable: "Secretario del Consejo" },
+  { titulo: "Presentación de informes 2025", responsable: "Presidenta, Vigilancia y Crédito" },
+  { titulo: "Estados Financieros 2025", responsable: "Contadora General" },
+  { titulo: "Aplicación de resultados 2025", responsable: "Presidenta del Consejo" },
+  { titulo: "Dictamen contable 2025", responsable: "Comisión de Vigilancia" },
+  { titulo: "Plan de Trabajo 2026", responsable: "Vocal I, Vigilancia y Crédito" },
+  { titulo: "Presupuesto 2026", responsable: "Vicepresidente del Consejo" },
+  { titulo: "Elección/confirmación de cuadros directivos", responsable: "" },
+  { titulo: "Clausura y firma de acta", responsable: "" },
 ];
 
 
@@ -510,127 +526,119 @@ export function AssemblyGalleryPage() {
         className="bg-brand-blue py-14 sm:py-20 relative overflow-hidden"
         aria-label="Información sobre la asamblea"
       >
-        {/* Decorative shapes */}
-        <div
-          className="absolute top-0 left-0 w-96 h-96 bg-brand-mustard/8 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-0 right-0 w-72 h-72 bg-brand-mustard/6 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"
-          aria-hidden="true"
-        />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" aria-hidden="true" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Header */}
+        <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+
+          {/* ── Header ─────────────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <span className="inline-block bg-brand-mustard/20 text-brand-mustard text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 border border-brand-mustard/30">
-              Datos de la Sesión
+              Convocatoria 2026
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              Asamblea General Ordinaria 2026
+              Asamblea General Ordinaria Obligatoria 2026
             </h2>
-            <div className="h-0.5 w-20 bg-brand-mustard mx-auto rounded-full" />
+            <div className="flex flex-wrap justify-center gap-4 text-white/60 text-sm mt-3">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-brand-mustard flex-shrink-0" aria-hidden="true" />
+                Sábado 21 de febrero de 2026 — 8:00 AM
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-brand-mustard flex-shrink-0" aria-hidden="true" />
+                "El Tonelon", Cantón Xolacul, Nebaj, Quiché
+              </span>
+            </div>
+            <div className="h-0.5 w-20 bg-brand-mustard mx-auto rounded-full mt-5" />
           </motion.div>
 
-          {/* Stats grid */}
+          {/* ── Stats strip ────────────────────────────────────────────── */}
           <motion.div
             variants={staggerGrid}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10"
           >
-            {STATS.map(({ icon: Icon, value, label, color }, i) => (
+            {STATS.map(({ icon: Icon, value, label }, i) => (
               <motion.div
                 key={i}
                 custom={i * 0.08}
                 variants={fadeUp}
-                className="bg-white border border-gray-100 rounded-2xl p-6 text-center hover:bg-gray-50 transition-colors duration-200 shadow-xl"
+                className="bg-white border border-gray-100 rounded-2xl p-5 text-center shadow-xl"
               >
-                <div className="flex justify-center mb-3">
-                  <div className="w-11 h-11 rounded-xl bg-brand-blue/5 flex items-center justify-center">
-                    <Icon className={cn("w-5 h-5", color === "text-brand-mustard" ? "text-brand-mustard" : "text-brand-blue")} aria-hidden="true" />
+                <div className="flex justify-center mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-brand-mustard/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-brand-mustard" aria-hidden="true" />
                   </div>
                 </div>
-                <p className={cn("text-3xl font-bold mb-1 tabular-nums", color === "text-brand-mustard" ? "text-brand-mustard" : "text-brand-blue")}>
-                  {value}
-                </p>
-                <p className="text-brand-blue/55 text-xs font-medium uppercase tracking-wide leading-snug">
+                <p className="text-2xl font-bold text-brand-mustard mb-0.5 tabular-nums">{value}</p>
+                <p className="text-brand-blue/55 text-[10px] font-semibold uppercase tracking-wide leading-snug">
                   {label}
                 </p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Detail cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* About the assembly */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white border border-gray-100 rounded-2xl p-7 shadow-xl"
-            >
-              <h3 className="text-brand-blue font-bold text-lg mb-4 flex items-center gap-2">
-                <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
-                Sobre la Asamblea
-              </h3>
-              <ul className="space-y-3" role="list">
-                {[
-                  "Convocatoria ordinaria conforme estatutos vigentes",
-                  "Quórum alcanzado con +500 asociados presentes",
-                  "Presentación de memoria anual y estados financieros",
-                  "Elección de nuevos miembros del Consejo de Administración",
-                  "Aprobación del presupuesto y plan operativo 2025",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-brand-blue/70 text-sm">
-                    <CheckCircle2
-                      className="w-4 h-4 text-brand-mustard flex-shrink-0 mt-0.5"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Event details */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white border border-gray-100 rounded-2xl p-7 shadow-xl"
-            >
-              <h3 className="text-brand-blue font-bold text-lg mb-4 flex items-center gap-2">
-                <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
-                Detalles del Evento
-              </h3>
-              <dl className="space-y-4">
-                {[
-                  { label: "Fecha", value: "Abril 2026" },
-                  { label: "Lugar", value: "Salón Municipal, Nebaj, Quiché" },
-                  { label: "Tipo de sesión", value: "Asamblea General Ordinaria" },
-                  { label: "Duración", value: "Jornada completa" },
-                  { label: "Resoluciones aprobadas", value: "8 resoluciones" },
-                ].map(({ label, value }) => (
-                  <div key={label} className="flex justify-between items-center gap-4">
-                    <dt className="text-brand-blue/45 text-xs uppercase tracking-wide font-semibold flex-shrink-0">
-                      {label}
-                    </dt>
-                    <dd className="text-brand-blue/85 text-sm font-medium text-right">{value}</dd>
+          {/* ── Agenda Timeline ────────────────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl mb-6"
+          >
+            <h3 className="text-brand-blue font-bold text-lg mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
+              Agenda de la Asamblea
+            </h3>
+            <ol className="space-y-3" role="list">
+              {AGENDA.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.04 }}
+                  className="flex items-start gap-4"
+                >
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-brand-mustard text-brand-blue text-xs font-black flex items-center justify-center mt-0.5">
+                    {idx + 1}
+                  </span>
+                  <div className="flex-1 border-b border-brand-blue/5 pb-2">
+                    <p className="text-brand-blue font-semibold text-sm">{item.titulo}</p>
+                    {item.responsable && (
+                      <p className="text-brand-blue/45 text-xs font-medium">{item.responsable}</p>
+                    )}
                   </div>
-                ))}
-              </dl>
-            </motion.div>
-          </div>
+                </motion.li>
+              ))}
+            </ol>
+          </motion.div>
+
+          {/* ── Nota legal ─────────────────────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-brand-mustard rounded-2xl p-5 shadow-xl"
+            role="note"
+          >
+            <p className="text-brand-blue font-medium text-sm leading-relaxed">
+              <span className="text-white font-black drop-shadow-sm">Art. 22 — </span>
+              Las asambleas están legalmente constituidas cuando estén presentes por lo menos la
+              mitad más uno del número total de asociados activos. De no completarse, se realizará
+              el mismo día, una hora después, con los asociados presentes.
+            </p>
+          </motion.div>
+
         </div>
       </section>
 

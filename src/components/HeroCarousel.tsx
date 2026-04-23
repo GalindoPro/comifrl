@@ -33,7 +33,7 @@ const slides = [
     {
         id: 3,
         buttonText: "Encuentra tu agencia",
-        link: "/agencias",
+        link: "/maps",
         image: hero3,
         btnClass: "bg-brand-mustard/20 border-brand-mustard/60 text-white hover:bg-brand-mustard hover:text-white",
         shadowClass: "hover:shadow-brand-mustard/40",
@@ -61,7 +61,7 @@ export function HeroCarousel() {
 
     return (
         <div 
-            className="group relative w-full overflow-hidden bg-gray-900 flex items-center justify-center h-[30vh] min-h-[200px] md:h-[40vh] md:min-h-[300px] lg:h-[80vh] lg:min-h-[600px]" 
+            className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[200px] md:h-[40vh] md:min-h-[300px] lg:h-[80vh] lg:min-h-[600px]" 
             id="inicio"
         >
             {/* Slides Background */}
@@ -83,8 +83,7 @@ export function HeroCarousel() {
                             transform: `scale(${slides[current].scale})`,
                         }}
                     />
-                    {/* Dark gradient overlay */}
-                    <div className="absolute inset-0 bg-black/20" />
+                    {/* Removed overlay to keep image pure and bright */}
                 </motion.div>
             </AnimatePresence>
 

@@ -11,8 +11,7 @@ const navItems = [
     { name: 'Servicios', href: '/servicios', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Contacto', href: '/contacto', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Cotizar', href: '/cotizar', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
-    { name: 'Agencias', href: '/agencias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
-    { name: '📍 Ubicaciones', href: '/maps', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
+    { name: 'Ubicaciones', href: '/maps', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Transparencia', href: '/transparencia', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
@@ -66,7 +65,7 @@ export function Header() {
                     <img
                         src={logoImg}
                         alt="COMIF Logo"
-                        className="w-48 h-12 sm:w-64 sm:h-16 md:w-72 md:h-20 object-contain filter brightness-110 contrast-110"
+                        className="w-[200px] sm:w-64 md:w-80 h-14 sm:h-16 md:h-24 object-contain object-left filter brightness-110 contrast-110"
                         onError={(e) => {
                             e.currentTarget.style.display = 'none';
                             const parent = e.currentTarget.parentElement;
@@ -136,7 +135,7 @@ export function Header() {
                             className="xl:hidden absolute top-full left-0 right-0 bg-brand-blue border-t border-white/20 shadow-2xl overflow-hidden"
                         >
                             <nav className="flex flex-col p-3 gap-1">
-                                {navItems.map((item, index) => (
+                                {navItems.filter(item => item.name !== 'Transparencia').map((item, index) => (
                                     <motion.div
                                         key={item.name}
                                         initial={{ x: -20, opacity: 0 }}
@@ -148,7 +147,7 @@ export function Header() {
                                             className={cn(
                                                 "flex items-center justify-between font-bold py-3 px-4 rounded-xl transition-all group",
                                                 location.pathname === item.href
-                                                    ? `${item.bgColor} ${item.name === 'Servicios' || item.name === 'Agencias' || item.name === 'Asóciate' ? 'text-white' : 'text-white'}`
+                                                    ? `${item.bgColor} ${item.name === 'Servicios' || item.name === 'Asóciate' ? 'text-white' : 'text-white'}`
                                                     : "text-gray-100 hover:bg-white/20"
                                             )}
                                             onClick={() => handleNavClick(item.href)}

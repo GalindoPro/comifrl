@@ -50,13 +50,6 @@ export function Footer() {
                                 <UserPlus className="w-3.5 h-3.5 md:w-4 md:h-4" />
                                 Hazte socio
                             </Link>
-                            <Link
-                                to="/agencias"
-                                className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-blue/30 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-black text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-brand-blue/50 transition-all border border-white/20"
-                            >
-                                <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard" />
-                                Agencias
-                            </Link>
                         </div>
                     </div>
                 </div>

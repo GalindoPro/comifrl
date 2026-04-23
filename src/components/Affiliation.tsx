@@ -161,7 +161,7 @@ export function Affiliation() {
                     className="text-center mt-16"
                 >
                     <Link
-                        to="/agencias"
+                        to="/maps"
                         className="inline-flex items-center gap-4 bg-brand-mustard text-brand-blue font-black py-4 px-10 rounded-[1.5rem] shadow-2xl hover:scale-105 hover:bg-brand-mustard/90 transition-all duration-300 text-sm uppercase tracking-widest"
                     >
                         Visitar una agencia

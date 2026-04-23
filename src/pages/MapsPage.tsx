@@ -5,7 +5,8 @@ import { MapPin, Globe, Navigation, Building2, Phone, ExternalLink, MessageCircl
 const locations = [
   {
     id: "central",
-    title: "Agencia Nebaj",
+    title: "Nebaj",
+    subtitle: "Sede Central",
     description: "Sede principal de COMIF R.L. en Nebaj",
     address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
     coordinates: { lat: 15.4090833, lng: -91.1457222 },
@@ -17,7 +18,8 @@ const locations = [
   },
   {
     id: "chajul",
-    title: "Agencia Chajul",
+    title: "Chajul",
+    subtitle: "Sucursal Regional",
     description: "Servicios financieros en el corazón de Chajul",
     address: "Chajul, Quiché, Guatemala",
     coordinates: { lat: 15.4856671, lng: -91.0361975 },
@@ -29,7 +31,8 @@ const locations = [
   },
   {
     id: "acul",
-    title: "Agencia Acul",
+    title: "Acul",
+    subtitle: "Delegación Ixil",
     description: "Cobertura comunitaria y cercanía en Aldea Acul",
     address: "Aldea Acul, Nebaj, Quiché, Guatemala",
     coordinates: { lat: 15.4058719, lng: -91.1900482 },
@@ -103,7 +106,7 @@ export const MapsPage = () => {
                       </div>
                       <div className="flex-grow">
                         <span className="block text-[11px] font-black uppercase tracking-widest mb-0.5">{loc.title}</span>
-                        <span className="text-[9px] opacity-60 font-bold uppercase tracking-[0.1em]">{loc.id === 'central' ? 'Agencia Principal' : 'Agencia Regional'}</span>
+                        <span className="text-[9px] opacity-60 font-bold uppercase tracking-[0.1em]">{loc.subtitle}</span>
                       </div>
                     </button>
                   ))}

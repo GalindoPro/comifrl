@@ -7,7 +7,6 @@ import { Quote } from "./components/Quote";
 import { News } from "./components/News";
 import { Affiliation } from "./components/Affiliation";
 import { Contact } from "./components/Contact";
-import { Agencies } from "./components/Agencies";
 import { AssemblyGalleryPage } from "./pages/AssemblyGalleryPage";
 import { Footer } from "./components/Footer";
 import { Preloader } from "./components/Preloader";
@@ -32,7 +31,6 @@ function App() {
             <Route path="/noticias" element={<News />} />
             <Route path="/afiliacion" element={<Affiliation />} />
             <Route path="/contacto" element={<Contact />} />
-            <Route path="/agencias" element={<Agencies />} />
             {/* Ruta para visualización de mapas y ubicación exacta de agencias */}
             <Route path="/maps" element={<MapsPage />} />
             <Route path="/asamblea" element={<AssemblyGalleryPage />} />

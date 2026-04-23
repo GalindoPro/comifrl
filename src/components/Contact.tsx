@@ -137,7 +137,7 @@ export function Contact() {
                                 Ubica la agencia más cercana a ti para atención personalizada.
                             </p>
                             <Link
-                                to="/agencias"
+                                to="/maps"
                                 className="inline-flex items-center gap-3 bg-brand-blue text-white font-black py-4 px-8 rounded-2xl hover:bg-brand-blue/90 transition-all shadow-xl w-full justify-center text-sm uppercase tracking-widest"
                             >
                                 Ver Ubicaciones
