@@ -168,8 +168,6 @@ export const MapsPage = () => {
                   {!selectedId && (
                     <div 
                       className="absolute inset-0 z-20 pointer-events-auto cursor-help" 
-                      onMouseEnter={() => setIsMapHovered(true)}
-                      onMouseLeave={() => setIsMapHovered(false)}
                     />
                   )}
 
