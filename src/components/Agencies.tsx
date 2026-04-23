@@ -9,7 +9,7 @@ const agencies = [
     {
         id: "central",
         subtitle: "Sede Principal",
-        name: "Agencia Central",
+        name: "Agencia Nebaj",
         address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
         phone: "57481463",
         image: agenciaCentralImg,
@@ -64,24 +64,24 @@ export function Agencies() {
 
     return (
         <div className="flex flex-col">
-            <section id="agencias" className="py-16 bg-brand-blue relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section id="agencias" className="py-10 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
 
                 {/* Header */}
-                <div className="text-center mb-12 max-w-3xl mx-auto">
+                <div className="text-center mb-8 max-w-3xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-block p-3 bg-brand-mustard/20 rounded-2xl mb-4"
+                        className="inline-block p-2.5 bg-brand-mustard/20 rounded-2xl mb-3"
                     >
-                        <MapPin className="w-8 h-8 text-brand-mustard" />
+                        <MapPin className="w-7 h-7 text-brand-mustard" />
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
+                        className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
                     >
                         Nuestra <span className="text-brand-mustard">Presencia</span>
                     </motion.h2>
@@ -103,8 +103,8 @@ export function Agencies() {
             </section>
 
             {/* Agencies Grid */}
-            <section className="py-12 bg-brand-blue text-white relative overflow-hidden">
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
+            <section className="py-8 bg-brand-blue text-white relative overflow-hidden">
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-mustard/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {agencies.map((agency) => (
@@ -152,7 +152,7 @@ export function Agencies() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()}
-                                        className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-[11px] font-black transition-all hover:scale-105 active:scale-95 shadow-lg ${agency.iconBtnBg}`}
+                                        className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-[11px] font-black transition-all hover:scale-105 active:scale-95 shadow-lg bg-[#25D366] text-white`}
                                     >
                                         <MessageCircle className="w-4 h-4" />
                                         WhatsApp
@@ -303,7 +303,7 @@ export function Agencies() {
                                             href={`https://wa.me/502${selectedAgency.phone}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 ${selectedAgency.iconBtnBg}`}
+                                            className={`flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 bg-[#25D366] text-white shadow-lg`}
                                         >
                                             <MessageCircle className="w-6 h-6" />
                                             WhatsApp

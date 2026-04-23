@@ -47,7 +47,7 @@ export function Quote() {
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     onClick={() => setView('loan')}
-                                    className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
+                                    className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all text-brand-blue">
                                         <TableIcon className="w-32 h-32" />
@@ -70,7 +70,7 @@ export function Quote() {
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     onClick={() => setView('investment')}
-                                    className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
+                                    className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl border border-gray-100 cursor-pointer group relative overflow-hidden hover:border-brand-mustard/50 transition-all duration-500"
                                 >
                                     <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 group-hover:scale-110 transition-all text-brand-blue">
                                         <TrendingUp className="w-32 h-32" />
@@ -188,34 +188,34 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
 
             <div className="grid lg:grid-cols-4 gap-6">
                 {/* Inputs Sidebar */}
-                <div className="lg:col-span-1 space-y-4">
-                    <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
-                        <div className="flex items-center gap-2 mb-8 text-brand-blue border-b border-gray-100 pb-4">
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-brand-mustard">Ingreso de Datos</h3>
+                <div className="lg:col-span-1 space-y-2 md:space-y-4">
+                    <div className="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-2xl border border-gray-100">
+                        <div className="flex items-center gap-2 mb-4 md:mb-8 text-brand-blue border-b border-gray-100 pb-2 md:pb-4">
+                            <h3 className="text-[9px] md:text-xs font-black uppercase tracking-[0.2em] text-brand-mustard">Ingreso de Datos</h3>
                         </div>
-                        <div className="space-y-6">
+                        <div className="space-y-3 md:space-y-6">
                             <div>
-                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Fecha de Inicio</label>
-                                <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1.5 tracking-widest">Fecha de Inicio</label>
+                                <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 md:p-4 font-bold text-brand-blue text-xs md:text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Monto solicitado (Q)</label>
-                                <input placeholder="50000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1.5 tracking-widest">Monto solicitado (Q)</label>
+                                <input placeholder="50000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 md:p-4 font-bold text-brand-blue text-xs md:text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-black text-white/50 uppercase mb-2 tracking-widest">Plazo del Crédito (Años)</label>
-                                <input placeholder="1" type="number" min="0" value={years} onChange={(e) => { setYears(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all" />
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1.5 tracking-widest">Plazo del Crédito (Años)</label>
+                                <input placeholder="1" type="number" min="0" value={years} onChange={(e) => { setYears(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 md:p-4 font-bold text-brand-blue text-xs md:text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-black text-brand-blue/50 uppercase mb-2 tracking-widest">Tasa Anual (Fija)</label>
-                                <div className="w-full bg-brand-blue/5 border border-brand-blue/10 rounded-xl p-4 font-black text-brand-blue text-sm flex items-center justify-between">
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/30 uppercase mb-1 tracking-widest">Tasa Anual (Fija)</label>
+                                <div className="w-full bg-brand-blue/5 border border-brand-blue/10 rounded-xl p-2.5 md:p-4 font-black text-brand-blue text-xs md:text-sm flex items-center justify-between">
                                     <span>{FIXED_RATE}%</span>
-                                    <Percent className="w-4 h-4 text-brand-mustard opacity-60" />
+                                    <Percent className="w-3 h-3 md:w-4 md:h-4 text-brand-mustard opacity-60" />
                                 </div>
                             </div>
-                            <div className="relative pt-2">
-                                <label className="block text-[10px] font-black text-white/40 uppercase mb-2 tracking-widest text-nowrap">Cuotas Estimadas</label>
-                                <div className="w-full bg-brand-mustard text-brand-blue rounded-xl p-4 font-black text-sm shadow-lg">
+                            <div className="relative pt-1">
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/30 uppercase mb-1.5 tracking-widest text-nowrap">Cuotas Estimadas</label>
+                                <div className="w-full bg-brand-mustard text-brand-blue rounded-xl p-3 md:p-4 font-black text-xs md:text-sm shadow-lg">
                                     {years ? Number(years) * 12 : 0} Cuotas Mensuales
                                 </div>
                             </div>
@@ -223,9 +223,9 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
                             <button
                                 onClick={handleCalculate}
                                 disabled={!amount || !years}
-                                className="w-full py-4 bg-brand-mustard text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-lg hover:bg-brand-mustard/90 disabled:opacity-50 disabled:grayscale transition-all mt-6 flex items-center justify-center gap-2"
+                                className="w-full py-3 md:py-4 bg-brand-mustard text-white rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-xs tracking-widest shadow-lg hover:bg-brand-mustard/90 disabled:opacity-50 disabled:grayscale transition-all mt-4 md:mt-6 flex items-center justify-center gap-2"
                             >
-                                <RefreshCw className={cn("w-4 h-4", isCalculated ? "animate-spin-once" : "")} />
+                                <RefreshCw className={cn("w-3.5 h-3.5 md:w-4 md:h-4", isCalculated ? "animate-spin-once" : "")} />
                                 Generar Proyección
                             </button>
                         </div>
@@ -256,62 +256,62 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
                                 key="table"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="space-y-6"
+                                className="space-y-3"
                             >
                                 {/* Summary Metrics */}
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
-                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Cuotas Totales</p>
-                                        <p className="text-2xl font-black text-brand-blue">{Number(years) * 12}</p>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+                                    <div className="bg-white p-3 md:p-6 rounded-xl md:rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[8px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1 tracking-widest">Cuotas Totales</p>
+                                        <p className="text-base md:text-2xl font-black text-brand-blue">{Number(years) * 12}</p>
                                     </div>
-                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
-                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Cuota Capital</p>
-                                        <p className="text-2xl font-black text-brand-blue">Q {(Number(amount) / (Number(years) * 12)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-white p-3 md:p-6 rounded-xl md:rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[8px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1 tracking-widest">Cuota Capital</p>
+                                        <p className="text-base md:text-2xl font-black text-brand-blue">Q {(Number(amount) / (Number(years) * 12)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
-                                    <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
-                                        <p className="text-[10px] font-black text-brand-blue/40 uppercase mb-2 tracking-widest">Interés Total</p>
-                                        <p className="text-2xl font-black text-red-500">Q {schedule.reduce((acc, row) => acc + row.interest, 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-white p-3 md:p-6 rounded-xl md:rounded-2xl shadow-2xl border border-gray-100">
+                                        <p className="text-[8px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1 tracking-widest">Interés Total</p>
+                                        <p className="text-base md:text-2xl font-black text-red-500">Q {schedule.reduce((acc, row) => acc + row.interest, 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
-                                    <div className="bg-brand-mustard p-6 rounded-2xl shadow-2xl shadow-brand-mustard/20">
-                                        <p className="text-[10px] font-black text-brand-blue/60 uppercase mb-2 tracking-widest">Total Estimado</p>
-                                        <p className="text-2xl font-black text-brand-blue">Q {(Number(amount) + schedule.reduce((acc, row) => acc + row.interest, 0)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                                    <div className="bg-brand-mustard p-3 md:p-6 rounded-xl md:rounded-2xl shadow-2xl shadow-brand-mustard/20">
+                                        <p className="text-[8px] md:text-[10px] font-black text-brand-blue/60 uppercase mb-1 tracking-widest">Total Estimado</p>
+                                        <p className="text-base md:text-2xl font-black text-brand-blue">Q {(Number(amount) + schedule.reduce((acc, row) => acc + row.interest, 0)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden">
-                                    <div className="px-8 py-6 bg-gray-50 text-brand-blue flex justify-between items-center border-b border-gray-100">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-2.5 h-2.5 bg-brand-mustard rounded-full animate-pulse shadow-glow" />
-                                            <h3 className="font-black uppercase tracking-[0.2em] text-xs">Tabla de Proyección Detallada</h3>
+                                <div className="bg-white rounded-xl md:rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden">
+                                    <div className="px-4 py-3 md:px-8 md:py-6 bg-gray-50 text-brand-blue flex justify-between items-center border-b border-gray-100">
+                                        <div className="flex items-center gap-2 md:gap-3">
+                                            <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-brand-mustard rounded-full animate-pulse shadow-glow" />
+                                            <h3 className="font-black uppercase tracking-[0.2em] text-[9px] md:text-xs">Tabla de Proyección Detallada</h3>
                                         </div>
                                     </div>
-                                    <div className="overflow-x-auto max-h-[600px] overflow-y-auto custom-scrollbar">
+                                    <div className="overflow-x-auto max-h-[70vh] overflow-y-auto custom-scrollbar">
                                         <table className="w-full text-left border-collapse">
                                             <thead className="sticky top-0 bg-white z-20 border-b border-gray-200 shadow-sm">
                                                 <tr>
-                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago No.</th>
-                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Fecha</th>
-                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago Mensual</th>
-                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Intereses</th>
-                                                    <th className="p-5 text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Capital</th>
-                                                    <th className="p-5 text-[10px] font-black text-brand-mustard uppercase text-center bg-brand-blue/5 border-l border-gray-100">Saldo Actual</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago No.</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Fecha</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Pago Mensual</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Intereses</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Capital</th>
+                                                    <th className="px-3 py-2 md:px-4 md:py-3 text-[9px] md:text-[10px] font-black text-brand-mustard uppercase text-center bg-brand-blue/5 border-l border-gray-100">Saldo Actual</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {schedule.map((row) => (
                                                     <tr key={row.no} className={cn("hover:bg-brand-blue/5 transition-all group border-b border-gray-100 last:border-0", row.no === 0 && "bg-brand-mustard/10")}>
-                                                        <td className="p-5 text-[12px] font-bold text-brand-blue/40 text-center">{row.no}</td>
-                                                        <td className="p-5 text-[12px] font-black text-brand-blue text-center">{row.date}</td>
-                                                        <td className="p-5 text-[12px] font-black text-brand-blue text-center">
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[8px] md:text-[11px] font-bold text-brand-blue/40 text-center">{row.no}</td>
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[8px] md:text-[11px] font-black text-brand-blue text-center">{row.date}</td>
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[8px] md:text-[11px] font-black text-brand-blue text-center">
                                                             {row.no > 0 ? `Q ${row.payment.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-5 text-[12px] font-bold text-red-500/80 text-center">
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[8px] md:text-[11px] font-bold text-red-500/80 text-center">
                                                             {row.no > 0 ? `- Q ${row.interest.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-5 text-[12px] font-bold text-brand-blue/60 text-center">
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[8px] md:text-[11px] font-bold text-brand-blue/60 text-center">
                                                             {row.no > 0 ? `Q ${row.principal.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
                                                         </td>
-                                                        <td className="p-5 text-[13px] font-black text-brand-mustard text-center bg-brand-blue/5 border-l border-gray-100 group-hover:bg-brand-mustard/10 transition-colors">
+                                                        <td className="px-1.5 py-1 md:px-4 md:py-2 text-[9px] md:text-[12px] font-black text-brand-mustard text-center bg-brand-blue/5 border-l border-gray-100 group-hover:bg-brand-mustard/10 transition-colors">
                                                             Q {row.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                                                         </td>
                                                     </tr>
@@ -363,33 +363,33 @@ function InvestmentCalculator({ onBack }: { onBack: () => void }) {
             </button>
 
             <div className="grid md:grid-cols-5 gap-6">
-                <div className="md:col-span-2 space-y-4">
-                    <div className="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-gray-100">
-                        <h3 className="text-xs font-black text-brand-mustard mb-8 uppercase tracking-[0.2em] border-b border-gray-100 pb-4">Plan de Inversión</h3>
+                <div className="md:col-span-2 space-y-2 md:space-y-4">
+                    <div className="bg-white p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] shadow-2xl border border-gray-100">
+                        <h3 className="text-[9px] md:text-xs font-black text-brand-mustard mb-4 md:mb-8 uppercase tracking-[0.2em] border-b border-gray-100 pb-2 md:pb-4">Plan de Inversión</h3>
                         <div className="space-y-6">
                             <div>
-                                <label className="block text-[10px] font-black text-white/50 uppercase mb-3 tracking-widest">Capital (Q)</label>
-                                <input placeholder="500000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-base focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1.5 tracking-widest">Capital (Q)</label>
+                                <input placeholder="500000" type="number" min="0" value={amount} onChange={(e) => { setAmount(e.target.value === '' ? '' : Math.max(0, Number(e.target.value))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 md:p-4 font-bold text-brand-blue text-xs md:text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
                             </div>
                             <div>
-                                <label className="block text-[10px] font-black text-white/50 uppercase mb-3 tracking-widest">Plazo (Meses)</label>
-                                <input placeholder="12" type="number" min="0" max="100" value={months} onChange={(e) => { setMonths(e.target.value === '' ? '' : Math.min(100, Math.max(0, Number(e.target.value)))); setIsCalculated(false); }} className="w-full bg-brand-blue/50 border border-white/10 rounded-xl p-4 font-bold text-white text-base focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
-                                <p className="text-[9px] text-white/30 mt-2 uppercase font-black italic">* Máximo 100 meses</p>
+                                <label className="block text-[9px] md:text-[10px] font-black text-brand-blue/40 uppercase mb-1.5 tracking-widest">Plazo (Meses)</label>
+                                <input placeholder="12" type="number" min="0" max="100" value={months} onChange={(e) => { setMonths(e.target.value === '' ? '' : Math.min(100, Math.max(0, Number(e.target.value)))); setIsCalculated(false); }} className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 md:p-4 font-bold text-brand-blue text-xs md:text-sm focus:ring-2 focus:ring-brand-mustard outline-none transition-all shadow-inner" />
+                                <p className="text-[8px] text-brand-blue/30 mt-1 uppercase font-black italic">* Máximo 100 meses</p>
                             </div>
-                            <div className="pt-2">
-                                <label className="block text-[10px] font-black text-white/30 uppercase mb-3 tracking-widest">Tasa Anual Garantizada</label>
-                                <div className="w-full bg-brand-mustard/10 border border-brand-mustard/30 rounded-xl p-4 font-black text-brand-mustard text-lg flex items-center justify-between shadow-glow-sm">
+                            <div className="pt-1 md:pt-2">
+                                <label className="block text-[9px] md:text-[10px] font-black text-white/30 uppercase mb-1.5 md:mb-3 tracking-widest">Tasa Anual Garantizada</label>
+                                <div className="w-full bg-brand-mustard/10 border border-brand-mustard/30 rounded-xl p-3 md:p-4 font-black text-brand-mustard text-base md:text-lg flex items-center justify-between shadow-glow-sm">
                                     <span>{FIXED_RATE}%</span>
-                                    <TrendingUp className="w-6 h-6 opacity-60" />
+                                    <TrendingUp className="w-5 h-5 md:w-6 md:h-6 opacity-60" />
                                 </div>
                             </div>
 
                             <button
                                 onClick={handleCalculate}
                                 disabled={!amount || !months}
-                                className="w-full py-4 bg-brand-blue text-white rounded-2xl font-black uppercase text-xs tracking-widest shadow-lg hover:bg-brand-blue/80 disabled:opacity-50 transition-all mt-4 flex items-center justify-center gap-2"
+                                className="w-full py-3 md:py-4 bg-brand-blue text-white rounded-xl md:rounded-2xl font-black uppercase text-[10px] md:text-xs tracking-widest shadow-lg hover:bg-brand-blue/80 disabled:opacity-50 transition-all mt-3 md:mt-4 flex items-center justify-center gap-2"
                             >
-                                <RefreshCw className={cn("w-4 h-4", isCalculated ? "animate-spin-once" : "")} />
+                                <RefreshCw className={cn("w-3.5 h-3.5 md:w-4 md:h-4", isCalculated ? "animate-spin-once" : "")} />
                                 Calcular Rendimiento
                             </button>
                         </div>
@@ -419,47 +419,74 @@ function InvestmentCalculator({ onBack }: { onBack: () => void }) {
                                 key="results-inv"
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="bg-brand-blue text-white p-8 rounded-3xl shadow-xl h-full relative overflow-hidden"
+                                className="bg-brand-blue text-white p-6 rounded-3xl shadow-xl h-full relative overflow-hidden"
                             >
                                 <div className="absolute -top-10 -right-10 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
                                 <div className="absolute bottom-10 -left-10 w-32 h-32 bg-brand-mustard/5 rounded-full blur-2xl" />
 
-                                <div className="relative z-10">
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-6 text-brand-mustard flex items-center gap-2">
+                                <div className="relative z-10 space-y-4">
+                                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-mustard flex items-center gap-2">
                                         <div className="w-1.5 h-1.5 bg-brand-mustard rounded-full" />
-                                        Rendimiento Estimado
+                                        Rendimiento e Información
                                     </h3>
-                                    <div className="space-y-6">
-                                        <div className="grid grid-cols-2 gap-4 bg-black/20 p-3 rounded-xl border border-white/5">
-                                            <div>
-                                                <label className="block text-[9px] font-bold text-white/50 uppercase mb-1 tracking-widest">Apertura</label>
-                                                <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="bg-transparent border-none p-0 text-white font-black text-xs w-full focus:ring-0" />
-                                            </div>
-                                            <div>
-                                                <label className="block text-[9px] font-bold text-white/50 uppercase mb-1 tracking-widest">Vencimiento</label>
-                                                <div className="text-brand-mustard font-black text-xs">{dueDate.toLocaleDateString()}</div>
-                                            </div>
+                                    
+                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3">
+                                        <div className="bg-white/10 p-2 md:p-3 rounded-xl border border-white/5">
+                                            <label className="block text-[7px] md:text-[8px] font-bold text-white/50 uppercase mb-0.5 tracking-widest">Apertura</label>
+                                            <input type="date" value={startDate} onChange={(e) => { setStartDate(e.target.value); setIsCalculated(false); }} className="bg-transparent border-none p-0 text-white font-black text-[10px] md:text-[11px] w-full focus:ring-0" />
                                         </div>
-                                        <div className="space-y-3">
-                                            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                                                <p className="text-[9px] font-bold uppercase text-white/60 tracking-widest">Interés Bruto</p>
-                                                <p className="text-lg font-black">Q {grossInterest.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                            </div>
-                                            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                                                <div className="flex items-center gap-2" title="Impuesto sobre la renta según ley">
-                                                    <p className="text-[9px] font-bold uppercase text-white/60 tracking-widest">Impuesto (10% ISR)</p>
-                                                    <AlertCircle className="w-2.5 h-2.5 text-red-400" />
-                                                </div>
-                                                <p className="text-base font-bold text-red-300">- Q {tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                            </div>
-                                            <div className="pt-2">
-                                                <div className="bg-white/10 p-5 rounded-[2rem] border border-white/10 relative overflow-hidden group">
-                                                    <p className="text-[9px] font-black uppercase text-brand-mustard tracking-[0.2em] mb-2 text-center">Interés Líquido</p>
-                                                    <p className="text-3xl font-black text-white text-center">
-                                                        Q {netInterest.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        <div className="bg-white/10 p-2 md:p-3 rounded-xl border border-white/5">
+                                            <label className="block text-[7px] md:text-[8px] font-bold text-white/50 uppercase mb-0.5 tracking-widest">Vencimiento</label>
+                                            <div className="text-brand-mustard font-black text-[10px] md:text-[11px]">{dueDate.toLocaleDateString()}</div>
+                                        </div>
+                                        <div className="bg-white/10 p-2 md:p-3 rounded-xl border border-white/5">
+                                            <label className="block text-[7px] md:text-[8px] font-bold text-white/50 uppercase mb-0.5 tracking-widest">Int. Bruto</label>
+                                            <div className="text-white font-black text-[10px] md:text-[11px]">Q {grossInterest.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+                                        </div>
+                                        <div className="bg-white/10 p-2 md:p-3 rounded-xl border border-white/5">
+                                            <label className="block text-[7px] md:text-[8px] font-bold text-white/50 uppercase mb-0.5 tracking-widest">Int. Líquido</label>
+                                            <div className="text-brand-mustard font-black text-[10px] md:text-[11px]">Q {netInterest.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Detailed Investment Table */}
+                                    <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
+                                        <div className="overflow-x-auto max-h-[300px] overflow-y-auto custom-scrollbar">
+                                            <table className="w-full text-left border-collapse">
+                                                <thead className="sticky top-0 bg-gray-50 z-20 border-b border-gray-100">
+                                                    <tr>
+                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Mes</th>
+                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Fecha</th>
+                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Interés Mensual</th>
+                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Interés Acum.</th>
+                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-mustard uppercase text-center bg-brand-blue/5 border-l border-gray-100">Capital</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {Array.from({ length: Number(months) + 1 }).map((_, i) => {
+                                                        const rowDate = new Date(startDate);
+                                                        rowDate.setMonth(rowDate.getMonth() + i);
+                                                        const monthlyInt = i === 0 ? 0 : (grossInterest / Number(months));
+                                                        const accumInt = i === 0 ? 0 : (monthlyInt * i);
+                                                        
+                                                        return (
+                                                            <tr key={i} className="hover:bg-brand-blue/5 transition-all group border-b border-gray-100 last:border-0">
+                                                                <td className="px-3 py-1.5 text-[9px] font-bold text-brand-blue/40 text-center">{i}</td>
+                                                                <td className="px-3 py-1.5 text-[9px] font-black text-brand-blue text-center">{rowDate.toLocaleDateString()}</td>
+                                                                <td className="px-3 py-1.5 text-[9px] font-bold text-green-600 text-center">
+                                                                    {i > 0 ? `Q ${monthlyInt.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
+                                                                </td>
+                                                                <td className="px-3 py-1.5 text-[9px] font-medium text-brand-blue/60 text-center">
+                                                                    {i > 0 ? `Q ${accumInt.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
+                                                                </td>
+                                                                <td className="px-3 py-1.5 text-[10px] font-black text-brand-mustard text-center bg-brand-blue/5 border-l border-gray-100">
+                                                                    Q {Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    })}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

@@ -15,46 +15,46 @@ export function Footer() {
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 border-b border-white/20/50 pb-4 mt-2">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-3 border-b border-white/10 pb-3 mt-1">
                     {/* Colon 1: Identidad */}
-                    <div className="space-y-2">
-                        <h4 className="text-xl font-black text-brand-mustard tracking-tighter uppercase">COMIF, R.L.</h4>
-                        <p className="text-[11px] text-white/50 font-bold uppercase tracking-widest leading-relaxed max-w-xs">
+                    <div className="space-y-1">
+                        <h4 className="text-lg md:text-xl font-black text-brand-mustard tracking-tighter uppercase">COMIF, R.L.</h4>
+                        <p className="text-[10px] md:text-[11px] text-white/50 font-bold uppercase tracking-widest leading-relaxed max-w-xs">
                             Desde 2008, impulsando el bienestar financiero de nuestra comunidad con honestidad y transparencia.
                         </p>
                     </div>
 
                     {/* Colon 2: Contacto */}
-                    <div className="space-y-3">
-                        <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.2em]">Sede Central</h4>
-                        <div className="space-y-2">
-                            <p className="flex items-start gap-3 text-xs text-white/80 font-medium">
-                                <Building2 className="w-4 h-4 text-brand-mustard flex-shrink-0" />
+                    <div className="space-y-2 md:space-y-3">
+                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Sede Central</h4>
+                        <div className="space-y-1 md:space-y-2">
+                            <p className="flex items-start gap-3 text-[11px] md:text-xs text-white/80 font-medium">
+                                <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />
                                 Cantón Vipila, Nebaj, Quiché
                             </p>
-                            <a href="mailto:comifrl@gmail.com" className="flex items-center gap-3 text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
-                                <Mail className="w-4 h-4 text-brand-mustard" />
+                            <a href="mailto:comifrl@gmail.com" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
+                                <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard" />
                                 comifrl@gmail.com
                             </a>
                         </div>
                     </div>
 
                     {/* Colon 3: Acciones Rápidas */}
-                    <div className="space-y-3">
-                        <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.2em]">Acciones</h4>
-                        <div className="flex flex-col gap-2">
+                    <div className="space-y-2 md:space-y-3">
+                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Acciones</h4>
+                        <div className="flex flex-row md:flex-col gap-2">
                             <Link
                                 to="/afiliacion"
-                                className="inline-flex items-center justify-center gap-2 bg-brand-mustard text-brand-blue px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-brand-mustard/90 transition-all shadow-glow active:scale-95"
+                                className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-mustard text-brand-blue px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-black text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-brand-mustard/90 transition-all shadow-glow active:scale-95"
                             >
-                                <UserPlus className="w-4 h-4" />
+                                <UserPlus className="w-3.5 h-3.5 md:w-4 md:h-4" />
                                 Hazte socio
                             </Link>
                             <Link
                                 to="/agencias"
-                                className="inline-flex items-center justify-center gap-2 bg-brand-blue/30 text-white px-4 py-2 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-brand-blue/50 transition-all border border-white/20"
+                                className="flex-1 inline-flex items-center justify-center gap-2 bg-brand-blue/30 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-xl font-black text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-brand-blue/50 transition-all border border-white/20"
                             >
-                                <Building2 className="w-4 h-4 text-brand-mustard" />
+                                <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard" />
                                 Agencias
                             </Link>
                         </div>

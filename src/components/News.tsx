@@ -7,20 +7,18 @@ export function News() {
     return (
         <div className="flex flex-col">
             {/* Header Section */}
-            <section className="py-16 bg-brand-blue relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section className="py-10 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
-
-                {/* Header */}
-                <div className="text-center mb-0">
-                    <motion.h2
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
-                    >
-                        Noticias <span className="text-brand-mustard">Destacadas</span>
-                    </motion.h2>
+                    <div className="text-center mb-0">
+                        <motion.h2
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+                        >
+                            Noticias <span className="text-brand-mustard">Destacadas</span>
+                        </motion.h2>
                     <motion.div
                         initial={{ scaleX: 0 }}
                         animate={{ opacity: 1, scaleX: 1 }}
@@ -32,10 +30,10 @@ export function News() {
             </section>
 
             {/* Feature Story: San Juan Acul */}
-            <section className="py-16 bg-brand-blue relative overflow-hidden">
+            <section className="py-8 bg-brand-blue relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-mustard/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
-                <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden mb-16 border border-gray-100 relative z-10">
+                <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden mb-8 border border-gray-100 relative z-10">
                     <div className="grid lg:grid-cols-2">
 
                         {/* Content Side */}
@@ -127,10 +125,10 @@ export function News() {
             </section>
 
             {/* Milestones 2023 - 2024 */}
-            <section className="py-20 bg-brand-blue relative overflow-hidden">
+            <section className="py-10 bg-brand-blue relative overflow-hidden">
                 <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-8">
                         <h3 className="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Hitos <span className="text-brand-mustard">2023 – 2026</span></h3>
                         <p className="text-brand-mustard uppercase tracking-[0.3em] font-black text-[10px] opacity-80">Logros Institucionales</p>
                     </div>

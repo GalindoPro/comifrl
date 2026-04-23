@@ -26,7 +26,7 @@ export const FinancialSummary = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-brand-blue via-brand-blue to-brand-blue/95 py-16 px-4">
+    <section className="min-h-[85vh] bg-brand-blue py-10 px-4">
       <div className="container mx-auto max-w-5xl">
         {/* Encabezado */}
         <motion.div
@@ -35,14 +35,14 @@ export const FinancialSummary = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <Building2 size={48} className="mx-auto text-brand-mustard mb-4" />
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <Building2 size={40} className="mx-auto text-brand-mustard mb-3" />
+          <h1 className="text-2xl md:text-5xl font-bold text-white mb-3">
             Transparencia
           </h1>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-base max-w-2xl mx-auto">
             Transparencia y compromiso con nuestros asociados
           </p>
-          <div className="w-24 h-1 bg-brand-mustard mx-auto mt-6 rounded-full" />
+          <div className="w-20 h-1 bg-brand-mustard mx-auto mt-4 rounded-full" />
         </motion.div>
 
         {/* Tarjetas de KPIs */}

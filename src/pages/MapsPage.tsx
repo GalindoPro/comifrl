@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Globe, Navigation, Building2, Phone, ExternalLink } from "lucide-react";
+import { MapPin, Globe, Navigation, Building2, Phone, ExternalLink, MessageCircle } from "lucide-react";
 
 const locations = [
   {
     id: "central",
-    title: "Oficina Central",
+    title: "Agencia Nebaj",
     description: "Sede principal de COMIF R.L. en Nebaj",
     address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
     coordinates: { lat: 15.4090833, lng: -91.1457222 },
     phone: "+502 5748 1463",
+    whatsapp: "50257481463",
     zoom: 18,
     embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.176449174542!2d-91.1457222!3d15.4090833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b8b002c2fe7bb%3A0x42e9fca3eeb4af6f!2sComif%20R.L.%20Nebaj!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
     externalUrl: "https://maps.app.goo.gl/SPhLrcjaFL6Y978h8"
@@ -21,6 +22,7 @@ const locations = [
     address: "Chajul, Quiché, Guatemala",
     coordinates: { lat: 15.4856671, lng: -91.0361975 },
     phone: "+502 3061 5489",
+    whatsapp: "50230615489",
     zoom: 17,
     embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3828.166241315518!2d-91.0361975!3d15.4856671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b93006575575f%3A0x36c72b98bf17efea!2sComif%20R.L.!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
     externalUrl: "https://maps.app.goo.gl/GHTEwFEgifNJYzeJ7"
@@ -32,6 +34,7 @@ const locations = [
     address: "Aldea Acul, Nebaj, Quiché, Guatemala",
     coordinates: { lat: 15.4058719, lng: -91.1900482 },
     phone: "+502 3037 1080",
+    whatsapp: "50230371080",
     zoom: 17,
     embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.356241315518!2d-91.1900482!3d15.4058719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b8002a79dc5b:0xa03f74ed03ba962!2sComif%20R.L.%20Acul!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
     externalUrl: "https://maps.app.goo.gl/rUHy6q2v9SWXUoQU9"
@@ -54,59 +57,53 @@ export const MapsPage = () => {
     : `https://www.google.com/maps/search/Comif+R.L.+Guatemala`;
 
   return (
-    <section className="min-h-screen bg-brand-blue pt-12 pb-24 overflow-hidden relative">
-      {/* Ornaments */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-mustard/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2" />
+    <section id="agencias" className="py-10 bg-brand-blue relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="container mx-auto px-4">
 
-      <div className="container mx-auto px-4 relative z-10">
-        
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="text-center mb-8 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-6 py-2 bg-brand-mustard/20 rounded-full border border-brand-mustard/30 mb-8"
+            className="inline-block p-2.5 bg-brand-mustard/20 rounded-2xl mb-3"
           >
-            <Globe className="w-4 h-4 text-brand-mustard animate-pulse" />
-            <span className="text-[10px] font-black text-brand-mustard uppercase tracking-[0.3em]">
-              Nuestra Presencia
-            </span>
+            <MapPin className="w-7 h-7 text-brand-mustard" />
           </motion.div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter leading-none"
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
           >
-            Red de <span className="text-brand-mustard">Agencias</span>
-          </motion.h1>
-          <p className="text-white/70 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+            Nuestra <span className="text-brand-mustard">Presencia</span>
+          </motion.h2>
+          <p className="text-white/70 text-sm md:text-base font-medium max-w-2xl mx-auto">
             Selecciona una agencia para ver su ubicación exacta en el mapa de Guatemala.
           </p>
         </div>
 
         {/* Unified Map Interface */}
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-xl rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl flex flex-col lg:flex-row h-[700px] lg:h-[650px]">
+          <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] border border-gray-200 overflow-hidden shadow-2xl flex flex-col lg:flex-row h-auto lg:h-[550px]">
             
             {/* Sidebar / Labels */}
-            <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-white/10 p-6 md:p-8 flex flex-col gap-4 overflow-y-auto bg-brand-blue/30 lg:bg-transparent">
-              <div className="mb-4">
-                <h2 className="text-xs font-black text-white/40 uppercase tracking-[0.2em] mb-4">Nuestras Sedes</h2>
-                <div className="space-y-3">
+            <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-100 p-6 md:p-8 flex flex-col gap-4 overflow-y-auto bg-gray-50 lg:bg-white">
+              <div className="mb-2">
+                <h2 className="text-[10px] font-black text-brand-blue/40 uppercase tracking-[0.2em] mb-2">Nuestras Sedes</h2>
+                <div className="space-y-1.5 px-0.5">
                   {locations.map((loc) => (
                     <button
                       key={loc.id}
                       onClick={() => setSelectedId(loc.id)}
-                      className={`w-full text-left p-5 rounded-3xl transition-all duration-500 flex items-center gap-5 group border ${selectedId === loc.id ? 'bg-brand-mustard text-brand-blue shadow-lg border-brand-mustard scale-[1.02]' : 'bg-white/5 text-white border-white/5 hover:bg-white/10 hover:border-white/10'}`}
+                      className={`w-full text-left p-3.5 rounded-2xl transition-all duration-500 flex items-center gap-4 group border ${selectedId === loc.id ? 'bg-brand-mustard text-brand-blue shadow-lg border-brand-mustard scale-[1.02]' : 'bg-gray-50 text-brand-blue border-gray-100 hover:bg-brand-blue/5 hover:border-brand-blue/10'}`}
                     >
-                      <div className={`p-3 rounded-2xl transition-colors ${selectedId === loc.id ? 'bg-brand-blue/10' : 'bg-brand-mustard/20'}`}>
-                        <MapPin className="w-6 h-6" />
+                      <div className={`p-2 rounded-xl transition-colors ${selectedId === loc.id ? 'bg-brand-blue/10' : 'bg-brand-mustard/20'}`}>
+                        <MapPin className="w-5 h-5" />
                       </div>
                       <div className="flex-grow">
-                        <span className="block text-sm font-black uppercase tracking-widest mb-0.5">{loc.title}</span>
-                        <span className="text-[10px] opacity-60 font-bold uppercase tracking-[0.2em]">{loc.id === 'central' ? 'Sede Central' : 'Punto de Servicio'}</span>
+                        <span className="block text-[11px] font-black uppercase tracking-widest mb-0.5">{loc.title}</span>
+                        <span className="text-[9px] opacity-60 font-bold uppercase tracking-[0.1em]">{loc.id === 'central' ? 'Agencia Principal' : 'Agencia Regional'}</span>
                       </div>
                     </button>
                   ))}
@@ -118,34 +115,34 @@ export const MapsPage = () => {
                 {activeLoc && (
                   <motion.div
                     key={activeLoc.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="mt-auto hidden lg:block p-6 rounded-3xl bg-white/5 border border-white/10"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="mt-auto hidden lg:block p-4 rounded-2xl bg-gray-50 border border-gray-100"
                   >
-                    <h3 className="text-brand-mustard text-xl font-black mb-4 uppercase tracking-tighter">{activeLoc.title}</h3>
-                    <div className="space-y-5">
-                      <div className="flex gap-4 items-start">
-                        <div className="p-2 bg-brand-mustard/10 rounded-lg">
-                          <Building2 className="w-4 h-4 text-brand-mustard flex-shrink-0" />
+                    <h3 className="text-brand-mustard text-base font-black mb-3 uppercase tracking-tighter">{activeLoc.title}</h3>
+                    <div className="space-y-3">
+                      <div className="flex gap-3 items-start">
+                        <div className="p-1.5 bg-brand-mustard/10 rounded-lg">
+                          <Building2 className="w-3.5 h-3.5 text-brand-mustard flex-shrink-0" />
                         </div>
-                        <p className="text-xs text-white/80 font-bold leading-relaxed">{activeLoc.address}</p>
+                        <p className="text-[10px] text-brand-blue/80 font-bold leading-tight">{activeLoc.address}</p>
                       </div>
-                      <div className="flex gap-4 items-center">
-                        <div className="p-2 bg-brand-mustard/10 rounded-lg">
-                          <Phone className="w-4 h-4 text-brand-mustard" />
+                      <div className="flex gap-3 items-center">
+                        <div className="p-1.5 bg-brand-mustard/10 rounded-lg">
+                          <Phone className="w-3.5 h-3.5 text-brand-mustard" />
                         </div>
-                        <p className="text-sm text-white font-black">{activeLoc.phone}</p>
+                        <p className="text-xs text-brand-blue font-black">{activeLoc.phone}</p>
                       </div>
-                      <div className="pt-4">
+                      <div className="pt-2">
                         <a 
-                          href={activeLoc.externalUrl} 
+                          href={`https://wa.me/${activeLoc.whatsapp}`} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-3 w-full py-4 bg-brand-mustard text-brand-blue rounded-2xl text-xs font-black uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-glow-yellow"
+                          className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white rounded-xl text-[10px] font-black uppercase tracking-[0.1em] hover:brightness-110 active:scale-95 transition-all shadow-lg"
                         >
-                          <Navigation className="w-5 h-5" />
-                          Ver en Google Maps
+                          <MessageCircle className="w-4 h-4" />
+                          WhatsApp {activeLoc.title}
                         </a>
                       </div>
                     </div>
@@ -155,7 +152,7 @@ export const MapsPage = () => {
             </div>
 
             {/* Map Area */}
-            <div className="flex-grow relative bg-white overflow-hidden">
+            <div className="flex-grow h-[450px] lg:h-full relative bg-white overflow-hidden border-t lg:border-t-0 lg:border-l border-gray-100">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={selectedId || 'general'}
@@ -186,9 +183,9 @@ export const MapsPage = () => {
                     title="Mapa Interactivo de Agencias"
                   />
 
-                  {/* Hover-Triggered Group Labels (ONLY show on hover) */}
+                  {/* Group Labels (Always visible or pins) */}
                   {!selectedId && (
-                    <div className={`absolute inset-0 z-30 pointer-events-none transition-all duration-700 ${isMapHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-110 blur-sm'}`}>
+                    <div className={`absolute inset-0 z-30 pointer-events-none transition-all duration-700 opacity-100 scale-100`}>
                       <div className="relative w-full h-full max-w-2xl mx-auto max-h-[500px]">
                         {locations.map((loc, index) => (
                           <motion.div
@@ -202,13 +199,13 @@ export const MapsPage = () => {
                           >
                             {/* Native Style Pin */}
                             <div className="relative">
-                              <MapPin className="w-8 h-8 text-red-600 fill-red-600/20 drop-shadow-lg" />
+                              <MapPin className="w-8 h-8 text-red-600 fill-red-600 drop-shadow-lg scale-110 hover:scale-125 transition-transform" />
                               <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-black/40 rounded-full blur-[1px]" />
                             </div>
                             
                             {/* Native Style Text Label */}
                             <div className="relative">
-                              <span className="text-[10px] font-black text-gray-900 drop-shadow-[0_1.5px_1.5px_rgba(255,255,255,1)] tracking-tight">
+                              <span className="text-[10px] font-black text-gray-900 drop-shadow-[0_1.5px_1.5px_rgba(255,255,255,1)] tracking-tight bg-white/80 px-2 py-0.5 rounded-full border border-gray-100">
                                 {loc.title}
                               </span>
                             </div>
@@ -219,49 +216,17 @@ export const MapsPage = () => {
                   )}
 
                   {/* Hint Message */}
-                  {!selectedId && !isMapHovered && (
+                  {!selectedId && (
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 bg-brand-blue/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 text-xs font-bold text-white/80 pointer-events-none"
+                      className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full border border-brand-blue/10 text-xs font-bold text-brand-blue pointer-events-none shadow-xl"
                     >
-                      Pasa el ratón por el mapa para ver las sedes
+                      Selecciona una agencia para más detalles
                     </motion.div>
                   )}
 
                   {/* Floating Action for Mobile when selected */}
-                  <AnimatePresence>
-                    {activeLoc && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                        className="absolute bottom-6 left-6 right-6 lg:hidden z-20 pointer-events-auto"
-                      >
-                        <div className="bg-brand-blue/95 backdrop-blur-2xl p-7 rounded-[2.5rem] border border-white/20 shadow-2xl">
-                          <div className="flex justify-between items-start mb-4">
-                            <div>
-                              <h3 className="text-brand-mustard text-lg font-black uppercase tracking-tighter mb-1">{activeLoc.title}</h3>
-                              <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest leading-none">{activeLoc.address}</p>
-                            </div>
-                            <div className="p-3 bg-brand-mustard/20 rounded-2xl text-brand-mustard">
-                              <MapPin className="w-5 h-5" />
-                            </div>
-                          </div>
-                          <a 
-                            href={activeLoc.externalUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-3 w-full py-4 bg-brand-mustard text-brand-blue rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] shadow-glow-yellow"
-                          >
-                            <Navigation className="w-5 h-5" />
-                            Ir ahora con Google Maps
-                          </a>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
                   {/* External Link Floating Button */}
                   <button
                     onClick={() => window.open(activeLoc?.externalUrl || externalUrl, '_blank')}
@@ -276,6 +241,44 @@ export const MapsPage = () => {
               </AnimatePresence>
             </div>
           </div>
+
+          {/* New Mobile Info Section - Flows below the map container */}
+          <AnimatePresence>
+            {activeLoc && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="lg:hidden mt-4 pointer-events-auto"
+              >
+                <div className="bg-white p-6 rounded-3xl border border-gray-200 shadow-xl">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex-grow">
+                      <h3 className="text-brand-mustard text-xl font-black uppercase tracking-tighter leading-none">{activeLoc.title}</h3>
+                      <p className="text-brand-blue/60 text-xs font-bold uppercase tracking-tight mt-2">{activeLoc.address}</p>
+                      <div className="flex items-center gap-2 mt-3">
+                        <Phone className="w-3.5 h-3.5 text-brand-mustard" />
+                        <span className="text-brand-blue font-black text-sm">{activeLoc.phone}</span>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-brand-mustard/10 rounded-2xl text-brand-mustard ml-4">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                  </div>
+                  <a 
+                    href={`https://wa.me/${activeLoc.whatsapp}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#25D366] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg active:scale-95 transition-all"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    WhatsApp {activeLoc.title}
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         </div>
 
         {/* Footer Note */}
@@ -290,7 +293,6 @@ export const MapsPage = () => {
             Ubica la agencia más cercana y visítanos hoy mismo.
           </p>
         </motion.div>
-      </div>
     </section>
   );
 };

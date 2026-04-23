@@ -216,7 +216,7 @@ export function AssemblyGalleryPage() {
       {/* 1. HERO SECTION                                                   */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative h-[62vh] sm:h-[68vh] lg:h-[75vh] overflow-hidden"
+        className="relative h-[45vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden"
         aria-label="Portada de la Asamblea General 2026"
       >
         {/* Background image */}
@@ -227,9 +227,8 @@ export function AssemblyGalleryPage() {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
 
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-blue via-brand-blue/65 to-brand-blue/25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/70 via-transparent to-transparent" />
+        {/* Solid overlays */}
+        <div className="absolute inset-0 bg-brand-blue/80" />
 
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-6xl mx-auto left-0 right-0">
@@ -349,9 +348,6 @@ export function AssemblyGalleryPage() {
             </motion.div>
           </div>
         </div>
-
-        {/* Bottom fade-into-dark */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-brand-blue to-transparent pointer-events-none" />
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════ */}
@@ -360,7 +356,7 @@ export function AssemblyGalleryPage() {
       <section
         id="galeria"
         ref={gallerySectionRef}
-        className="bg-brand-blue py-16 sm:py-20 relative"
+        className="bg-brand-blue py-10 sm:py-12 relative"
         aria-label="Galería fotográfica"
       >
         <div className="container mx-auto px-4">
@@ -370,9 +366,9 @@ export function AssemblyGalleryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
-            <h2 className="text-3xl sm:text-5xl font-black text-white mb-4 uppercase tracking-tighter">
+            <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 uppercase tracking-tighter">
               Galería <span className="text-brand-mustard">Fotográfica</span>
             </h2>
             <div className="h-1.5 w-20 bg-brand-mustard mx-auto rounded-full" />

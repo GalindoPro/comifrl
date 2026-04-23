@@ -23,7 +23,7 @@ function App() {
       <Preloader />
       <div className="min-h-screen bg-brand-blue flex flex-col font-sans text-white">
         <Header />
-        <main className="flex-grow pt-36">
+        <main className="flex-grow pt-16 md:pt-20">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/nosotros" element={<AboutUs />} />

@@ -1,73 +1,29 @@
-# React + TypeScript + Vite
+# COMIF, R.L. - Plataforma de Bienestar Financiero
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es la plataforma digital oficial de **COMIF, R.L.**, una cooperativa dedicada a impulsar el desarrollo económico y comunitario en la región Ixil, Guatemala.
 
-Currently, two official plugins are available:
+## 🎨 Identidad de Marca y Diseño
+El sitio ha sido optimizado siguiendo estrictos lineamientos visuales para garantizar profesionalismo y confianza:
+- **Azul Primario**: `#0F0E47` (Azul Marino Profundo).
+- **Acento Mostaza**: `#BF9903` (Color de contraste para botones, pines e iconos).
+- **Blanco Puro**: Utilizado en tarjetas e información clave para máxima legibilidad.
+- **Sin Lila/Morado**: Se ha realizado una limpieza global para eliminar cualquier rastro de tonos púrpuras o degradados que se alejen de la paleta oficial.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📱 Optimización de Experiencia de Usuario (One-Screen UI)
+Todas las secciones han sido rediseñadas bajo la filosofía **"One-Screen"**, lo que significa:
+- **Cero Scroll Innecesario**: Los márgenes y rellenos (paddings) se han reducido para que el contenido principal quepa en una sola pantalla (PC y móvil).
+- **Tablas Compactas**: El simulador financiero usa micro-fuentes y diseño responsivo para mostrar proyecciones completas sin desplazamiento horizontal.
+- **Header Compacto**: Menú de navegación reducido para priorizar el espacio del contenido.
 
-## React Compiler
+## 📍 Red de Agencias y Ubicaciones
+- **Sedes Oficiales**: Agencia Nebaj (Central), Agencia Chajul y Agencia Acul.
+- **WhatsApp Directo**: Cada agencia cuenta con un botón funcional que redirige al número específico de la sede.
+- **Mapas con Pines Fijos**: Los pines rojos son visibles por defecto. La información de contacto en móviles ahora fluye **debajo del mapa**, garantizando visibilidad total del área geográfica.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Estructura del Proyecto
+- `/src/components`: Componentes reutilizables (Headers, Footers, Quote, Agencies).
+- `/src/pages`: Páginas principales (Home, Maps, assembly, Financials).
+- `/src/assets`: Logos integrados y recursos gráficos optimizados.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+**Estado Actual**: Optimizado para producción, alineado con marca y verificado en dispositivos móviles.

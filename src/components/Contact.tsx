@@ -5,8 +5,8 @@ import { Phone, MapPin, Clock, Calendar, ArrowRight, MessageCircle } from "lucid
 export function Contact() {
     return (
         <div className="flex flex-col">
-            <section className="py-16 bg-brand-blue relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section className="py-8 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto">
                         <motion.div
@@ -20,7 +20,7 @@ export function Contact() {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
+                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
                         >
                             Contác<span className="text-brand-mustard">tanos</span>
                         </motion.h2>
@@ -41,7 +41,7 @@ export function Contact() {
                 </div>
             </section>
 
-            <section className="py-12 bg-brand-blue text-white relative overflow-hidden">
+            <section className="py-6 bg-brand-blue text-white relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

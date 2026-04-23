@@ -58,16 +58,16 @@ const services = [
 export function Services() {
     return (
         <div className="flex flex-col">
-            <section id="servicios" className="py-16 bg-brand-blue overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section id="servicios" className="py-10 bg-brand-blue overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     {/* Header */}
-                    <div className="text-center mb-12 max-w-3xl mx-auto">
+                    <div className="text-center mb-8 max-w-3xl mx-auto">
                         <motion.h2
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
+                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
                         >
                             Nuestros <span className="text-brand-mustard">Servicios</span>
                         </motion.h2>
