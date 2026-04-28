@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Globe, Navigation, Building2, Phone, ExternalLink, MessageCircle } from "lucide-react";
+import { MapPin, Building2, Phone, ExternalLink, MessageCircle } from "lucide-react";
 
 const locations = [
   {
@@ -46,7 +46,6 @@ const locations = [
 
 export const MapsPage = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [isMapHovered, setIsMapHovered] = useState(false);
 
   const activeLoc = selectedId ? locations.find(l => l.id === selectedId) : null;
 
@@ -169,8 +168,6 @@ export const MapsPage = () => {
                   {!selectedId && (
                     <div 
                       className="absolute inset-0 z-20 pointer-events-auto cursor-help" 
-                      onMouseEnter={() => setIsMapHovered(true)}
-                      onMouseLeave={() => setIsMapHovered(false)}
                     />
                   )}
 
@@ -190,7 +187,7 @@ export const MapsPage = () => {
                   {!selectedId && (
                     <div className={`absolute inset-0 z-30 pointer-events-none transition-all duration-700 opacity-100 scale-100`}>
                       <div className="relative w-full h-full max-w-2xl mx-auto max-h-[500px]">
-                        {locations.map((loc, index) => (
+                        {locations.map((loc) => (
                           <motion.div
                             key={`google-hover-label-${loc.id}`}
                             style={{
