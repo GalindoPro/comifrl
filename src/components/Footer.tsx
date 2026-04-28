@@ -10,12 +10,12 @@ const MessengerIcon = ({ className }: { className?: string }) => (
 
 export function Footer() {
     return (
-        <footer className="relative bg-brand-blue text-gray-100 pt-4 pb-1" id="contacto">
+        <footer className="relative bg-brand-blue text-gray-100 pt-2 pb-1" id="contacto">
             {/* Gradient Top Border */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-3 border-b border-white/10 pb-3 mt-1">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-2 border-b border-white/10 pb-2 mt-1">
                     {/* Colon 1: Identidad */}
                     <div className="space-y-1">
                         <h4 className="text-lg md:text-xl font-black text-brand-mustard tracking-tighter uppercase">COMIF, R.L.</h4>
@@ -26,7 +26,7 @@ export function Footer() {
 
                     {/* Colon 2: Contacto */}
                     <div className="space-y-2 md:space-y-3">
-                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Sede Central</h4>
+                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Agencia Central</h4>
                         <div className="space-y-1 md:space-y-2">
                             <p className="flex items-start gap-3 text-[11px] md:text-xs text-white/80 font-medium">
                                 <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />

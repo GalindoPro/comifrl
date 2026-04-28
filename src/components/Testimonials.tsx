@@ -24,51 +24,43 @@ const testimonials = [
 
 export function Testimonials() {
     return (
-        <section className="pt-20 pb-8 bg-white overflow-hidden">
+        <section className="pt-8 pb-4 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-6">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-block p-1.5 bg-brand-blue/10 rounded-full mb-2"
-                    >
-                        <Quote className="w-4 h-4 text-brand-mustard" />
-                    </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-2xl md:text-3xl font-extrabold text-brand-blue mb-1"
+                        className="text-xl md:text-2xl font-black text-brand-blue mb-1 uppercase tracking-tighter"
                     >
-                        Voces de Nuestra Comunidad
+                        Nuestros <span className="text-brand-mustard">Testimonios</span>
                     </motion.h2>
-                    <p className="text-gray-600 text-base max-w-xl mx-auto">
-                        Más que clientes, somos una familia que crece unida. Conoce lo que dicen nuestros asociados.
+                    <p className="text-gray-500 text-xs md:text-sm max-w-lg mx-auto leading-tight">
+                        Voces de nuestra comunidad que crecen con COMIF, R.L.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-3 max-w-4xl mx-auto">
+                <div className="grid grid-cols-3 gap-2 max-w-4xl mx-auto">
                     {testimonials.map((t, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="bg-white p-4 rounded-2xl border border-brand-mustard/20 flex flex-col items-center text-center shadow-md hover:shadow-xl hover:border-brand-mustard/50 transition-all"
+                            className="bg-white p-3 rounded-xl border border-gray-100 flex flex-col items-center text-center shadow-md"
                         >
                             <img
                                 src={t.image}
                                 alt={t.name}
-                                className="w-16 h-16 md:w-20 md:h-20 rounded-full mb-4 border-4 border-brand-mustard/30 shadow-lg bg-white object-cover"
+                                className="w-10 h-10 rounded-full mb-2 border-2 border-brand-mustard/30 object-cover"
                             />
-                            <div className="mb-3 flex-grow">
-                                <p className="text-gray-700 italic text-base leading-relaxed">
+                            <div className="mb-1 flex-grow">
+                                <p className="text-gray-600 italic text-[10px] leading-tight">
                                     "{t.content}"
                                 </p>
                             </div>
                             <div>
-                                <h4 className="font-bold text-brand-blue text-lg">{t.name}</h4>
-                                <span className="text-brand-mustard font-bold text-[10px] uppercase tracking-widest">{t.role}</span>
+                                <h4 className="font-black text-brand-blue text-[11px] leading-none mb-0.5">{t.name}</h4>
+                                <span className="text-brand-mustard font-black text-[7px] uppercase tracking-widest">{t.role}</span>
                             </div>
                         </motion.div>
                     ))}

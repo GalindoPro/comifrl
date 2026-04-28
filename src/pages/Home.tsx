@@ -10,9 +10,7 @@ export function Home() {
     return (
         <>
             <HeroCarousel />
-            <HomeIntro />
             <Stats2025 />
-            <Advantages />
             <FinancialContributions />
             <CTASection />
         </>

@@ -17,17 +17,16 @@ export function WhatsAppButton() {
                 damping: 20,
                 delay: 2
             }}
-            className="fixed bottom-6 right-6 z-[60] bg-brand-blue text-white pl-4 pr-6 py-3 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.4)] border border-white/10 flex items-center gap-3 group backdrop-blur-sm"
-            aria-label="Contactar por WhatsApp"
+            className="fixed bottom-4 right-4 z-[60] bg-brand-blue text-white pl-3 pr-4 py-2 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.4)] border border-white/10 flex items-center gap-2 group backdrop-blur-sm"
+            aria-label="WhatsApp"
         >
             <div className="relative">
-                <MessageCircle className="w-6 h-6 text-[#25D366] drop-shadow-[0_0_8px_rgba(37,211,102,0.4)]" />
-                {/* Notification Pulse */}
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#25D366] rounded-full border-2 border-white/20 animate-pulse" />
+                <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#25D366] rounded-full border border-white/20 animate-pulse" />
             </div>
 
-            <span className="text-sm font-bold tracking-tight">
-                Chatea con nosotros
+            <span className="text-[11px] font-black uppercase tracking-widest">
+                Chatea
             </span>
         </motion.a>
     );

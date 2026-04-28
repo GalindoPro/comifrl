@@ -14,7 +14,6 @@ const navItems = [
     { name: 'Ubicaciones', href: '/maps', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Noticias', href: '/noticias', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asamblea', href: '/asamblea', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
-    { name: 'Transparencia', href: '/transparencia', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
     { name: 'Asóciate', href: '/afiliacion', color: 'text-brand-mustard', hColor: 'hover:text-brand-mustard', bgColor: 'bg-brand-mustard' },
 ];
 
@@ -135,7 +134,7 @@ export function Header() {
                             className="xl:hidden absolute top-full left-0 right-0 bg-brand-blue border-t border-white/20 shadow-2xl overflow-hidden"
                         >
                             <nav className="flex flex-col p-3 gap-1">
-                                {navItems.filter(item => item.name !== 'Transparencia').map((item, index) => (
+                                {navItems.map((item, index) => (
                                     <motion.div
                                         key={item.name}
                                         initial={{ x: -20, opacity: 0 }}

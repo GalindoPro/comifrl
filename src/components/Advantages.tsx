@@ -52,14 +52,14 @@ const advantages = [
 
 export function Advantages() {
     return (
-        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
+        <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center mb-6">
+                <div className="text-center mb-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter"
+                        className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter"
                     >
                         Nuestra <span className="text-brand-mustard">Ventaja</span>
                     </motion.h2>
@@ -81,22 +81,21 @@ export function Advantages() {
                             viewport={{ once: true }}
                             className="relative group h-full"
                         >
-                            <div className={cn("rounded-2xl p-4 shadow-xl border flex flex-col h-full transition-all duration-500 group-hover:-translate-y-2", item.color, item.textColor)}>
+                            <div className={cn("rounded-xl p-3 md:p-4 shadow-xl border flex flex-col h-full transition-all duration-500 group-hover:-translate-y-2", item.color, item.textColor)}>
                                 {/* Icon with decorative bg */}
-                                <div className="relative mb-3 flex justify-center lg:justify-start">
-                                    <div className={cn("absolute inset-0 rounded-2xl -rotate-6 group-hover:rotate-0 transition-transform opacity-20", item.accent)} />
-                                    <div className={cn("relative p-2 rounded-2xl border transition-transform group-hover:scale-110", item.iconContainer, item.iconColor)}>
-                                        <div className="w-10 h-10 flex items-center justify-center">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className={cn("relative p-1.5 rounded-lg border", item.iconContainer, item.iconColor)}>
+                                        <div className="w-6 h-6 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5">
                                             {item.icon}
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="flex-grow text-center lg:text-left">
-                                    <h3 className="text-lg font-black mb-1 uppercase tracking-tight">
+                                    <h3 className="text-base font-black uppercase tracking-tight leading-tight">
                                         {item.title}
                                     </h3>
-                                    <p className="opacity-90 leading-relaxed text-sm md:text-base font-medium">
+                                </div>
+
+                                <div className="flex-grow">
+                                    <p className="opacity-90 leading-tight text-[11px] md:text-xs font-medium">
                                         {item.description}
                                     </p>
                                 </div>

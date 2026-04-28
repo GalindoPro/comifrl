@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Calculator, TrendingUp, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
-import hero1 from "../assets/images/fondo web rl.png";
+import hero1 from "../assets/images/tasa de interés anual.png";
 import hero2 from "../assets/images/fondo web.png";
 import hero3 from "../assets/images/mapa-web.png";
 
@@ -15,7 +15,7 @@ const slides = [
         image: hero1,
         btnClass: "bg-brand-mustard/20 border-brand-mustard/60 text-brand-mustard hover:bg-brand-mustard hover:text-white",
         shadowClass: "hover:shadow-brand-mustard/40",
-        objectPosition: "center center",
+        objectPosition: "center 65%",
         objectFit: "object-contain",
         scale: 1,
     },
@@ -26,7 +26,7 @@ const slides = [
         image: hero2,
         btnClass: "bg-brand-mustard/20 border-brand-mustard/60 text-white hover:bg-brand-mustard hover:text-white",
         shadowClass: "hover:shadow-brand-mustard/40",
-        objectPosition: "center center",
+        objectPosition: "center 65%",
         objectFit: "object-contain",
         scale: 1,
     },
@@ -37,7 +37,7 @@ const slides = [
         image: hero3,
         btnClass: "bg-brand-mustard/20 border-brand-mustard/60 text-white hover:bg-brand-mustard hover:text-white",
         shadowClass: "hover:shadow-brand-mustard/40",
-        objectPosition: "center center",
+        objectPosition: "center 65%",
         objectFit: "object-contain",
         scale: 1,
     },
@@ -57,7 +57,7 @@ export function HeroCarousel() {
     return (
         <div className="flex flex-col w-full bg-white">
             <div 
-                className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[200px] md:h-[40vh] md:min-h-[300px] lg:h-[55vh] lg:min-h-[450px]" 
+                className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[250px] md:h-[45vh] md:min-h-[350px] lg:h-[60vh] lg:min-h-[500px] pt-4 md:pt-8" 
                 id="inicio"
             >
                 {/* Slides Background */}
@@ -68,10 +68,10 @@ export function HeroCarousel() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="absolute inset-0"
+                        className="absolute inset-x-0 bottom-0 top-4 md:top-8"
                     >
                         <img
-                            src={`${slides[current].image}?v=${Date.now()}`}
+                            src={slides[current].image}
                             alt="Hero Slide"
                             className={cn("w-full h-full", slides[current].objectFit)}
                             style={{
@@ -83,7 +83,7 @@ export function HeroCarousel() {
                 </AnimatePresence>
 
                 {/* Content Container */}
-                <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-10 flex flex-col items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute bottom-8 md:bottom-12 left-4 md:left-12 z-10 flex flex-col items-start pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <motion.div
                         key={`btn-${current}`}
                         initial={{ opacity: 0, y: 20 }}
@@ -106,24 +106,26 @@ export function HeroCarousel() {
                     </motion.div>
                 </div>
 
-                {/* Navigation Arrows */}
-                <button
-                    onClick={prevSlide}
-                    className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
-                >
-                    <div className="bg-black/10 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500">
-                        <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 active:scale-90 transition-transform" />
-                    </div>
-                </button>
+                {/* Navigation Arrows (Stacked on Right) */}
+                <div className="absolute right-2 bottom-2 md:right-8 md:top-1/2 md:-translate-y-1/2 flex flex-col gap-2 md:gap-4 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500">
+                    <button
+                        onClick={prevSlide}
+                        className="group/nav flex flex-col items-center text-white/50 hover:text-brand-mustard/90 transition-all duration-500"
+                    >
+                        <div className="bg-black/20 backdrop-blur-md p-1.5 md:p-3 rounded-xl md:rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500 shadow-xl">
+                            <ChevronLeft className="w-4 h-4 md:w-7 md:h-7 active:scale-90 transition-transform" />
+                        </div>
+                    </button>
 
-                <button
-                    onClick={nextSlide}
-                    className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
-                >
-                    <div className="bg-black/10 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500">
-                        <ChevronRight className="w-6 h-6 md:w-7 md:h-7 active:scale-95 transition-transform" />
-                    </div>
-                </button>
+                    <button
+                        onClick={nextSlide}
+                        className="group/nav flex flex-col items-center text-white/50 hover:text-brand-mustard/90 transition-all duration-500"
+                    >
+                        <div className="bg-black/20 backdrop-blur-md p-1.5 md:p-3 rounded-xl md:rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500 shadow-xl">
+                            <ChevronRight className="w-4 h-4 md:w-7 md:h-7 active:scale-95 transition-transform" />
+                        </div>
+                    </button>
+                </div>
 
                 {/* Navigation Indicators */}
                 <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500">

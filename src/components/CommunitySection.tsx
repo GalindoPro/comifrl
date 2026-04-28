@@ -23,69 +23,55 @@ const communityHighlights = [
 
 export function CommunitySection() {
     return (
-        <section className="pt-18 pb-6 bg-gradient-to-tr from-white to-yellow-50/10">
+        <section className="pt-8 pb-4 bg-gradient-to-tr from-white to-yellow-50/10">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-8">
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-brand-mustard font-bold text-sm tracking-widest uppercase mb-2 block"
-                    >
-                        Nuestra Esencia
-                    </motion.span>
+                <div className="text-center mb-6">
                     <motion.h2
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-3xl font-bold text-brand-blue mb-6"
+                        className="text-xl md:text-2xl font-black text-brand-blue mb-1 uppercase tracking-tighter"
                     >
-                        Compromiso con la Comunidad
+                        Compromiso <span className="text-brand-mustard">Social</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+                        className="text-xs md:text-sm text-gray-500 max-w-lg mx-auto leading-tight"
                     >
-                        La cooperativa es más que finanzas; es el motor que impulsa el bienestar compartido.
+                        Impulsando el bienestar compartido a través de nuestras raíces.
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-3">
                     {communityHighlights.map((item, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.2, duration: 0.6 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="group cursor-pointer"
+                            className="bg-white rounded-xl shadow-lg p-3 border border-gray-50"
                         >
-                            {/* Image Placeholder Container */}
-                            <div className={`relative h-64 w-full rounded-2xl overflow-hidden mb-6 ${item.imagePlaceholder} transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-xl`}>
-                                <div className="absolute inset-0 flex items-center justify-center text-gray-400 group-hover:text-white/60 transition-colors">
-                                    {/* Placeholder Text/Icon */}
-                                    <span className="font-medium">Imagen: {item.title}</span>
-                                </div>
-                                {/* Fallback image tag if user wants to replace src later */}
-                                {/* <img src={`/src/assets/images/community-${index + 1}.jpg`} alt={item.title} className="w-full h-full object-cover" /> */}
+                            <div className={`h-32 w-full rounded-lg overflow-hidden mb-3 ${item.imagePlaceholder} flex items-center justify-center text-[10px] text-gray-400 font-bold uppercase`}>
+                                <span>{item.title}</span>
                             </div>
 
-                            <div className="space-y-3">
-                                <div className="flex gap-2">
+                            <div className="space-y-1">
+                                <div className="flex gap-1 mb-1">
                                     {item.tags.map((tag, i) => (
-                                        <span key={i} className="text-xs font-bold text-brand-mustard bg-brand-mustard/10 px-3 py-1 rounded-full">
+                                        <span key={i} className="text-[8px] font-black text-brand-mustard bg-brand-mustard/10 px-2 py-0.5 rounded-full uppercase">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
-                                <h3 className="text-2xl font-bold text-brand-blue group-hover:text-brand-mustard transition-colors">
+                                <h3 className="text-xs font-black text-brand-blue leading-tight uppercase tracking-tight">
                                     {item.title}
                                 </h3>
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-[10px] text-gray-600 leading-tight">
                                     {item.description}
                                 </p>
                             </div>

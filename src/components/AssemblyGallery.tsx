@@ -88,51 +88,28 @@ export function AssemblyGallery() {
   return (
     <div className="flex flex-col">
       {/* ── HEADER ──────────────────────────────────────────────────────── */}
-      <section className="pt-20 pb-8 bg-white relative overflow-hidden">
+      <section className="pt-24 pb-2 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-56 h-56 bg-green-500/5 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none" />
-
         <div className="container mx-auto px-4">
           <div className="text-center">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-green-600/10 text-green-700 border border-green-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5"
-            >
-              <Camera className="w-3.5 h-3.5" />
-              Galería Oficial
-            </motion.div>
-
             {/* Title */}
             <motion.h2
               initial={{ opacity: 0, y: -18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-2xl md:text-3xl lg:text-2xl font-bold text-brand-blue mb-3 leading-tight"
+              className="text-xl md:text-2xl font-black text-brand-blue mb-1 uppercase tracking-tighter"
             >
-              Asamblea General de Asociados
+              Asamblea <span className="text-brand-mustard">General 2026</span>
             </motion.h2>
-
-            {/* Divider */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="h-1 w-24 bg-brand-mustard mx-auto rounded-full mb-5"
-            />
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-gray-500 text-sm max-w-lg mx-auto leading-relaxed"
+              className="text-gray-500 text-[10px] md:text-xs max-w-lg mx-auto leading-tight"
             >
-              Registro fotográfico de nuestra Asamblea General Ordinaria, donde
-              la comunidad cooperativa se reúne para tomar decisiones
-              trascendentales en beneficio de todos los asociados.
+              Registro fotográfico de nuestra comunidad tomando decisiones en beneficio de todos.
             </motion.p>
 
             {/* Meta info */}
@@ -140,16 +117,15 @@ export function AssemblyGallery() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.5 }}
-              className="flex flex-wrap items-center justify-center gap-4 mt-7"
+              className="flex items-center justify-center gap-3 mt-2"
             >
               {[
-                { icon: <Calendar className="w-3.5 h-3.5 text-brand-mustard" />, label: "2024" },
-                { icon: <MapPin className="w-3.5 h-3.5 text-brand-mustard" />, label: "Nebaj, Quiché" },
-                { icon: <Users className="w-3.5 h-3.5 text-brand-mustard" />, label: "+500 Asociados" },
+                { icon: <MapPin className="w-2.5 h-2.5 text-brand-mustard" />, label: "Nebaj, Quiché" },
+                { icon: <Users className="w-2.5 h-2.5 text-brand-mustard" />, label: "+500 Asociados" },
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-1.5 text-brand-blue/60 text-xs font-semibold"
+                  className="flex items-center gap-1.5 text-brand-blue/60 text-[9px] font-bold uppercase tracking-widest"
                 >
                   {item.icon}
                   <span>{item.label}</span>
@@ -161,14 +137,14 @@ export function AssemblyGallery() {
       </section>
 
       {/* ── GALLERY GRID ────────────────────────────────────────────────── */}
-      <section className="pt-18 pb-6 bg-gray-50">
+      <section className="pt-2 pb-2 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2"
           >
             {galleryPhotos.map((photo, index) => (
               <motion.div
@@ -189,42 +165,20 @@ export function AssemblyGallery() {
               </motion.div>
             ))}
           </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="text-center text-gray-400 text-xs font-medium mt-5"
-          >
-            {galleryPhotos.length} fotografías · Haz clic para ampliar
-          </motion.p>
         </div>
       </section>
 
       {/* ── FOOTER / CTA ────────────────────────────────────────────────── */}
-      <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-white/5 rounded-full blur-2xl pointer-events-none" />
-
+      <section className="pt-3 pb-3 bg-brand-blue relative overflow-hidden">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-white/60 text-[11px] mb-2 uppercase tracking-widest font-semibold"
-          >
-            ¿Quieres ser parte?
-          </motion.p>
-
           <motion.h3
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white text-xl md:text-2xl font-bold mb-7 leading-tight"
+            className="text-white text-base md:text-lg font-black mb-2 leading-tight uppercase tracking-tighter"
           >
-            Únete a nuestra comunidad cooperativa
+            Únete a nuestra <span className="text-brand-mustard">comunidad</span>
           </motion.h3>
 
           <motion.div
@@ -232,15 +186,14 @@ export function AssemblyGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-wrap gap-3 justify-center"
+            className="flex flex-wrap gap-2 justify-center"
           >
-            <button className="inline-flex items-center gap-2 bg-brand-mustard hover:bg-brand-mustard/90 active:scale-95 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 shadow-lg shadow-brand-mustard/30">
-              Ver más detalles
-              <ChevronRight className="w-4 h-4" />
+            <button className="inline-flex items-center gap-2 bg-brand-mustard text-brand-blue font-black px-3 py-1 rounded-lg text-[9px] uppercase tracking-widest shadow-lg">
+              Detalles
+              <ChevronRight className="w-3 h-3" />
             </button>
-            <button className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 active:scale-95 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 border border-white/20">
-              <Users className="w-4 h-4" />
-              Solicitar afiliación
+            <button className="inline-flex items-center gap-2 bg-white/10 text-white font-black px-3 py-1 rounded-lg text-[9px] uppercase tracking-widest border border-white/20">
+              Afiliarse
             </button>
           </motion.div>
         </div>

@@ -12,7 +12,6 @@ import { Footer } from "./components/Footer";
 import { Preloader } from "./components/Preloader";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { WhatsAppButton } from "./components/WhatsAppButton";
-import { FinancialPage } from "./pages/FinancialPage";
 import { MapsPage } from "./pages/MapsPage";
 
 function App() {
@@ -34,7 +33,6 @@ function App() {
             {/* Ruta para visualización de mapas y ubicación exacta de agencias */}
             <Route path="/maps" element={<MapsPage />} />
             <Route path="/asamblea" element={<AssemblyGalleryPage />} />
-            <Route path="/transparencia" element={<FinancialPage />} />
             {/* Add other routes as needed or use placeholders */}
             <Route path="*" element={<Home />} />
           </Routes>

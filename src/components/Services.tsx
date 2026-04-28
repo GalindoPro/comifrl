@@ -69,7 +69,7 @@ const tasas = [
     { producto: "Préstamos", tasa: 24.0 },
     { producto: "Ahorro Programado", tasa: 10.5 },
     { producto: "Ahorro Corriente", tasa: 7.0 },
-    { producto: "Ahorro C. Infantil", tasa: 7.0 },
+    { producto: "Ahorro Infanto-Juvenil", tasa: 7.0 },
     { producto: "Ahorro Plazo Fijo", tasa: 14.0 },
     { producto: "Plazo Fijo 6 meses", tasa: 6.0 },
 ];
@@ -97,16 +97,16 @@ const CustomTooltipTasas = ({
 export function Services() {
     return (
         <div className="flex flex-col">
-            <section id="servicios" className="pt-18 pb-6 bg-brand-blue overflow-hidden relative">
+            <section id="servicios" className="pt-24 md:pt-32 pb-4 bg-brand-blue overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     {/* Header */}
-                    <div className="text-center mb-8 max-w-3xl mx-auto">
+                    <div className="text-center mb-4 max-w-3xl mx-auto">
                         <motion.h2
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-black text-white mb-3 uppercase tracking-tighter"
+                            className="text-xl md:text-2xl font-black text-white mb-1 uppercase tracking-tighter"
                         >
                             Nuestros <span className="text-brand-mustard">Servicios</span>
                         </motion.h2>
@@ -115,25 +115,19 @@ export function Services() {
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="text-lg text-white/70 font-medium"
+                            className="text-sm md:text-base text-white/70 font-medium"
                         >
                             Soluciones financieras para tu familia y comunidad.
                         </motion.p>
-                        <motion.div
-                            initial={{ scaleX: 0 }}
-                            whileInView={{ scaleX: 1 }}
-                            viewport={{ once: true }}
-                            className="h-1 w-20 bg-brand-mustard mx-auto mt-4 rounded-full"
-                        />
                     </div>
                 </div>
             </section>
 
             {/* Services Grid */}
-            <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
+            <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
-                    <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
                         {services.map((service, index) => (
                             <motion.div
                                 key={index}
@@ -145,32 +139,36 @@ export function Services() {
                             >
                                 {/* Card Header */}
                                 <div
-                                    className={`p-6 ${service.color} transition-colors duration-300 relative overflow-hidden`}
+                                    className={`p-3 ${service.color} transition-colors duration-300 relative overflow-hidden flex items-center gap-3`}
                                 >
                                     <div
-                                        className={`mb-4 p-4 bg-white/20 backdrop-blur-md rounded-2xl w-fit shadow-xl ${service.iconColor} border border-white/20`}
+                                        className={`p-2 bg-white/20 backdrop-blur-md rounded-lg shadow-lg ${service.iconColor} border border-white/20`}
                                     >
-                                        {service.icon}
+                                        <div className="w-6 h-6 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5">
+                                            {service.icon}
+                                        </div>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1">{service.title}</h3>
-                                    <p className="text-sm font-medium opacity-90">{service.subtitle}</p>
+                                    <div className="flex flex-col">
+                                        <h3 className="text-base font-bold leading-tight">{service.title}</h3>
+                                        <p className="text-[10px] font-medium opacity-90">{service.subtitle}</p>
+                                    </div>
                                 </div>
 
                                 {/* Card Body */}
-                                <div className="p-6 flex-grow flex flex-col bg-white">
-                                    <p className="text-brand-blue/80 mb-5 text-sm md:text-base font-semibold">
+                                <div className="p-3 md:p-4 flex-grow flex flex-col bg-white">
+                                    <p className="text-brand-blue/80 mb-3 text-[11px] md:text-xs font-semibold leading-tight">
                                         {service.description}
                                     </p>
-                                    <ul className="space-y-3 mb-8 flex-grow">
+                                    <ul className="space-y-1.5 mb-4 flex-grow">
                                         {service.benefits.map((benefit, i) => (
                                             <li
                                                 key={i}
-                                                className="flex items-start gap-3 text-brand-blue/90"
+                                                className="flex items-start gap-2 text-brand-blue/90"
                                             >
                                                 <CheckCircle2
-                                                    className={`w-5 h-5 flex-shrink-0 mt-0.5 ${service.iconColor}`}
+                                                    className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${service.iconColor}`}
                                                 />
-                                                <span className="text-[14px] font-bold tracking-tight">
+                                                <span className="text-[11px] font-bold tracking-tight leading-tight">
                                                     {benefit}
                                                 </span>
                                             </li>
@@ -180,10 +178,10 @@ export function Services() {
                                         href="https://wa.me/50257481463"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`w-full py-2.5 rounded-lg font-bold flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg text-sm ${service.buttonColor}`}
+                                        className={`w-full py-2 rounded-lg font-black flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg text-[10px] uppercase tracking-widest ${service.buttonColor}`}
                                     >
                                         {service.buttonText}
-                                        <ArrowRight className="w-4 h-4" />
+                                        <ArrowRight className="w-3 h-3" />
                                     </a>
                                 </div>
                             </motion.div>
@@ -193,7 +191,7 @@ export function Services() {
             </section>
 
             {/* Tasas Chart Section */}
-            <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
+            <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
@@ -201,13 +199,12 @@ export function Services() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-center mb-8"
+                            className="text-center mb-3"
                         >
-                            <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-2">
+                            <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter mb-1">
                                 Tasas de{" "}
                                 <span className="text-brand-mustard">Interés 2025</span>
                             </h3>
-                            <div className="h-1 w-16 bg-brand-mustard mx-auto rounded-full" />
                         </motion.div>
 
                         <motion.div
@@ -215,9 +212,9 @@ export function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="bg-white rounded-2xl p-6 shadow-2xl"
+                            className="bg-white rounded-xl p-3 md:p-4 shadow-2xl"
                         >
-                            <ResponsiveContainer width="100%" height={280}>
+                            <ResponsiveContainer width="100%" height={220}>
                                 <BarChart
                                     layout="vertical"
                                     data={tasas}
@@ -287,22 +284,20 @@ export function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="flex flex-wrap gap-3 justify-center mt-6"
+                            className="flex flex-wrap gap-2 justify-center mt-3"
                         >
-                            <div className="flex items-center gap-2 bg-white shadow-xl px-5 py-2.5 rounded-xl border border-gray-100">
-                                <TrendingUp className="w-4 h-4 text-brand-mustard flex-shrink-0" />
-                                <span className="text-brand-blue font-bold text-sm">
+                            <div className="flex items-center gap-2 bg-white shadow-xl px-3 py-1.5 rounded-lg border border-gray-100">
+                                <TrendingUp className="w-3 h-3 text-brand-mustard flex-shrink-0" />
+                                <span className="text-brand-blue font-bold text-[10px]">
                                     Depósito a Plazo Fijo creció{" "}
-                                    <span className="text-brand-mustard font-black drop-shadow-sm">+46%</span>{" "}
-                                    en 2025
+                                    <span className="text-brand-mustard font-black">+46%</span>
                                 </span>
                             </div>
-                            <div className="flex items-center gap-2 bg-white shadow-xl px-5 py-2.5 rounded-xl border border-gray-100">
-                                <TrendingUp className="w-4 h-4 text-brand-mustard flex-shrink-0" />
-                                <span className="text-brand-blue font-bold text-sm">
+                            <div className="flex items-center gap-2 bg-white shadow-xl px-3 py-1.5 rounded-lg border border-gray-100">
+                                <TrendingUp className="w-3 h-3 text-brand-mustard flex-shrink-0" />
+                                <span className="text-brand-blue font-bold text-[10px]">
                                     Ahorro Corriente creció{" "}
-                                    <span className="text-brand-mustard font-black drop-shadow-sm">+9%</span>{" "}
-                                    en 2025
+                                    <span className="text-brand-mustard font-black">+9%</span>
                                 </span>
                             </div>
                         </motion.div>

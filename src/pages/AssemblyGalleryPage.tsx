@@ -191,7 +191,7 @@ export function AssemblyGalleryPage() {
       {/* 1. HERO SECTION                                                   */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section
-        className="relative h-[45vh] sm:h-[55vh] lg:h-[65vh] overflow-hidden"
+        className="relative h-[40vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden"
         aria-label="Portada de la Asamblea General 2026"
       >
         {/* Background image */}
@@ -206,7 +206,7 @@ export function AssemblyGalleryPage() {
         <div className="absolute inset-0 bg-brand-blue/80" />
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 max-w-6xl mx-auto left-0 right-0">
+        <div className="absolute inset-0 flex flex-col justify-between pt-24 pb-6 px-6 sm:pt-32 sm:pb-10 sm:px-10 max-w-6xl mx-auto left-0 right-0">
           {/* Breadcrumb */}
           <motion.nav
             aria-label="Ruta de navegación"
@@ -252,9 +252,9 @@ export function AssemblyGalleryPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="inline-flex items-center gap-2 bg-brand-mustard/90 text-brand-blue px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 shadow-lg"
+              className="inline-flex items-center gap-1.5 bg-brand-mustard/90 text-brand-blue px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest mb-3 shadow-lg"
             >
-              <Camera className="w-3 h-3" aria-hidden="true" />
+              <Camera className="w-2.5 h-2.5" aria-hidden="true" />
               Galería Oficial · 2026
             </motion.div>
 
@@ -264,7 +264,7 @@ export function AssemblyGalleryPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-2xl sm:text-2xl lg:text-2xl font-bold text-white leading-tight mb-4"
+              className="text-xl sm:text-2xl font-black text-white leading-tight mb-2 uppercase tracking-tighter"
             >
               Asamblea General
               <span className="block text-brand-mustard">de Asociados 2026</span>
@@ -276,7 +276,7 @@ export function AssemblyGalleryPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-white/75 text-sm sm:text-base leading-relaxed mb-7 max-w-xl"
+              className="text-white/70 text-[10px] sm:text-xs leading-tight mb-4 max-w-lg font-medium"
             >
               Registro fotográfico de nuestra Asamblea General Ordinaria celebrada
               en Nebaj, Quiché. Más de 500 asociados reunidos para definir el
@@ -295,28 +295,26 @@ export function AssemblyGalleryPage() {
                 onClick={scrollToGallery}
                 className={cn(
                   "inline-flex items-center gap-2 bg-brand-mustard hover:bg-brand-mustard/85",
-                  "text-brand-blue font-bold px-5 py-2.5 rounded-xl text-sm",
+                  "text-brand-blue font-black px-4 py-2 rounded-lg text-[10px] uppercase tracking-widest",
                   "transition-all duration-200 active:scale-95 shadow-lg shadow-brand-mustard/30",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                 )}
               >
                 Ver galería
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </button>
 
-              <div className="flex items-center gap-4 text-white/55 text-xs font-medium">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
+              <div className="flex items-center gap-3 text-white/40 text-[9px] font-bold uppercase tracking-widest">
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-3 h-3 text-brand-mustard" aria-hidden="true" />
                   Abril 2026
                 </span>
-                <span className="w-px h-4 bg-white/20" aria-hidden="true" />
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
-                  Nebaj, Quiché
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-brand-mustard" aria-hidden="true" />
+                  Nebaj
                 </span>
-                <span className="w-px h-4 bg-white/20 hidden sm:block" aria-hidden="true" />
-                <span className="hidden sm:flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
+                <span className="hidden sm:flex items-center gap-1">
+                  <Users className="w-3 h-3 text-brand-mustard" aria-hidden="true" />
                   500+ asociados
                 </span>
               </div>

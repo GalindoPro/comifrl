@@ -3,35 +3,29 @@ import raizIxilImg from "../assets/images/raiz_ixil.png";
 
 export function HomeIntro() {
     return (
-        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden" id="historia">
+        <section className="pt-24 md:pt-32 pb-4 bg-brand-blue relative overflow-hidden" id="historia">
             {/* Decorative shapes */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
             <div className="container mx-auto px-4">
                 {/* Main Header */}
-                <div className="max-w-4xl mx-auto text-center mb-6">
+                <div className="max-w-4xl mx-auto text-center mb-3">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-black text-white mb-2 uppercase tracking-tight"
+                        className="text-xl md:text-2xl font-black text-white mb-1 uppercase tracking-tight"
                     >
-                        Cooperativa Maya <span className="text-brand-mustard font-black italic">Inversiones Futuras</span>
+                        Nebaj, <span className="text-brand-mustard">Donde nace la cooperativa</span>
                     </motion.h2>
-                    <motion.div
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        viewport={{ once: true }}
-                        className="h-1 w-20 bg-brand-mustard mx-auto mb-2 rounded-full"
-                    />
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg md:text-xl text-white/70 font-medium leading-relaxed"
+                        className="text-xs md:text-sm text-white/70 font-medium leading-tight max-w-3xl mx-auto"
                     >
-                        Con más de 18 años de trayectoria, COMIF, R.L. impulsa el desarrollo económico y comunitario en Nebaj, Quiché.
+                        Santa María Nebaj, "Na’b’a’" en idioma ixil, significa ‘lugar donde nace el agua’. Es un municipio cultural y económico clave del departamento de Quiché, donde nuestras raíces se entrelazan con la historia de un pueblo resiliente.
                     </motion.p>
                 </div>
 
@@ -40,24 +34,24 @@ export function HomeIntro() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mx-auto bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-gray-100 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
+                    className="max-w-3xl mx-auto bg-white rounded-xl p-3 md:p-4 shadow-2xl border border-gray-100 flex items-center gap-4 relative overflow-hidden"
                 >
                     {/* Decorative Background Element */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-brand-mustard/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 
-                    <div className="flex-shrink-0 bg-brand-mustard/10 p-3 rounded-2xl border border-brand-mustard/30 group-hover:rotate-3 transition-transform duration-500 relative z-10">
+                    <div className="flex-shrink-0 bg-brand-mustard/10 p-2 rounded-xl border border-brand-mustard/30 group-hover:rotate-3 transition-transform duration-500 relative z-10">
                         <img
                             src={raizIxilImg}
                             alt="Raíces Ixiles"
-                            className="w-20 h-20 md:w-24 md:h-24 object-contain"
+                            className="w-12 h-12 md:w-16 md:h-16 object-contain"
                         />
                     </div>
-                    <div className="flex-1 relative z-10 text-center md:text-left">
-                        <h3 className="text-2xl md:text-3xl font-black text-brand-blue mb-3 leading-tight uppercase tracking-tighter">
-                            Tradición Ixil, <span className="text-brand-mustard">Desarrollo Sostenible</span>
+                    <div className="flex-1 relative z-10 text-left">
+                        <h3 className="text-lg md:text-xl font-black text-brand-blue mb-0.5 leading-tight uppercase tracking-tighter">
+                            Raíces Ixiles: <span className="text-brand-mustard">Origen de Confianza</span>
                         </h3>
-                        <p className="text-brand-blue/80 leading-relaxed text-sm md:text-lg italic font-medium">
-                            "Desde <span className="text-brand-mustard font-black not-italic border-b-2 border-brand-mustard/40">2008</span>, 28 visionarios locales dieron vida a <span className="text-brand-mustard font-black not-italic underline underline-offset-4 decoration-brand-blue/20">COMIF, R.L.</span>, hoy referente de <span className="text-brand-blue font-black not-italic uppercase tracking-wider">confianza</span> en la región Ixil."
+                        <p className="text-brand-blue/80 leading-tight text-[11px] md:text-sm italic font-medium">
+                            "Desde 2008, 28 visionarios locales dieron vida a COMIF, R.L., hoy referente de confianza en la región Ixil."
                         </p>
                     </div>
                 </motion.div>

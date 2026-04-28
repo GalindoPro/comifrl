@@ -59,57 +59,47 @@ const stats = [
 
 export function Stats2025() {
     return (
-        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
+        <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
             <div className="container mx-auto px-4">
-                <div className="text-center mb-8">
+                <div className="text-center mb-3">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-2"
+                        className="text-xl md:text-2xl font-black text-white tracking-tighter uppercase"
                     >
                         Resultados <span className="text-brand-mustard">2025</span>
                     </motion.h2>
-                    <div className="h-1 w-20 bg-brand-mustard mx-auto rounded-full" />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+                <div className="grid grid-cols-3 gap-2 max-w-4xl mx-auto">
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.5 }}
-                            className={`rounded-2xl p-5 shadow-xl flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300 ${
+                            transition={{ delay: idx * 0.05, duration: 0.4 }}
+                            className={`rounded-xl p-3 shadow-xl flex flex-col items-center text-center transition-all ${
                                 stat.highlight
                                     ? "bg-brand-mustard"
                                     : "bg-white border border-white/10"
                             }`}
                         >
                             <div
-                                className={`text-2xl md:text-3xl font-black mb-1 leading-tight ${
+                                className={`text-xl md:text-2xl font-black mb-0.5 leading-tight ${
                                     stat.highlight ? "text-brand-blue" : "text-brand-mustard"
                                 }`}
                             >
                                 <Counter to={stat.value} decimals={stat.decimals} />
-                                <span className="text-base md:text-lg">{stat.suffix}</span>
+                                <span className="text-sm">{stat.suffix}</span>
                             </div>
                             <h4
-                                className={`font-black uppercase tracking-tight text-[11px] mb-1 ${
-                                    stat.highlight ? "text-brand-blue" : "text-brand-blue"
-                                }`}
+                                className="font-black uppercase tracking-tight text-[9px] text-brand-blue"
                             >
                                 {stat.title}
                             </h4>
-                            <p
-                                className={`text-[10px] font-medium leading-relaxed ${
-                                    stat.highlight ? "text-brand-blue/70" : "text-brand-blue/60"
-                                }`}
-                            >
-                                {stat.subtitle}
-                            </p>
                         </motion.div>
                     ))}
                 </div>
