@@ -32,33 +32,28 @@ const C = {
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const cartera = [
-    { name: "Créditos recuperados", value: 15635839.49, color: C.mustard },
-    { name: "Cartera vigente", value: 20507731.6, color: C.blue },
-    { name: "Cartera morosa", value: 1907924.19, color: C.gold },
+    { name: "Créditos recuperados", value: 41.09, color: C.mustard },
+    { name: "Cartera vigente", value: 53.90, color: C.blue },
+    { name: "Cartera morosa", value: 5.01, color: C.gold },
 ];
-const CARTERA_TOTAL = 38052655.98;
+const CARTERA_TOTAL = 100;
 
 const morosa = [
-    { name: "Cobro judicial (52%)", value: 994835.4, color: C.mustard },
-    { name: "Cobro extrajudicial (48%)", value: 913088.79, color: C.blue },
+    { name: "Cobro judicial (52%)", value: 52, color: C.mustard },
+    { name: "Cobro extrajudicial (48%)", value: 48, color: C.blue },
 ];
 
 const resultados = [
-    { concepto: "Superávit", monto: 1363163.62 },
-    { concepto: "FEDERURAL", monto: 3000000.0 },
-    { concepto: "Inversión PF", monto: 1000000.0 },
-    { concepto: "Cartera morosa", monto: 1907924.19 },
+    { concepto: "Superávit", monto: 3.58 },
+    { concepto: "FEDERURAL", monto: 7.88 },
+    { concepto: "Inversión PF", monto: 2.63 },
+    { concepto: "Cartera morosa", monto: 5.01 },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-const fmtGTQ = (v: number) =>
-    v.toLocaleString("es-GT", { style: "currency", currency: "GTQ" });
+const fmtPercent = (v: number) => `${v.toFixed(2)}%`;
 
-const fmtShort = (v: number) => {
-    if (v >= 1_000_000) return `Q${(v / 1_000_000).toFixed(1)}M`;
-    if (v >= 1_000) return `Q${(v / 1_000).toFixed(0)}K`;
-    return `Q${v}`;
-};
+const fmtShort = (v: number) => `${v}%`;
 
 const fmtBasic = (v: number) =>
     new Intl.NumberFormat("es-GT", {
@@ -78,7 +73,7 @@ const PieTooltip = ({
     return (
         <div className="bg-brand-blue text-white text-xs px-3 py-2 rounded-lg shadow-xl border border-brand-mustard/30">
             <p className="font-bold text-brand-mustard mb-0.5">{payload[0].name}</p>
-            <p>{fmtGTQ(payload[0].value)}</p>
+            <p>{fmtPercent(payload[0].value)}</p>
         </div>
     );
 };
@@ -96,7 +91,7 @@ const BarTooltip = ({
     return (
         <div className="bg-brand-blue text-white text-xs px-3 py-2 rounded-lg shadow-xl border border-brand-mustard/30">
             <p className="font-bold text-brand-mustard mb-0.5">{label}</p>
-            <p>{fmtGTQ(payload[0].value)}</p>
+            <p>{fmtPercent(payload[0].value)}</p>
         </div>
     );
 };
@@ -144,7 +139,7 @@ export const FinancialSummary = () => {
                         </div>
                         <p className="text-sm text-brand-blue/80 font-bold mb-1">Ingresos Totales</p>
                         <p className="text-2xl md:text-3xl font-black text-brand-blue">
-                            Q {fmtBasic(financialData.totalIncome)}
+                            {fmtBasic(financialData.totalIncome)}%
                         </p>
                     </motion.div>
 
@@ -162,7 +157,7 @@ export const FinancialSummary = () => {
                         </div>
                         <p className="text-sm text-brand-blue/80 font-bold mb-1">Egresos Totales</p>
                         <p className="text-2xl md:text-3xl font-black text-brand-blue">
-                            Q {fmtBasic(financialData.totalExpenses)}
+                            {fmtBasic(financialData.totalExpenses)}%
                         </p>
                     </motion.div>
 
@@ -180,7 +175,7 @@ export const FinancialSummary = () => {
                         </div>
                         <p className="text-sm text-brand-blue/80 font-bold mb-1">Resultado del Ejercicio</p>
                         <p className="text-2xl md:text-3xl font-black text-brand-blue">
-                            Q {fmtBasic(financialData.netResult)}
+                            {fmtBasic(financialData.netResult)}%
                         </p>
                     </motion.div>
                 </div>
@@ -246,7 +241,7 @@ export const FinancialSummary = () => {
                             {/* Center label */}
                             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                                 <span className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider">Total</span>
-                                <span className="text-sm font-black text-brand-blue leading-tight">Q38.05M</span>
+                                <span className="text-sm font-black text-brand-blue leading-tight">100%</span>
                             </div>
                         </div>
                         {/* Legend */}
@@ -255,12 +250,12 @@ export const FinancialSummary = () => {
                                 <li key={i} className="flex items-center gap-2 text-xs text-brand-blue/80">
                                     <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: d.color }} />
                                     <span className="font-medium">{d.name}</span>
-                                    <span className="ml-auto font-black text-brand-blue">{fmtGTQ(d.value)}</span>
+                                    <span className="ml-auto font-black text-brand-blue">{fmtPercent(d.value)}</span>
                                 </li>
                             ))}
                         </ul>
                         <p className="text-[10px] text-brand-blue/40 mt-2 text-right font-semibold">
-                            Total: {fmtGTQ(CARTERA_TOTAL)}
+                            Total: 100%
                         </p>
                     </motion.div>
 
@@ -301,12 +296,12 @@ export const FinancialSummary = () => {
                                 <li key={i} className="flex items-center gap-2 text-xs text-brand-blue/80">
                                     <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: d.color }} />
                                     <span className="font-medium">{d.name}</span>
-                                    <span className="ml-auto font-black text-brand-blue">{fmtGTQ(d.value)}</span>
+                                    <span className="ml-auto font-black text-brand-blue">{fmtPercent(d.value)}</span>
                                 </li>
                             ))}
                         </ul>
                         <p className="text-[10px] text-brand-blue/40 mt-2 text-right font-semibold">
-                            Total morosa: {fmtGTQ(1907924.19)}
+                            Total morosa: 100%
                         </p>
                     </motion.div>
                 </div>

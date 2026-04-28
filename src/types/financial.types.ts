@@ -29,9 +29,9 @@ export interface FinancialData {
 }
 
 export const financialData: FinancialData = {
-  totalIncome: 5769021.54,
-  totalExpenses: 4405857.92,
-  netResult: 1363163.62,
+  totalIncome: 100.00,
+  totalExpenses: 76.37,
+  netResult: 23.63,
   period: "01 de enero al 31 de diciembre de 2025",
   certifiedBy: "",
   registrationNumber: "10661061-9",

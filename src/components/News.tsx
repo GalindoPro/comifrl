@@ -70,9 +70,9 @@ const news2025 = [
     {
         categoria: "Créditos",
         fecha: "Enero 2026",
-        titulo: "205 créditos aprobados por más de Q.20 millones",
+        titulo: "Expansión del 53% en colocación de cartera",
         resumen:
-            "El Comité de Crédito aprobó créditos hipotecarios y fiduciarios durante 2025, fortaleciendo el acceso al financiamiento.",
+            "El Comité de Crédito aprobó nuevos créditos hipotecarios y fiduciarios durante 2025, fortaleciendo el acceso al financiamiento.",
         icon: <Banknote className="w-4 h-4 text-brand-mustard" />,
         chart: (
             <div className="mt-3">
@@ -86,8 +86,8 @@ const news2025 = [
                     />
                 </div>
                 <div className="flex justify-between text-[10px] font-bold text-brand-blue/60">
-                    <span className="text-brand-mustard">Q.20,219,258.65 (53%)</span>
-                    <span>de Q.38,052,655.98</span>
+                    <span className="text-brand-mustard">53% colocados</span>
+                    <span>del total de cartera</span>
                 </div>
             </div>
         ),
@@ -97,7 +97,7 @@ const news2025 = [
         fecha: "Enero 2026",
         titulo: "Activos de COMIF crecen 26.88% en 2025",
         resumen:
-            "La cooperativa cerró 2025 con crecimiento de activos de Q.8,115,604.35, consolidando 7 años consecutivos de superávit.",
+            "La cooperativa cerró 2025 con un sólido crecimiento de activos, consolidando 7 años consecutivos de superávit financiero.",
         icon: <TrendingUp className="w-4 h-4 text-brand-mustard" />,
         chart: (
             <div className="mt-3">
@@ -126,9 +126,9 @@ const news2025 = [
     {
         categoria: "Financiamiento",
         fecha: "Diciembre 2025",
-        titulo: "Gestión de Q.3 millones con FEDERURAL",
+        titulo: "Gestión estratégica de fondos con FEDERURAL",
         resumen:
-            "El Consejo gestionó fondos por Q.3,000,000.00 con FEDERURAL R.L. e invirtió Q.1,000,000.00 a Plazo Fijo al 7.25%.",
+            "El Consejo diversificó las captaciones destinando el 75% a gestión con FEDERURAL R.L. y el 25% a inversiones a Plazo Fijo.",
         icon: <Building className="w-4 h-4 text-brand-mustard" />,
         chart: (
             <div className="mt-3">
@@ -139,8 +139,8 @@ const news2025 = [
                     <PieChart>
                         <Pie
                             data={[
-                                { name: "FEDERURAL", value: 3000000 },
-                                { name: "Plazo Fijo", value: 1000000 },
+                                { name: "FEDERURAL", value: 75 },
+                                { name: "Plazo Fijo", value: 25 },
                             ]}
                             cx="50%"
                             cy="50%"
@@ -155,7 +155,7 @@ const news2025 = [
                         <Tooltip
                             formatter={(v) =>
                                 typeof v === "number"
-                                    ? v.toLocaleString("es-GT", { style: "currency", currency: "GTQ" })
+                                    ? `${v}%`
                                     : String(v)
                             }
                         />

@@ -31,11 +31,11 @@ const Counter = ({
 
 const stats = [
     {
-        value: 205,
+        value: 53,
         decimals: 0,
-        suffix: " créditos",
-        title: "Otorgados en 2025",
-        subtitle: "Q.20,219,258.65 colocados",
+        suffix: "%",
+        title: "Colocación de cartera",
+        subtitle: "De la cartera total en 2025",
         highlight: true,
     },
     {
@@ -43,15 +43,15 @@ const stats = [
         decimals: 2,
         suffix: "%",
         title: "Crecimiento en activos",
-        subtitle: "Q.8,115,604.35 vs 2024",
+        subtitle: "Sólido incremento vs 2024",
         highlight: false,
     },
     {
-        value: 7,
+        value: 100,
         decimals: 0,
-        suffix: " años",
-        title: "Superávit consecutivo",
-        subtitle: "Q.1,363,163.62 en 2025",
+        suffix: "%",
+        title: "Rentabilidad positiva",
+        subtitle: "7 años de superávit continuo",
         highlight: true,
     },
     {
