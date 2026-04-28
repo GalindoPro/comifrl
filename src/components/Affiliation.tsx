@@ -5,7 +5,7 @@ import { FileText, Users, CheckCircle2, ArrowRight, UserPlus, Lightbulb } from "
 export function Affiliation() {
     return (
         <div className="flex flex-col">
-            <section className="py-8 bg-brand-blue relative overflow-hidden">
+            <section className="pt-20 pb-8 bg-brand-blue relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-0 max-w-3xl mx-auto">
@@ -20,7 +20,7 @@ export function Affiliation() {
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+                            className="text-3xl md:text-4xl font-black text-white mb-3 uppercase tracking-tighter"
                         >
                             Únete a la <span className="text-brand-mustard">Familia</span> COMIF, R.L.
                         </motion.h2>
@@ -41,7 +41,7 @@ export function Affiliation() {
                 </div>
             </section>
 
-            <section className="py-6 bg-brand-blue relative overflow-hidden flex-grow">
+            <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden flex-grow">
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">

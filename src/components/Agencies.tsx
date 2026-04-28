@@ -8,7 +8,7 @@ import agenciaAculImg from "../assets/images/AgenciaAcul.png";
 const agencies = [
     {
         id: "central",
-        subtitle: "Sede Principal",
+        subtitle: "Agencia Principal",
         name: "Agencia Nebaj",
         address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
         phone: "57481463",
@@ -64,7 +64,7 @@ export function Agencies() {
 
     return (
         <div className="flex flex-col">
-            <section id="agencias" className="py-10 bg-brand-blue relative overflow-hidden">
+            <section id="agencias" className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
 
@@ -81,7 +81,7 @@ export function Agencies() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+                        className="text-3xl md:text-4xl font-black text-white mb-3 uppercase tracking-tighter"
                     >
                         Nuestra <span className="text-brand-mustard">Presencia</span>
                     </motion.h2>
@@ -103,7 +103,7 @@ export function Agencies() {
             </section>
 
             {/* Agencies Grid */}
-            <section className="py-8 bg-brand-blue text-white relative overflow-hidden">
+            <section className="pt-20 pb-8 bg-brand-blue text-white relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-mustard/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -256,7 +256,7 @@ export function Agencies() {
                                     <span className="text-brand-mustard font-bold tracking-widest uppercase text-sm mb-2">
                                         {selectedAgency.subtitle}
                                     </span>
-                                    <h3 className={`text-3xl font-bold mb-6 ${selectedAgency.textColor}`}>
+                                    <h3 className={`text-2xl font-bold mb-6 ${selectedAgency.textColor}`}>
                                         {selectedAgency.name}
                                     </h3>
 

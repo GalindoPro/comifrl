@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, Calculator, TrendingUp, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import hero1 from "../assets/images/fondo web rl.png";
@@ -54,96 +54,157 @@ export function HeroCarousel() {
         setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
     }, []);
 
-    useEffect(() => {
-        const timer = setInterval(nextSlide, 6000);
-        return () => clearInterval(timer);
-    }, [nextSlide]);
-
     return (
-        <div 
-            className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[200px] md:h-[40vh] md:min-h-[300px] lg:h-[80vh] lg:min-h-[600px]" 
-            id="inicio"
-        >
-            {/* Slides Background */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={current}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute inset-0"
-                >
-                    <img
-                        src={`${slides[current].image}?v=${Date.now()}`}
-                        alt="Hero Slide"
-                        className={cn("w-full h-full", slides[current].objectFit)}
-                        style={{
-                            objectPosition: slides[current].objectPosition,
-                            transform: `scale(${slides[current].scale})`,
-                        }}
-                    />
-                    {/* Removed overlay to keep image pure and bright */}
-                </motion.div>
-            </AnimatePresence>
-
-            {/* Content Container */}
-            <div className="absolute bottom-12 md:bottom-20 left-0 right-0 z-10 flex flex-col items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {/* CTA Button */}
-                <motion.div
-                    key={`btn-${current}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    className="pointer-events-auto"
-                >
-                    <Link
-                        to={slides[current].link}
-                        className={cn(
-                            "group/btn relative inline-flex items-center gap-2 backdrop-blur-sm border-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-[13px] md:text-lg font-bold transition-all duration-300 shadow-2xl hover:-translate-y-1 overflow-hidden",
-                            slides[current].btnClass,
-                            slides[current].shadowClass
-                        )}
-                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}
+        <div className="flex flex-col w-full bg-white">
+            <div 
+                className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[200px] md:h-[40vh] md:min-h-[300px] lg:h-[55vh] lg:min-h-[450px]" 
+                id="inicio"
+            >
+                {/* Slides Background */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={current}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="absolute inset-0"
                     >
-                        <span className="relative z-10">{slides[current].buttonText}</span>
-                        <ChevronRight className="w-3 h-3 md:w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                </motion.div>
+                        <img
+                            src={`${slides[current].image}?v=${Date.now()}`}
+                            alt="Hero Slide"
+                            className={cn("w-full h-full", slides[current].objectFit)}
+                            style={{
+                                objectPosition: slides[current].objectPosition,
+                                transform: `scale(${slides[current].scale})`,
+                            }}
+                        />
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Content Container */}
+                <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-10 flex flex-col items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <motion.div
+                        key={`btn-${current}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        className="pointer-events-auto"
+                    >
+                        <Link
+                            to={slides[current].link}
+                            className={cn(
+                                "group/btn relative inline-flex items-center gap-2 backdrop-blur-sm border-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-[13px] md:text-lg font-bold transition-all duration-300 shadow-2xl hover:-translate-y-1 overflow-hidden",
+                                slides[current].btnClass,
+                                slides[current].shadowClass
+                            )}
+                            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}
+                        >
+                            <span className="relative z-10">{slides[current].buttonText}</span>
+                            <ChevronRight className="w-3 h-3 md:w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
+                        </Link>
+                    </motion.div>
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                    onClick={prevSlide}
+                    className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                >
+                    <div className="bg-black/10 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500">
+                        <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 active:scale-90 transition-transform" />
+                    </div>
+                </button>
+
+                <button
+                    onClick={nextSlide}
+                    className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                >
+                    <div className="bg-black/10 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-black/30 hover:border-brand-mustard/50 transition-all duration-500">
+                        <ChevronRight className="w-6 h-6 md:w-7 md:h-7 active:scale-95 transition-transform" />
+                    </div>
+                </button>
+
+                {/* Navigation Indicators */}
+                <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500">
+                    {slides.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrent(index)}
+                            className={`h-3 rounded-full transition-all duration-500 ${index === current ? "bg-brand-mustard w-12" : "bg-black/20 w-3 hover:bg-black/40"}`}
+                            aria-label={`Ir a la diapositiva ${index + 1}`}
+                        />
+                    ))}
+                </div>
             </div>
 
-            {/* Navigation Arrows */}
-            {/* Left Box */}
-            <button
-                onClick={prevSlide}
-                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
-            >
-                <div className="bg-white/5 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-brand-mustard/50 transition-all duration-500">
-                    <ChevronLeft className="w-6 h-6 md:w-7 md:h-7 active:scale-90 transition-transform" />
-                </div>
-            </button>
+            {/* Quick Actions Zone */}
+            <div className="bg-gray-50 border-t border-gray-100 py-6 lg:py-8 relative z-20">
+                <div className="container mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 max-w-5xl mx-auto">
+                        
+                        {/* Quick Action 1: Loan */}
+                        <Link 
+                            to="/cotizar"
+                            state={{ initialView: 'loan', fromHome: true }}
+                            className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
+                        >
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-mustard/10 w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue group-hover:bg-brand-mustard group-hover:text-white transition-colors duration-300 shrink-0">
+                                    <Calculator className="w-5 h-5 lg:w-6 lg:h-6" />
+                                </div>
+                                <h3 className="text-sm lg:text-base font-black text-brand-blue uppercase tracking-tighter m-0">
+                                    24% Anual
+                                </h3>
+                            </div>
+                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-white transition-colors">
+                                Generar Tabla
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </Link>
 
-            {/* Right Box */}
-            <button
-                onClick={nextSlide}
-                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-brand-mustard/90 transition-all duration-500 z-30 pointer-events-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible"
-            >
-                <div className="bg-white/5 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-brand-mustard/50 transition-all duration-500">
-                    <ChevronRight className="w-6 h-6 md:w-7 md:h-7 active:scale-95 transition-transform" />
-                </div>
-            </button>
+                        {/* Quick Action 2: Investment */}
+                        <Link 
+                            to="/cotizar"
+                            state={{ initialView: 'investment', fromHome: true }}
+                            className="bg-brand-blue p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-brand-blue hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-brand-mustard/10 rounded-full blur-xl translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-mustard/20 transition-colors" />
+                            <div className="flex items-center gap-3 lg:gap-4 relative z-10">
+                                <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-transform duration-300 shrink-0">
+                                    <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />
+                                </div>
+                                <h3 className="text-sm lg:text-base font-black text-white uppercase tracking-tighter m-0">
+                                    14% de Interés
+                                </h3>
+                            </div>
+                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-brand-blue transition-colors relative z-10">
+                                Calcular Rendimiento
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </Link>
 
-            {/* Navigation Indicators */}
-            <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500">
-                {slides.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrent(index)}
-                        className={`h-3 rounded-full transition-all duration-500 ${index === current ? "bg-white/5 w-12" : "bg-white/30 w-3 hover:bg-white/60"
-                            }`}
-                        aria-label={`Ir a la diapositiva ${index + 1}`}
-                    />
-                ))}
+                        {/* Quick Action 3: Agencies */}
+                        <Link 
+                            to="/maps"
+                            className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
+                        >
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-mustard/10 w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue group-hover:bg-brand-mustard group-hover:text-white transition-colors duration-300 shrink-0">
+                                    <MapPin className="w-5 h-5 lg:w-6 lg:h-6" />
+                                </div>
+                                <h3 className="text-sm lg:text-base font-black text-brand-blue uppercase tracking-tighter m-0">
+                                    Nuestras Agencias
+                                </h3>
+                            </div>
+                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-white transition-colors">
+                                Ver Ubicaciones
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </Link>
+
+                    </div>
+                </div>
             </div>
         </div>
     );

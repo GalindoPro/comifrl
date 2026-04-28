@@ -33,21 +33,13 @@ const C = {
 // ── Data ──────────────────────────────────────────────────────────────────────
 const cartera = [
     { name: "Créditos recuperados", value: 41.09, color: C.mustard },
-    { name: "Cartera vigente", value: 53.90, color: C.blue },
-    { name: "Cartera morosa", value: 5.01, color: C.gold },
-];
-const CARTERA_TOTAL = 100;
-
-const morosa = [
-    { name: "Cobro judicial (52%)", value: 52, color: C.mustard },
-    { name: "Cobro extrajudicial (48%)", value: 48, color: C.blue },
+    { name: "Cartera vigente", value: 58.91, color: C.blue },
 ];
 
 const resultados = [
     { concepto: "Superávit", monto: 3.58 },
     { concepto: "FEDERURAL", monto: 7.88 },
     { concepto: "Inversión PF", monto: 2.63 },
-    { concepto: "Cartera morosa", monto: 5.01 },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -103,7 +95,7 @@ export const FinancialSummary = () => {
     };
 
     return (
-        <section className="min-h-screen bg-brand-blue py-10 px-4">
+        <section className="min-h-screen bg-brand-blue pt-18 pb-6 px-4">
             <div className="container mx-auto max-w-5xl">
 
                 {/* ── Header ───────────────────────────────────────────────── */}
@@ -111,10 +103,10 @@ export const FinancialSummary = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
+                    className="text-center mb-6"
                 >
                     <Building2 size={40} className="mx-auto text-brand-mustard mb-3" />
-                    <h1 className="text-2xl md:text-5xl font-bold text-white mb-3">
+                    <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
                         Transparencia
                     </h1>
                     <p className="text-white/70 text-base max-w-2xl mx-auto">
@@ -124,7 +116,7 @@ export const FinancialSummary = () => {
                 </motion.div>
 
                 {/* ── KPI Cards ────────────────────────────────────────────── */}
-                <div className="grid gap-6 md:grid-cols-3 mb-12">
+                <div className="grid gap-6 md:grid-cols-3 mb-6">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -185,7 +177,7 @@ export const FinancialSummary = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.35, duration: 0.5 }}
-                    className="bg-brand-mustard rounded-2xl p-6 shadow-xl mb-10"
+                    className="bg-brand-mustard rounded-2xl p-6 shadow-xl mb-6"
                 >
                     <div className="grid gap-4 md:grid-cols-2">
                         <div className="flex items-start gap-3">
@@ -206,7 +198,7 @@ export const FinancialSummary = () => {
                 </motion.div>
 
                 {/* ── Charts row 1 ─────────────────────────────────────────── */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="flex justify-center mb-6">
 
                     {/* CarteraChart — Donut */}
                     <motion.div
@@ -258,52 +250,6 @@ export const FinancialSummary = () => {
                             Total: 100%
                         </p>
                     </motion.div>
-
-                    {/* MorosaChart — Pie */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-white rounded-2xl p-6 shadow-2xl"
-                    >
-                        <h3 className="text-brand-blue font-black text-base uppercase tracking-tight mb-4">
-                            Distribución Cartera Morosa
-                        </h3>
-                        <ResponsiveContainer width="100%" height={200}>
-                            <PieChart>
-                                <Pie
-                                    data={morosa}
-                                    cx="50%"
-                                    cy="50%"
-                                    outerRadius={80}
-                                    paddingAngle={4}
-                                    dataKey="value"
-                                    label={({ percent }) =>
-                                        `${((percent ?? 0) * 100).toFixed(0)}%`
-                                    }
-                                    labelLine={false}
-                                >
-                                    {morosa.map((entry, i) => (
-                                        <Cell key={`m-${i}`} fill={entry.color} />
-                                    ))}
-                                </Pie>
-                                <Tooltip content={<PieTooltip />} />
-                            </PieChart>
-                        </ResponsiveContainer>
-                        <ul className="mt-3 space-y-1.5">
-                            {morosa.map((d, i) => (
-                                <li key={i} className="flex items-center gap-2 text-xs text-brand-blue/80">
-                                    <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: d.color }} />
-                                    <span className="font-medium">{d.name}</span>
-                                    <span className="ml-auto font-black text-brand-blue">{fmtPercent(d.value)}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <p className="text-[10px] text-brand-blue/40 mt-2 text-right font-semibold">
-                            Total morosa: 100%
-                        </p>
-                    </motion.div>
                 </div>
 
                 {/* ── ResultadosChart — Bar ─────────────────────────────────── */}
@@ -312,7 +258,7 @@ export const FinancialSummary = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="bg-white rounded-2xl p-6 shadow-2xl mb-10"
+                    className="bg-white rounded-2xl p-6 shadow-2xl mb-6"
                 >
                     <h3 className="text-brand-blue font-black text-base uppercase tracking-tight mb-4">
                         Indicadores Financieros 2025

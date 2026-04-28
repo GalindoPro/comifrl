@@ -52,14 +52,14 @@ const advantages = [
 
 export function Advantages() {
     return (
-        <section className="py-12 bg-brand-blue relative overflow-hidden">
+        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-6">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter"
+                        className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter"
                     >
                         Nuestra <span className="text-brand-mustard">Ventaja</span>
                     </motion.h2>

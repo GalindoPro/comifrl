@@ -97,7 +97,7 @@ const CustomTooltipTasas = ({
 export function Services() {
     return (
         <div className="flex flex-col">
-            <section id="servicios" className="py-10 bg-brand-blue overflow-hidden relative">
+            <section id="servicios" className="pt-18 pb-6 bg-brand-blue overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     {/* Header */}
@@ -106,7 +106,7 @@ export function Services() {
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+                            className="text-3xl md:text-4xl font-black text-white mb-3 uppercase tracking-tighter"
                         >
                             Nuestros <span className="text-brand-mustard">Servicios</span>
                         </motion.h2>
@@ -130,7 +130,7 @@ export function Services() {
             </section>
 
             {/* Services Grid */}
-            <section className="py-12 bg-brand-blue relative overflow-hidden">
+            <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -193,7 +193,7 @@ export function Services() {
             </section>
 
             {/* Tasas Chart Section */}
-            <section className="py-12 bg-brand-blue relative overflow-hidden">
+            <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
@@ -203,7 +203,7 @@ export function Services() {
                             viewport={{ once: true }}
                             className="text-center mb-8"
                         >
-                            <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-2">
+                            <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-2">
                                 Tasas de{" "}
                                 <span className="text-brand-mustard">Interés 2025</span>
                             </h3>

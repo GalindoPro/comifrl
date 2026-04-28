@@ -88,7 +88,7 @@ export function AssemblyGallery() {
   return (
     <div className="flex flex-col">
       {/* ── HEADER ──────────────────────────────────────────────────────── */}
-      <section className="py-14 bg-white relative overflow-hidden">
+      <section className="pt-20 pb-8 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-56 h-56 bg-green-500/5 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
@@ -110,7 +110,7 @@ export function AssemblyGallery() {
               initial={{ opacity: 0, y: -18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-blue mb-3 leading-tight"
+              className="text-2xl md:text-3xl lg:text-2xl font-bold text-brand-blue mb-3 leading-tight"
             >
               Asamblea General de Asociados
             </motion.h2>
@@ -161,7 +161,7 @@ export function AssemblyGallery() {
       </section>
 
       {/* ── GALLERY GRID ────────────────────────────────────────────────── */}
-      <section className="py-12 bg-gray-50">
+      <section className="pt-18 pb-6 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             variants={containerVariants}
@@ -203,7 +203,7 @@ export function AssemblyGallery() {
       </section>
 
       {/* ── FOOTER / CTA ────────────────────────────────────────────────── */}
-      <section className="py-12 bg-brand-blue relative overflow-hidden">
+      <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-white/5 rounded-full blur-2xl pointer-events-none" />
 

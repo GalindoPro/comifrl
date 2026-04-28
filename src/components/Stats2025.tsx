@@ -54,19 +54,12 @@ const stats = [
         subtitle: "7 años de superávit continuo",
         highlight: true,
     },
-    {
-        value: 4.07,
-        decimals: 2,
-        suffix: "%",
-        title: "Índice de mora 2025",
-        subtitle: "Reducción del 7% vs año anterior",
-        highlight: false,
-    },
+
 ];
 
 export function Stats2025() {
     return (
-        <section className="py-12 bg-brand-blue relative overflow-hidden">
+        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
             <div className="container mx-auto px-4">
@@ -75,13 +68,13 @@ export function Stats2025() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase mb-2"
+                        className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase mb-2"
                     >
                         Resultados <span className="text-brand-mustard">2025</span>
                     </motion.h2>
                     <div className="h-1 w-20 bg-brand-mustard mx-auto rounded-full" />
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}

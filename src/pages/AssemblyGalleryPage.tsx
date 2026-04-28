@@ -1,64 +1,105 @@
+import { useState, useRef, useCallback } from "react";
+import { useGallery } from "../hooks/useGallery";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Camera,
   Users,
   ChevronRight,
   Calendar,
   MapPin,
-  CheckCircle2,
-  BarChart2,
-  Banknote,
+  
+  
+  
+  Eye,
+  Heart,
   Home,
+  ArrowRight,
+  Briefcase,
 } from "lucide-react";
 import { cn } from "../lib/utils";
+import { PhotoLightbox } from "../components/PhotoLightbox";
+import type { LightboxPhoto } from "../components/PhotoLightbox";
+import { GalleryCard } from "../components/GalleryCard";
 
 // ─── Images ───────────────────────────────────────────────────────────────────
 import asamblea1 from "../assets/images/assembly/asamblea-1.png";
+import asamblea2 from "../assets/images/assembly/asamblea-2.png";
+import asamblea3 from "../assets/images/assembly/asamblea-3.png";
+import asamblea4 from "../assets/images/assembly/asamblea-4.png";
+import asamblea5 from "../assets/images/assembly/asamblea-5.png";
+import asamblea6 from "../assets/images/assembly/asamblea-6.png";
+import asamblea8 from "../assets/images/assembly/asamblea-4.png";
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+type Category = "all" | "general" | "directiva" | "participacion" | "gerente";
 
-const STATS = [
+interface AssemblyPhoto extends LightboxPhoto {
+  category: Exclude<Category, "all">;
+}
+
+// ─── Static data ──────────────────────────────────────────────────────────────
+const PHOTOS: AssemblyPhoto[] = [
   {
-    icon: Users,
-    value: "500+",
-    label: "Asociados presentes",
-    color: "text-brand-mustard",
+    id: 1,
+    src: asamblea1,
+    alt: "Vista panorámica del salón de la asamblea general con más de 500 asociados presentes",
+    caption: "Vista panorámica — Gran convocatoria de asociados",
+    category: "general",
   },
   {
-    icon: CheckCircle2,
-    value: "13",
-    label: "Puntos de agenda",
-    color: "text-brand-mustard",
+    id: 2,
+    src: asamblea2,
+    alt: "Mesa directiva de COMIF R.L. durante la presentación del informe anual",
+    caption: "Mesa directiva presentando el informe anual 2026",
+    category: "directiva",
   },
   {
-    icon: BarChart2,
-    value: "2026",
-    label: "Ejercicio fiscal",
-    color: "text-brand-mustard",
+    id: 3,
+    src: asamblea3,
+    alt: "Asociados de la cooperativa participando activamente en la asamblea",
+    caption: "Participación activa de los asociados",
+    category: "participacion",
   },
   {
-    icon: Banknote,
-    value: "8:00",
-    label: "AM — hora de inicio",
-    color: "text-brand-mustard",
+    id: 4,
+    src: asamblea4,
+    alt: "Asamblea general en pleno durante la lectura y votación de resoluciones",
+    caption: "Asamblea en pleno durante la lectura de resoluciones",
+    category: "general",
+  },
+  {
+    id: 5,
+    src: asamblea5,
+    alt: "Asociados atentos a la presentación de resultados financieros 2026",
+    caption: "Presentación de resultados financieros 2026",
+    category: "participacion",
+  },
+  {
+    id: 6,
+    src: asamblea6,
+    alt: "Mesa directiva completa ante los asociados al cierre de la asamblea",
+    caption: "Mesa directiva al cierre de la asamblea",
+    category: "directiva",
+  },
+  {
+    id: 8,
+    src: asamblea8,
+    alt: "Gerente General de FEDERURAL durante la Asamblea General de COMIF R.L.",
+    caption: "Gerente General de FEDERURAL",
+    category: "gerente",
   },
 ];
 
-const AGENDA = [
-  { titulo: "Bienvenida", responsable: "Presidenta del Consejo" },
-  { titulo: "Comprobación de Quórum", responsable: "Comisión de Vigilancia" },
-  { titulo: "Invocación", responsable: "Vocal II del Consejo" },
-  { titulo: "Lectura y aprobación de agenda", responsable: "Secretario del Consejo" },
-  { titulo: "Lectura del acta 2025", responsable: "Secretario del Consejo" },
-  { titulo: "Presentación de informes 2025", responsable: "Presidenta, Vigilancia y Crédito" },
-  { titulo: "Estados Financieros 2025", responsable: "Contadora General" },
-  { titulo: "Aplicación de resultados 2025", responsable: "Presidenta del Consejo" },
-  { titulo: "Dictamen contable 2025", responsable: "Comisión de Vigilancia" },
-  { titulo: "Plan de Trabajo 2026", responsable: "Vocal I, Vigilancia y Crédito" },
-  { titulo: "Presupuesto 2026", responsable: "Vicepresidente del Consejo" },
-  { titulo: "Elección/confirmación de cuadros directivos", responsable: "" },
-  { titulo: "Clausura y firma de acta", responsable: "" },
+const FILTERS: { id: Category; label: string; icon: React.ElementType }[] = [
+  { id: "all", label: "Todas las fotos", icon: Camera },
+  { id: "general", label: "Vista General", icon: Eye },
+  { id: "directiva", label: "Mesa Directiva", icon: Users },
+  { id: "participacion", label: "Participación", icon: Heart },
+  { id: "gerente", label: "Gerente FEDERURAL", icon: Briefcase },
 ];
+
+
 
 
 // ─── Animation variants ───────────────────────────────────────────────────────
@@ -76,8 +117,42 @@ const staggerGrid = {
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
+const photoCard = {
+  hidden: { opacity: 0, scale: 0.9, y: 16 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" as const },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.88,
+    transition: { duration: 0.22 },
+  },
+};
+
 // ─── Component ────────────────────────────────────────────────────────────────
 export function AssemblyGalleryPage() {
+  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const gallerySectionRef = useRef<HTMLElement>(null);
+
+  const filteredPhotos = activeFilter === "all"
+    ? PHOTOS
+    : PHOTOS.filter((p) => p.category === activeFilter);
+
+  // useGallery receives the current filtered set so navigation inside
+  // the lightbox stays within the visible photos.
+  const gallery = useGallery(filteredPhotos);
+
+  const handleFilterChange = useCallback((cat: Category) => {
+    gallery.close();        // close lightbox before swapping the photo set
+    setActiveFilter(cat);
+  }, [gallery]);
+
+  const scrollToGallery = () => {
+    gallerySectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -98,7 +173,20 @@ export function AssemblyGalleryPage() {
       />
       <meta property="og:type" content="article" />
 
-      
+      {/* ── Skip navigation (WCAG 2.1 — 2.4.1) ──────────────────────────── */}
+      <a
+        href="#galeria"
+        className={cn(
+          "sr-only focus:not-sr-only",
+          "focus:fixed focus:top-4 focus:left-1/2 focus:-translate-x-1/2 focus:z-[100]",
+          "focus:bg-brand-blue focus:text-white focus:px-5 focus:py-2.5",
+          "focus:rounded-full focus:text-sm focus:font-bold focus:shadow-xl",
+          "focus:outline-none focus:ring-2 focus:ring-brand-mustard",
+        )}
+      >
+        Saltar a la galería
+      </a>
+
       {/* ══════════════════════════════════════════════════════════════════ */}
       {/* 1. HERO SECTION                                                   */}
       {/* ══════════════════════════════════════════════════════════════════ */}
@@ -176,7 +264,7 @@ export function AssemblyGalleryPage() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+              className="text-2xl sm:text-2xl lg:text-2xl font-bold text-white leading-tight mb-4"
             >
               Asamblea General
               <span className="block text-brand-mustard">de Asociados 2026</span>
@@ -203,152 +291,199 @@ export function AssemblyGalleryPage() {
               animate="visible"
               className="flex flex-wrap items-center gap-4"
             >
-                <div className="flex items-center gap-4 text-white/55 text-xs font-medium">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
-                    Abril 2026
-                  </span>
-                  <span className="w-px h-4 bg-white/20" aria-hidden="true" />
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
-                    Nebaj, Quiché
-                  </span>
-                  <span className="w-px h-4 bg-white/20 hidden sm:block" aria-hidden="true" />
-                  <span className="hidden sm:flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
-                    500+ asociados
-                  </span>
-                </div>
+              <button
+                onClick={scrollToGallery}
+                className={cn(
+                  "inline-flex items-center gap-2 bg-brand-mustard hover:bg-brand-mustard/85",
+                  "text-brand-blue font-bold px-5 py-2.5 rounded-xl text-sm",
+                  "transition-all duration-200 active:scale-95 shadow-lg shadow-brand-mustard/30",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
+                )}
+              >
+                Ver galería
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </button>
+
+              <div className="flex items-center gap-4 text-white/55 text-xs font-medium">
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
+                  Abril 2026
+                </span>
+                <span className="w-px h-4 bg-white/20" aria-hidden="true" />
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
+                  Nebaj, Quiché
+                </span>
+                <span className="w-px h-4 bg-white/20 hidden sm:block" aria-hidden="true" />
+                <span className="hidden sm:flex items-center gap-1.5">
+                  <Users className="w-3.5 h-3.5 text-brand-mustard" aria-hidden="true" />
+                  500+ asociados
+                </span>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════ */}
-      {/* 4. ASSEMBLY INFO SECTION                                          */}
+      {/* 2 + 3. FILTERS + GALLERY GRID                                     */}
       {/* ══════════════════════════════════════════════════════════════════ */}
       <section
-        className="bg-brand-blue py-14 sm:py-20 relative overflow-hidden"
-        aria-label="Información sobre la asamblea"
+        id="galeria"
+        ref={gallerySectionRef}
+        className="bg-brand-blue pt-18 pb-6 sm:pt-18 pb-6 relative"
+        aria-label="Galería fotográfica"
       >
-        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" aria-hidden="true" />
-
-        <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-
-          {/* ── Header ─────────────────────────────────────────────────── */}
+        <div className="container mx-auto px-4">
+          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
-            <span className="inline-block bg-brand-mustard/20 text-brand-mustard text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3 border border-brand-mustard/30">
-              Convocatoria 2026
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              Asamblea General Ordinaria Obligatoria 2026
+            <h2 className="text-2xl sm:text-2xl font-black text-white mb-3 uppercase tracking-tighter">
+              Galería <span className="text-brand-mustard">Fotográfica</span>
             </h2>
-            <div className="flex flex-wrap justify-center gap-4 text-white/60 text-sm mt-3">
-              <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-brand-mustard flex-shrink-0" aria-hidden="true" />
-                Sábado 21 de febrero de 2026 — 8:00 AM
-              </span>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-brand-mustard flex-shrink-0" aria-hidden="true" />
-                "El Tonelon", Cantón Xolacul, Nebaj, Quiché
-              </span>
-            </div>
-            <div className="h-0.5 w-20 bg-brand-mustard mx-auto rounded-full mt-5" />
+            <div className="h-1.5 w-20 bg-brand-mustard mx-auto rounded-full" />
           </motion.div>
 
-          {/* ── Stats strip ────────────────────────────────────────────── */}
+          {/* ── Filter tabs ───────────────────────────────────────────── */}
           <motion.div
-            variants={staggerGrid}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10"
-          >
-            {STATS.map(({ icon: Icon, value, label }, i) => (
-              <motion.div
-                key={i}
-                custom={i * 0.08}
-                variants={fadeUp}
-                className="bg-white border border-gray-100 rounded-2xl p-5 text-center shadow-xl"
-              >
-                <div className="flex justify-center mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-brand-mustard/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-brand-mustard" aria-hidden="true" />
-                  </div>
-                </div>
-                <p className="text-2xl font-bold text-brand-mustard mb-0.5 tabular-nums">{value}</p>
-                <p className="text-brand-blue/55 text-[10px] font-semibold uppercase tracking-wide leading-snug">
-                  {label}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* ── Agenda Timeline ────────────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl mb-6"
+            transition={{ duration: 0.45, delay: 0.1 }}
+            role="tablist"
+            aria-label="Filtrar fotografías por categoría"
+            className="flex flex-wrap items-center justify-center gap-2 mb-8"
           >
-            <h3 className="text-brand-blue font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-1 h-6 bg-brand-mustard rounded-full flex-shrink-0" aria-hidden="true" />
-              Agenda de la Asamblea
-            </h3>
-            <ol className="space-y-3" role="list">
-              {AGENDA.map((item, idx) => (
-                <motion.li
-                  key={idx}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.04 }}
-                  className="flex items-start gap-4"
+            {FILTERS.map(({ id, label, icon: Icon }) => {
+              const count =
+                id === "all" ? PHOTOS.length : PHOTOS.filter((p) => p.category === id).length;
+              const isActive = activeFilter === id;
+
+              return (
+                <button
+                  key={id}
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls="gallery-grid"
+                  onClick={() => handleFilterChange(id)}
+                  className={cn(
+                    "relative inline-flex items-center gap-3 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest",
+                    "transition-all duration-300 focus-visible:outline-none focus-visible:ring-2",
+                    "focus-visible:ring-brand-mustard focus-visible:ring-offset-2 focus-visible:ring-offset-brand-blue",
+                    isActive
+                      ? "bg-brand-mustard text-brand-blue shadow-glow active:scale-95"
+                      : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10 hover:text-white active:scale-95",
+                  )}
                 >
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-brand-mustard text-brand-blue text-xs font-black flex items-center justify-center mt-0.5">
-                    {idx + 1}
-                  </span>
-                  <div className="flex-1 border-b border-brand-blue/5 pb-2">
-                    <p className="text-brand-blue font-semibold text-sm">{item.titulo}</p>
-                    {item.responsable && (
-                      <p className="text-brand-blue/45 text-xs font-medium">{item.responsable}</p>
+                  <Icon className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+                  <span>{label}</span>
+                  <span
+                    className={cn(
+                      "text-[9px] font-black w-5 h-5 rounded-lg flex items-center justify-center transition-colors",
+                      isActive
+                        ? "bg-brand-blue/20 text-brand-blue"
+                        : "bg-white/10 text-white/40",
                     )}
-                  </div>
-                </motion.li>
-              ))}
-            </ol>
+                    aria-label={`${count} fotos`}
+                  >
+                    {count}
+                  </span>
+
+                  {/* Active underline */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="filter-indicator"
+                      className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-brand-mustard rounded-full"
+                    />
+                  )}
+                </button>
+              );
+            })}
           </motion.div>
 
-          {/* ── Nota legal ─────────────────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="bg-brand-mustard rounded-2xl p-5 shadow-xl"
-            role="note"
+          {/* Live count for screen readers */}
+          <p
+            className="sr-only"
+            aria-live="polite"
+            aria-atomic="true"
           >
-            <p className="text-brand-blue font-medium text-sm leading-relaxed">
-              <span className="text-white font-black drop-shadow-sm">Art. 22 — </span>
-              Las asambleas están legalmente constituidas cuando estén presentes por lo menos la
-              mitad más uno del número total de asociados activos. De no completarse, se realizará
-              el mismo día, una hora después, con los asociados presentes.
-            </p>
-          </motion.div>
+            Mostrando {filteredPhotos.length} de {PHOTOS.length} fotografías
+          </p>
 
+          {/* Visible count */}
+          <motion.p
+            key={activeFilter}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center text-white/30 text-xs font-black uppercase tracking-[0.2em] mb-6"
+          >
+            Mostrando{" "}
+            <span className="text-brand-mustard font-black">{filteredPhotos.length}</span>
+            {" "}de {PHOTOS.length} fotografías
+          </motion.p>
+
+          {/* ── Photo grid ────────────────────────────────────────────── */}
+          <div
+            id="gallery-grid"
+            role="tabpanel"
+            aria-label={`Fotos de ${FILTERS.find((f) => f.id === activeFilter)?.label ?? "todas las categorías"}`}
+          >
+            <motion.div
+              variants={staggerGrid}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredPhotos.map((photo, idx) => (
+                  <motion.div
+                    key={photo.id}
+                    layout
+                    variants={photoCard}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className={cn(
+                      activeFilter === "all" && idx >= 4 && "xl:col-span-2",
+                    )}
+                  >
+                    <GalleryCard
+                      src={photo.src}
+                      alt={photo.alt}
+                      caption={photo.caption}
+                      index={idx}
+                      accent={idx % 2 === 0 ? "mustard" : "blue"}
+                      icon="eye"
+                      aspectRatio={
+                        activeFilter === "all" && idx >= 4 ? "16/7" : "4/3"
+                      }
+                      className="w-full"
+                      onClick={() => gallery.openAt(idx)}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+
+          {/* Click hint */}
+          <p className="text-center text-white/20 text-[10px] font-black uppercase tracking-widest mt-12" aria-hidden="true">
+            Haz clic en cualquier foto para verla en pantalla completa
+          </p>
         </div>
       </section>
 
-
-
+      {/* ── Lightbox ─────────────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {gallery.isOpen && (
+          <PhotoLightbox key="page-lightbox" {...gallery.lightboxProps} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

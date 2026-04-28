@@ -3,7 +3,7 @@ import raizIxilImg from "../assets/images/raiz_ixil.png";
 
 export function HomeIntro() {
     return (
-        <section className="py-12 bg-brand-blue relative overflow-hidden" id="historia">
+        <section className="pt-18 pb-6 bg-brand-blue relative overflow-hidden" id="historia">
             {/* Decorative shapes */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
@@ -14,7 +14,7 @@ export function HomeIntro() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-black text-white mb-2 uppercase tracking-tight"
+                        className="text-3xl md:text-4xl font-black text-white mb-2 uppercase tracking-tight"
                     >
                         Cooperativa Maya <span className="text-brand-mustard font-black italic">Inversiones Futuras</span>
                     </motion.h2>
@@ -53,7 +53,7 @@ export function HomeIntro() {
                         />
                     </div>
                     <div className="flex-1 relative z-10 text-center md:text-left">
-                        <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-3 leading-tight uppercase tracking-tighter">
+                        <h3 className="text-2xl md:text-3xl font-black text-brand-blue mb-3 leading-tight uppercase tracking-tighter">
                             Tradición Ixil, <span className="text-brand-mustard">Desarrollo Sostenible</span>
                         </h3>
                         <p className="text-brand-blue/80 leading-relaxed text-sm md:text-lg italic font-medium">

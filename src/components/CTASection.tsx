@@ -4,7 +4,7 @@ import { ArrowRight, UserPlus, Building2 } from "lucide-react";
 
 export function CTASection() {
     return (
-        <section className="py-16 bg-brand-blue relative overflow-hidden">
+        <section className="pt-20 pb-8 bg-brand-blue relative overflow-hidden">
             {/* Artistic Background */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #BF9903 0.5px, transparent 0)', backgroundSize: '30px 30px' }} />
@@ -21,7 +21,7 @@ export function CTASection() {
                             viewport={{ once: true }}
                             className="space-y-3"
                         >
-                            <h2 className="text-3xl md:text-5xl font-black text-brand-blue leading-tight uppercase tracking-tighter">
+                            <h2 className="text-2xl md:text-3xl font-black text-brand-blue leading-tight uppercase tracking-tighter">
                                 ¿Listo para <span className="text-brand-mustard">hacer crecer</span> tu futuro?
                             </h2>
                             <p className="text-base md:text-lg text-brand-blue/70 leading-relaxed font-medium">

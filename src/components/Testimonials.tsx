@@ -24,7 +24,7 @@ const testimonials = [
 
 export function Testimonials() {
     return (
-        <section className="py-8 bg-white overflow-hidden">
+        <section className="pt-20 pb-8 bg-white overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-6">
                     <motion.div

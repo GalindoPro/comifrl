@@ -6,8 +6,8 @@ const locations = [
   {
     id: "central",
     title: "Nebaj",
-    subtitle: "Sede Central",
-    description: "Sede principal de COMIF R.L. en Nebaj",
+    subtitle: "Agencia Central",
+    description: "Agencia principal de COMIF R.L. en Nebaj",
     address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
     coordinates: { lat: 15.4090833, lng: -91.1457222 },
     phone: "+502 5748 1463",
@@ -59,7 +59,7 @@ export const MapsPage = () => {
     : `https://www.google.com/maps/search/Comif+R.L.+Guatemala`;
 
   return (
-    <section id="agencias" className="py-10 bg-brand-blue relative overflow-hidden">
+    <section id="agencias" className="pt-18 pb-6 bg-brand-blue relative overflow-hidden">
       <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="container mx-auto px-4">
 
@@ -76,7 +76,7 @@ export const MapsPage = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+            className="text-3xl md:text-4xl font-black text-white mb-3 uppercase tracking-tighter"
           >
             Nuestra <span className="text-brand-mustard">Presencia</span>
           </motion.h2>
@@ -92,7 +92,7 @@ export const MapsPage = () => {
             {/* Sidebar / Labels */}
             <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-100 p-6 md:p-8 flex flex-col gap-4 overflow-y-auto bg-gray-50 lg:bg-white">
               <div className="mb-2">
-                <h2 className="text-[10px] font-black text-brand-blue/40 uppercase tracking-[0.2em] mb-2">Nuestras Sedes</h2>
+                <h2 className="text-[10px] font-black text-brand-blue/40 uppercase tracking-[0.2em] mb-2">Nuestras Agencias</h2>
                 <div className="space-y-1.5 px-0.5">
                   {locations.map((loc) => (
                     <button
