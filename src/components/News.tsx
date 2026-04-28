@@ -1,41 +1,255 @@
 import { motion } from "framer-motion";
-import { MapPin, Users, Heart, Banknote, CheckCircle2, Building } from "lucide-react";
+import { MapPin, Users, Heart, Banknote, CheckCircle2, Building, TrendingDown, TrendingUp } from "lucide-react";
 import aculImg from "../assets/images/acul.jpg";
 import agenciaAculImg from "../assets/images/agencia_acul.jpg";
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    Cell,
+    PieChart,
+    Pie,
+    ResponsiveContainer,
+    Tooltip,
+} from "recharts";
+
+// ── Mini-chart tooltip ────────────────────────────────────────────────────────
+const MiniTooltip = ({
+    active,
+    payload,
+    label,
+    suffix = "",
+}: {
+    active?: boolean;
+    payload?: { value: number }[];
+    label?: string;
+    suffix?: string;
+}) => {
+    if (!active || !payload?.length) return null;
+    return (
+        <div className="bg-brand-blue text-white text-[10px] px-2 py-1 rounded shadow-lg border border-brand-mustard/30">
+            <span className="font-bold text-brand-mustard">{label}: </span>
+            {payload[0].value}{suffix}
+        </div>
+    );
+};
+
+// ── News 2025 cards data ──────────────────────────────────────────────────────
+const news2025 = [
+    {
+        categoria: "Gestión financiera",
+        fecha: "Enero 2026",
+        titulo: "COMIF redujo su índice de mora al 4.07% en 2025",
+        resumen:
+            "El equipo de crédito y gerencia trabajó en conjunto para reducir la morosidad en un 7% respecto al año anterior.",
+        icon: <TrendingDown className="w-4 h-4 text-brand-mustard" />,
+        chart: (
+            <div className="mt-3">
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
+                    Mora comparativa
+                </p>
+                <ResponsiveContainer width="100%" height={80}>
+                    <BarChart
+                        data={[
+                            { año: "2024", mora: 11.07 },
+                            { año: "2025", mora: 4.07 },
+                        ]}
+                        margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
+                    >
+                        <XAxis dataKey="año" tick={{ fill: "#0F1249", fontSize: 10, fontWeight: 700 }} axisLine={false} tickLine={false} />
+                        <Tooltip content={<MiniTooltip suffix="%" />} />
+                        <Bar dataKey="mora" radius={[4, 4, 0, 0]}>
+                            <Cell fill="#0F1249" />
+                            <Cell fill="#BF9903" />
+                        </Bar>
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
+        ),
+    },
+    {
+        categoria: "Créditos",
+        fecha: "Enero 2026",
+        titulo: "205 créditos aprobados por más de Q.20 millones",
+        resumen:
+            "El Comité de Crédito aprobó créditos hipotecarios y fiduciarios durante 2025, fortaleciendo el acceso al financiamiento.",
+        icon: <Banknote className="w-4 h-4 text-brand-mustard" />,
+        chart: (
+            <div className="mt-3">
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
+                    Colocación vs total cartera
+                </p>
+                <div className="w-full bg-brand-blue/10 rounded-full h-3 mb-1.5">
+                    <div
+                        className="bg-brand-mustard h-3 rounded-full transition-all duration-700"
+                        style={{ width: "53%" }}
+                    />
+                </div>
+                <div className="flex justify-between text-[10px] font-bold text-brand-blue/60">
+                    <span className="text-brand-mustard">Q.20,219,258.65 (53%)</span>
+                    <span>de Q.38,052,655.98</span>
+                </div>
+            </div>
+        ),
+    },
+    {
+        categoria: "Resultados anuales",
+        fecha: "Enero 2026",
+        titulo: "Activos de COMIF crecen 26.88% en 2025",
+        resumen:
+            "La cooperativa cerró 2025 con crecimiento de activos de Q.8,115,604.35, consolidando 7 años consecutivos de superávit.",
+        icon: <TrendingUp className="w-4 h-4 text-brand-mustard" />,
+        chart: (
+            <div className="mt-3">
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
+                    Crecimiento de activos
+                </p>
+                <ResponsiveContainer width="100%" height={80}>
+                    <BarChart
+                        data={[
+                            { año: "2024", valor: 100 },
+                            { año: "2025", valor: 126.88 },
+                        ]}
+                        margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
+                    >
+                        <XAxis dataKey="año" tick={{ fill: "#0F1249", fontSize: 10, fontWeight: 700 }} axisLine={false} tickLine={false} />
+                        <Tooltip content={<MiniTooltip suffix="%" />} />
+                        <Bar dataKey="valor" radius={[4, 4, 0, 0]}>
+                            <Cell fill="#0F1249" />
+                            <Cell fill="#BF9903" />
+                        </Bar>
+                    </BarChart>
+                </ResponsiveContainer>
+            </div>
+        ),
+    },
+    {
+        categoria: "Financiamiento",
+        fecha: "Diciembre 2025",
+        titulo: "Gestión de Q.3 millones con FEDERURAL",
+        resumen:
+            "El Consejo gestionó fondos por Q.3,000,000.00 con FEDERURAL R.L. e invirtió Q.1,000,000.00 a Plazo Fijo al 7.25%.",
+        icon: <Building className="w-4 h-4 text-brand-mustard" />,
+        chart: (
+            <div className="mt-3">
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
+                    Distribución de fondos
+                </p>
+                <ResponsiveContainer width="100%" height={80}>
+                    <PieChart>
+                        <Pie
+                            data={[
+                                { name: "FEDERURAL", value: 3000000 },
+                                { name: "Plazo Fijo", value: 1000000 },
+                            ]}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={22}
+                            outerRadius={36}
+                            paddingAngle={4}
+                            dataKey="value"
+                        >
+                            <Cell fill="#0F1249" />
+                            <Cell fill="#BF9903" />
+                        </Pie>
+                        <Tooltip
+                            formatter={(v) =>
+                                typeof v === "number"
+                                    ? v.toLocaleString("es-GT", { style: "currency", currency: "GTQ" })
+                                    : String(v)
+                            }
+                        />
+                    </PieChart>
+                </ResponsiveContainer>
+                <div className="flex justify-center gap-4 text-[10px] font-bold text-brand-blue/60 -mt-1">
+                    <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-brand-blue inline-block" />FEDERURAL
+                    </span>
+                    <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-brand-mustard inline-block" />Plazo Fijo
+                    </span>
+                </div>
+            </div>
+        ),
+    },
+];
 
 export function News() {
     return (
         <div className="flex flex-col">
             {/* Header Section */}
-            <section className="py-16 bg-brand-blue relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section className="py-10 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
-
-                {/* Header */}
-                <div className="text-center mb-0">
-                    <motion.h2
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
-                    >
-                        Noticias <span className="text-brand-mustard">Destacadas</span>
-                    </motion.h2>
-                    <motion.div
-                        initial={{ scaleX: 0 }}
-                        animate={{ opacity: 1, scaleX: 1 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                        className="h-1 w-20 bg-brand-mustard mx-auto rounded-full"
-                    />
+                    <div className="text-center mb-0">
+                        <motion.h2
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
+                        >
+                            Noticias <span className="text-brand-mustard">Destacadas</span>
+                        </motion.h2>
+                        <motion.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ opacity: 1, scaleX: 1 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
+                            className="h-1 w-20 bg-brand-mustard mx-auto rounded-full"
+                        />
+                    </div>
                 </div>
+            </section>
+
+            {/* ── Noticias 2025 ──────────────────────────────────────────── */}
+            <section className="py-10 bg-brand-blue relative overflow-hidden">
+                <div className="absolute bottom-0 right-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
+                <div className="container mx-auto px-4">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-8">
+                            <h3 className="text-2xl font-black text-white uppercase tracking-tighter">
+                                Resultados <span className="text-brand-mustard">2025</span>
+                            </h3>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {news2025.map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.08, duration: 0.5 }}
+                                    className="bg-white rounded-2xl shadow-xl p-5 flex flex-col border border-gray-100 hover:border-brand-mustard/30 transition-all hover:-translate-y-1 duration-300"
+                                >
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <div className="bg-brand-mustard/10 p-1.5 rounded-lg border border-brand-mustard/20">
+                                            {item.icon}
+                                        </div>
+                                        <span className="text-[10px] font-black text-brand-mustard uppercase tracking-widest">
+                                            {item.categoria}
+                                        </span>
+                                        <span className="ml-auto text-[10px] text-brand-blue/40 font-semibold">
+                                            {item.fecha}
+                                        </span>
+                                    </div>
+                                    <h4 className="text-brand-blue font-black text-sm leading-snug mb-2 uppercase tracking-tight">
+                                        {item.titulo}
+                                    </h4>
+                                    <p className="text-brand-blue/70 text-xs leading-relaxed font-medium flex-grow">
+                                        {item.resumen}
+                                    </p>
+                                    {item.chart}
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* Feature Story: San Juan Acul */}
-            <section className="py-16 bg-brand-blue relative overflow-hidden">
+            <section className="py-8 bg-brand-blue relative overflow-hidden">
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-mustard/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
-                <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden mb-16 border border-gray-100 relative z-10">
+                <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden mb-8 border border-gray-100 relative z-10">
                     <div className="grid lg:grid-cols-2">
 
                         {/* Content Side */}
@@ -99,23 +313,21 @@ export function News() {
 
                         {/* Images Side */}
                         <div className="grid grid-rows-2 h-[400px] md:h-[500px] lg:h-auto">
-                            {/* Image 1: Comunidad San Juan Acul */}
                             <div className="relative bg-gray-200 overflow-hidden group">
                                 <img
                                     src={aculImg}
                                     alt="Comunidad San Juan Acul"
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    onError={(e) => e.currentTarget.style.display = 'none'}
+                                    onError={(e) => (e.currentTarget.style.display = "none")}
                                 />
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                             </div>
-                            {/* Image 2: Agencia Acul */}
                             <div className="relative bg-gray-300 overflow-hidden group">
                                 <img
                                     src={agenciaAculImg}
                                     alt="Agencia COMIF en Acul"
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    onError={(e) => e.currentTarget.style.display = 'none'}
+                                    onError={(e) => (e.currentTarget.style.display = "none")}
                                 />
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                             </div>
@@ -126,17 +338,16 @@ export function News() {
                 </div>
             </section>
 
-            {/* Milestones 2023 - 2024 */}
-            <section className="py-20 bg-brand-blue relative overflow-hidden">
+            {/* Hitos Institucionales */}
+            <section className="py-10 bg-brand-blue relative overflow-hidden">
                 <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-12">
-                        <h3 className="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Hitos <span className="text-brand-mustard">2023 – 2026</span></h3>
-                        <p className="text-brand-mustard uppercase tracking-[0.3em] font-black text-[10px] opacity-80">Logros Institucionales</p>
+                    <div className="text-center mb-8">
+                        <h3 className="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Hitos <span className="text-brand-mustard">Institucionales</span></h3>
+                        <p className="text-brand-mustard uppercase tracking-[0.3em] font-black text-[10px] opacity-80">Logros 2023 – 2026</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
-
                         {/* Agente BI Card */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -150,7 +361,6 @@ export function News() {
                                 </div>
                                 <h4 className="text-2xl font-black text-brand-blue uppercase tracking-tighter">Agente BI</h4>
                             </div>
-
                             <ul className="space-y-2">
                                 {[
                                     "Pago de remesas",
@@ -159,7 +369,7 @@ export function News() {
                                     "Pagos de convenios",
                                     "Pago de teléfonos",
                                     "Pago de transferencias",
-                                    "Retiros monetarios"
+                                    "Retiros monetarios",
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-brand-blue/80">
                                         <CheckCircle2 className="w-4 h-4 text-brand-mustard flex-shrink-0" />
@@ -183,7 +393,6 @@ export function News() {
                                 </div>
                                 <h4 className="text-2xl font-black text-brand-blue uppercase tracking-tighter">Apoyo Social</h4>
                             </div>
-
                             <div className="flex-grow flex flex-col justify-center text-center p-8 bg-brand-blue/5 rounded-3xl border border-brand-blue/5 mb-6">
                                 <span className="text-5xl font-black text-brand-blue mb-2">Q1,000</span>
                                 <p className="text-brand-blue/70 font-black text-xs uppercase tracking-[0.2em]">Beneficio por fallecimiento</p>
@@ -192,10 +401,8 @@ export function News() {
                                 Apoyo solidario entregado a la familia de cada asociado en momentos difíciles.
                             </p>
                         </motion.div>
-
                     </div>
                 </div>
-
                 </div>
             </section>
         </div>

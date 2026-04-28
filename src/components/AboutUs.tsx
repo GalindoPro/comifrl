@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, Target, Scale, Award } from "lucide-react";
+import { Users, Target, Scale, Award, Shield, CreditCard } from "lucide-react";
 import corazonIxilImg from "../assets/images/corazon_ixil.png";
 import raizIxilImg from "../assets/images/raiz_ixil.png";
 import misionImg from "../assets/images/mision.png";
@@ -8,7 +8,7 @@ import visionImg from "../assets/images/vision.png";
 export function AboutUs() {
     return (
         <div className="flex flex-col">
-            <section id="nosotros" className="py-20 bg-brand-blue overflow-hidden relative">
+            <section id="nosotros" className="py-10 bg-brand-blue overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3" />
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
@@ -20,8 +20,8 @@ export function AboutUs() {
                             className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col-reverse md:flex-row items-center gap-10"
                         >
                             <div className="flex-1">
-                                <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-6 text-center md:text-left uppercase tracking-tighter leading-none">Nebaj, <span className="text-brand-mustard">corazón ixil</span></h3>
-                                <p className="text-brand-blue/80 leading-relaxed text-base md:text-lg text-center md:text-left font-medium">
+                                <h3 className="text-lg md:text-3xl font-black text-brand-blue mb-4 text-center md:text-left uppercase tracking-tighter leading-tight">Nebaj, <span className="text-brand-mustard">Donde Nace la Cooperativa</span></h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-sm md:text-base text-center md:text-left font-medium">
                                     Santa María Nebaj, "Na’b’a’" en idioma ixil, significa ‘lugar donde nace el agua’. Es un municipio cultural y económico clave del departamento de Quiché, donde nuestras raíces se entrelazan con la historia de un pueblo resiliente.
                                 </p>
                             </div>
@@ -38,7 +38,7 @@ export function AboutUs() {
             </section>
 
             {/* Raíces ixiles y origen institucional - Light Contrast Section */}
-            <section className="py-16 bg-brand-blue overflow-hidden relative">
+            <section className="py-8 bg-brand-blue overflow-hidden relative">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
@@ -56,8 +56,8 @@ export function AboutUs() {
                                 />
                             </div>
                             <div className="flex-1">
-                                <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-6 text-center md:text-left uppercase tracking-tighter">Raíces ixiles y <span className="text-brand-mustard">origen institucional</span></h3>
-                                <p className="text-brand-blue/80 leading-relaxed text-lg md:text-xl text-center md:text-left italic font-medium">
+                                <h3 className="text-xl md:text-3xl font-black text-brand-blue mb-4 text-center md:text-left uppercase tracking-tighter">Ixil, <span className="text-brand-mustard">Origen de Confianza</span></h3>
+                                <p className="text-brand-blue/80 leading-relaxed text-base md:text-lg text-center md:text-left italic font-medium">
                                     "Desde <span className="text-brand-mustard font-black">2008</span>, 28 visionarios locales dieron vida a <span className="font-black not-italic text-brand-mustard underline decoration-brand-blue/20 underline-offset-4">COMIF, R.L.</span>, hoy referente de confianza en la región Ixil."
                                 </p>
                             </div>
@@ -67,7 +67,7 @@ export function AboutUs() {
             </section>
 
             {/* Misión & Visión - Dark Section */}
-            <section className="py-20 bg-brand-blue overflow-hidden relative">
+            <section className="py-10 bg-brand-blue overflow-hidden relative">
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-mustard/5 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -118,7 +118,7 @@ export function AboutUs() {
             </section>
 
             {/* Gobierno y Principios - Dark Section */}
-            <section className="py-16 bg-brand-blue overflow-hidden relative">
+            <section className="py-8 bg-brand-blue overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -172,6 +172,116 @@ export function AboutUs() {
                                 )) }
                             </div>
                         </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Directivos 2025 */}
+            <section className="py-10 bg-brand-blue overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+                <div className="container mx-auto px-4">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-8"
+                        >
+                            <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-2">
+                                Cuerpo <span className="text-brand-mustard">Directivo 2025</span>
+                            </h3>
+                            <div className="h-1 w-20 bg-brand-mustard mx-auto rounded-full" />
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {/* Consejo de Administración */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+                            >
+                                <div className="bg-brand-mustard px-6 py-4 flex items-center gap-3">
+                                    <Shield className="w-5 h-5 text-brand-blue flex-shrink-0" />
+                                    <h4 className="text-brand-blue font-black uppercase tracking-wider text-sm">
+                                        Consejo de Administración
+                                    </h4>
+                                </div>
+                                <ul className="divide-y divide-brand-blue/5">
+                                    {[
+                                        { cargo: "Presidenta", nombre: "Santa Isabela López Raymundo de Ramírez" },
+                                        { cargo: "Vicepresidente", nombre: "Juan Carlos Chel Matóm" },
+                                        { cargo: "Secretario", nombre: "Tomas Cedillo de Paz" },
+                                        { cargo: "Vocal I", nombre: "Eva Catarina De León Raymundo" },
+                                        { cargo: "Vocal II", nombre: "Catarina Terraza Guzmán" },
+                                    ].map((m, i) => (
+                                        <li key={i} className="flex items-center gap-3 px-6 py-3">
+                                            <Users className="w-4 h-4 text-brand-mustard flex-shrink-0" />
+                                            <div>
+                                                <p className="text-[11px] font-black text-brand-mustard uppercase tracking-widest">
+                                                    {m.cargo}
+                                                </p>
+                                                <p className="text-brand-blue font-semibold text-sm leading-tight">
+                                                    {m.nombre}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+
+                            {/* Comité de Crédito */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+                            >
+                                <div className="bg-brand-blue px-6 py-4 flex items-center gap-3">
+                                    <CreditCard className="w-5 h-5 text-brand-mustard flex-shrink-0" />
+                                    <h4 className="text-white font-black uppercase tracking-wider text-sm">
+                                        Comité de Crédito
+                                    </h4>
+                                </div>
+                                <ul className="divide-y divide-brand-blue/5">
+                                    {[
+                                        { cargo: "Presidenta", nombre: "María Santiago Ceto de Sánchez" },
+                                        { cargo: "Secretaria", nombre: "Magdalena Ileana Ceto Raymundo" },
+                                        { cargo: "Vocal", nombre: "Prof. Nicolas Pérez Guzaro" },
+                                    ].map((m, i) => (
+                                        <li key={i} className="flex items-center gap-3 px-6 py-3">
+                                            <Users className="w-4 h-4 text-brand-mustard flex-shrink-0" />
+                                            <div>
+                                                <p className="text-[11px] font-black text-brand-mustard uppercase tracking-widest">
+                                                    {m.cargo}
+                                                </p>
+                                                <p className="text-brand-blue font-semibold text-sm leading-tight">
+                                                    {m.nombre}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* Trayectoria */}
+                                <div className="px-6 py-5 bg-brand-blue/5 border-t border-brand-blue/10">
+                                    <p className="text-brand-blue/80 text-sm leading-relaxed font-medium italic">
+                                        "En los últimos{" "}
+                                        <span className="text-brand-mustard font-black not-italic">
+                                            7 años
+                                        </span>
+                                        , COMIF R.L. ha registrado superávit en cada ejercicio
+                                        fiscal, demostrando una gestión sólida y comprometida con
+                                        el bienestar de sus asociados. En 2025, los activos
+                                        crecieron un{" "}
+                                        <span className="text-brand-mustard font-black not-italic">
+                                            26.88%
+                                        </span>{" "}
+                                        respecto al año anterior."
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>

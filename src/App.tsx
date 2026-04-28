@@ -7,12 +7,13 @@ import { Quote } from "./components/Quote";
 import { News } from "./components/News";
 import { Affiliation } from "./components/Affiliation";
 import { Contact } from "./components/Contact";
-import { Agencies } from "./components/Agencies";
 import { AssemblyGalleryPage } from "./pages/AssemblyGalleryPage";
 import { Footer } from "./components/Footer";
 import { Preloader } from "./components/Preloader";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { FinancialPage } from "./pages/FinancialPage";
+import { MapsPage } from "./pages/MapsPage";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
       <Preloader />
       <div className="min-h-screen bg-brand-blue flex flex-col font-sans text-white">
         <Header />
-        <main className="flex-grow pt-36">
+        <main className="flex-grow pt-16 md:pt-20">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/nosotros" element={<AboutUs />} />
@@ -30,8 +31,10 @@ function App() {
             <Route path="/noticias" element={<News />} />
             <Route path="/afiliacion" element={<Affiliation />} />
             <Route path="/contacto" element={<Contact />} />
-            <Route path="/agencias" element={<Agencies />} />
+            {/* Ruta para visualización de mapas y ubicación exacta de agencias */}
+            <Route path="/maps" element={<MapsPage />} />
             <Route path="/asamblea" element={<AssemblyGalleryPage />} />
+            <Route path="/transparencia" element={<FinancialPage />} />
             {/* Add other routes as needed or use placeholders */}
             <Route path="*" element={<Home />} />
           </Routes>

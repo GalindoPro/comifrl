@@ -38,7 +38,7 @@ export function CTASection() {
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                                 <Link
-                                    to="/agencias"
+                                    to="/maps"
                                     className="bg-brand-blue/5 text-brand-blue border border-brand-blue/10 px-6 py-3 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-brand-blue/10 transition-all shadow-sm"
                                 >
                                     <Building2 className="w-5 h-5 text-brand-mustard" />

@@ -54,7 +54,7 @@ export function HomeIntro() {
                     </div>
                     <div className="flex-1 relative z-10 text-center md:text-left">
                         <h3 className="text-2xl md:text-4xl font-black text-brand-blue mb-3 leading-tight uppercase tracking-tighter">
-                            Raíces Ixiles y <span className="text-brand-mustard">Origen Institucional</span>
+                            Tradición Ixil, <span className="text-brand-mustard">Desarrollo Sostenible</span>
                         </h3>
                         <p className="text-brand-blue/80 leading-relaxed text-sm md:text-lg italic font-medium">
                             "Desde <span className="text-brand-mustard font-black not-italic border-b-2 border-brand-mustard/40">2008</span>, 28 visionarios locales dieron vida a <span className="text-brand-mustard font-black not-italic underline underline-offset-4 decoration-brand-blue/20">COMIF, R.L.</span>, hoy referente de <span className="text-brand-blue font-black not-italic uppercase tracking-wider">confianza</span> en la región Ixil."

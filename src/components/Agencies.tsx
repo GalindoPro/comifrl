@@ -9,12 +9,12 @@ const agencies = [
     {
         id: "central",
         subtitle: "Sede Principal",
-        name: "Agencia Central",
+        name: "Agencia Nebaj",
         address: "Cantón Vipila, Nebaj, Quiché, Guatemala",
         phone: "57481463",
         image: agenciaCentralImg,
-        mapLink: "https://www.google.com/maps/place/15%C2%B024'32.7%22N+91%C2%B008'44.6%22W/@15.4090833,-91.1457222,17z/",
-        mapEmbed: "https://maps.google.com/maps?q=15.4090833,-91.1457222&t=&z=17&ie=UTF8&iwloc=&output=embed",
+        mapLink: "https://maps.app.goo.gl/SPhLrcjaFL6Y978h8",
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.176449174542!2d-91.1457222!3d15.4090833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b8b002c2fe7bb%3A0x42e9fca3eeb4af6f!2sComif%20R.L.%20Nebaj!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
         bg: "bg-white border hover:border-brand-mustard/30 transition-all",
         textColor: "text-brand-blue",
         iconBtnBg: "bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10",
@@ -25,11 +25,11 @@ const agencies = [
         id: "chajul",
         subtitle: "Punto de Servicio",
         name: "Agencia Chajul",
-        address: "Cantón Ilom, Chajul, Quiché, Guatemala",
+        address: "Chajul, Quiché, Guatemala",
         phone: "30615489",
         image: agenciaChajulImg,
-        mapLink: "https://www.google.com/maps/place/15%C2%B029'08.6%22N+91%C2%B002'13.2%22W/@15.4857222,-91.037,17z/",
-        mapEmbed: "https://maps.google.com/maps?q=15.4857222,-91.037&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        mapLink: "https://maps.app.goo.gl/GHTEwFEgifNJYzeJ7",
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3828.166241315518!2d-91.0361975!3d15.4856671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b93006575575f%3A0x36c72b98bf17efea!2sComif%20R.L.!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
         bg: "bg-white border hover:border-brand-mustard/30 transition-all",
         textColor: "text-brand-blue",
         iconBtnBg: "bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10",
@@ -43,8 +43,8 @@ const agencies = [
         address: "Aldea Acul, Nebaj, Quiché, Guatemala",
         phone: "30371080",
         image: agenciaAculImg,
-        mapLink: "https://www.google.com/maps/place/15%C2%B024'21.1%22N+91%C2%B011'15.0%22W/@15.4058522,-91.1875071,17z/",
-        mapEmbed: "https://maps.google.com/maps?q=15.4058522,-91.1875071&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        mapLink: "https://maps.app.goo.gl/rUHy6q2v9SWXUoQU9",
+        mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.356241315518!2d-91.1900482!3d15.4058719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858b8002a79dc5b:0xa03f74ed03ba962!2sComif%20R.L.%20Acul!5e0!3m2!1ses-419!2sgt!4v1713650000000!5m2!1ses-419!2sgt",
         bg: "bg-white border hover:border-brand-mustard/30 transition-all",
         textColor: "text-brand-blue",
         iconBtnBg: "bg-brand-blue/5 text-brand-blue hover:bg-brand-blue/10",
@@ -64,24 +64,24 @@ export function Agencies() {
 
     return (
         <div className="flex flex-col">
-            <section id="agencias" className="py-16 bg-brand-blue relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+            <section id="agencias" className="py-10 bg-brand-blue relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand-mustard/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
 
                 {/* Header */}
-                <div className="text-center mb-12 max-w-3xl mx-auto">
+                <div className="text-center mb-8 max-w-3xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-block p-3 bg-brand-mustard/20 rounded-2xl mb-4"
+                        className="inline-block p-2.5 bg-brand-mustard/20 rounded-2xl mb-3"
                     >
-                        <MapPin className="w-8 h-8 text-brand-mustard" />
+                        <MapPin className="w-7 h-7 text-brand-mustard" />
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
+                        className="text-2xl md:text-5xl font-black text-white mb-3 uppercase tracking-tighter"
                     >
                         Nuestra <span className="text-brand-mustard">Presencia</span>
                     </motion.h2>
@@ -103,8 +103,8 @@ export function Agencies() {
             </section>
 
             {/* Agencies Grid */}
-            <section className="py-12 bg-brand-blue text-white relative overflow-hidden">
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
+            <section className="py-8 bg-brand-blue text-white relative overflow-hidden">
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-mustard/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2" />
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {agencies.map((agency) => (
@@ -152,7 +152,7 @@ export function Agencies() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()}
-                                        className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-[11px] font-black transition-all hover:scale-105 active:scale-95 shadow-lg ${agency.iconBtnBg}`}
+                                        className={`flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-[11px] font-black transition-all hover:scale-105 active:scale-95 shadow-lg bg-[#25D366] text-white`}
                                     >
                                         <MessageCircle className="w-4 h-4" />
                                         WhatsApp
@@ -303,7 +303,7 @@ export function Agencies() {
                                             href={`https://wa.me/502${selectedAgency.phone}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 ${selectedAgency.iconBtnBg}`}
+                                            className={`flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 bg-[#25D366] text-white shadow-lg`}
                                         >
                                             <MessageCircle className="w-6 h-6" />
                                             WhatsApp

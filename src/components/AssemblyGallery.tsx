@@ -14,13 +14,13 @@ import { useGallery } from "../hooks/useGallery";
 
 // ─── Images ────────────────────────────────────────────────────────────────
 // Coloca tus 6 fotos en:  src/assets/images/assembly/
-// con los nombres:        asamblea-1.jpg … asamblea-6.jpg
-import asamblea1 from "../assets/images/assembly/asamblea-1.jpg";
-import asamblea2 from "../assets/images/assembly/asamblea-2.jpg";
-import asamblea3 from "../assets/images/assembly/asamblea-3.jpg";
-import asamblea4 from "../assets/images/assembly/asamblea-4.jpg";
-import asamblea5 from "../assets/images/assembly/asamblea-5.jpg";
-import asamblea6 from "../assets/images/assembly/asamblea-6.jpg";
+// con los nombres:        asamblea-1.png … asamblea-6.png
+import asamblea1 from "../assets/images/assembly/asamblea-1.png";
+import asamblea2 from "../assets/images/assembly/asamblea-2.png";
+import asamblea3 from "../assets/images/assembly/asamblea-3.png";
+import asamblea4 from "../assets/images/assembly/asamblea-4.png";
+import asamblea5 from "../assets/images/assembly/asamblea-5.png";
+import asamblea6 from "../assets/images/assembly/asamblea-6.png";
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 const galleryPhotos: LightboxPhoto[] = [
