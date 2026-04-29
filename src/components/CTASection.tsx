@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, UserPlus, Building2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
     return (

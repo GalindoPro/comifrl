@@ -5,7 +5,6 @@ import {
     FileText,
     Download,
     CheckCircle,
-    Building2,
     TrendingUp,
     TrendingDown,
 } from "lucide-react";
@@ -44,8 +43,6 @@ const resultados = [
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 const fmtPercent = (v: number) => `${v.toFixed(2)}%`;
-
-const fmtShort = (v: number) => `${v}%`;
 
 const fmtBasic = (v: number) =>
     new Intl.NumberFormat("es-GT", {

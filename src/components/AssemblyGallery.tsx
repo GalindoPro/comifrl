@@ -1,9 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Camera,
   Users,
   ChevronRight,
-  Calendar,
   MapPin,
 } from "lucide-react";
 import { cn } from "../lib/utils";

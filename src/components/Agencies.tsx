@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, MessageCircle, Navigation, Building2, X, Phone, Clock } from "lucide-react";
 import agenciaCentralImg from "../assets/images/AgenciaCentral.png";
 import agenciaChajulImg from "../assets/images/AgenciaChajul.png";
 import agenciaAculImg from "../assets/images/AgenciaAcul.png";
+import { Clock, MapPin, MessageCircle, Navigation, Phone, X } from "lucide-react";
 
 const agencies = [
     {

@@ -4,8 +4,8 @@ import { ChevronRight, ChevronLeft, Calculator, TrendingUp, MapPin } from "lucid
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import hero1 from "../assets/images/tasa de interés anual.png";
-import hero2 from "../assets/images/fondo web.png";
-import hero3 from "../assets/images/mapa-web.png";
+import hero2 from "../assets/images/cuenta.png";
+import hero3 from "../assets/images/punto de presencia.png";
 
 const slides = [
     {
@@ -57,7 +57,7 @@ export function HeroCarousel() {
     return (
         <div className="flex flex-col w-full bg-white">
             <div 
-                className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[250px] md:h-[45vh] md:min-h-[350px] lg:h-[60vh] lg:min-h-[500px] pt-4 md:pt-8" 
+                className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[250px] md:h-[45vh] md:min-h-[350px] lg:h-[60vh] lg:min-h-[500px] pt-12 md:pt-16" 
                 id="inicio"
             >
                 {/* Slides Background */}
@@ -68,7 +68,7 @@ export function HeroCarousel() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="absolute inset-x-0 bottom-0 top-4 md:top-8"
+                        className="absolute inset-x-0 bottom-0 top-12 md:top-16"
                     >
                         <img
                             src={slides[current].image}
@@ -83,7 +83,7 @@ export function HeroCarousel() {
                 </AnimatePresence>
 
                 {/* Content Container */}
-                <div className="absolute bottom-8 md:bottom-12 left-4 md:left-12 z-10 flex flex-col items-start pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 z-10 flex flex-col items-start pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <motion.div
                         key={`btn-${current}`}
                         initial={{ opacity: 0, y: 20 }}
@@ -94,14 +94,14 @@ export function HeroCarousel() {
                         <Link
                             to={slides[current].link}
                             className={cn(
-                                "group/btn relative inline-flex items-center gap-2 backdrop-blur-sm border-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-[13px] md:text-lg font-bold transition-all duration-300 shadow-2xl hover:-translate-y-1 overflow-hidden",
+                                "group/btn relative inline-flex items-center gap-2 backdrop-blur-sm border-2 px-2.5 py-1 md:px-4 md:py-2 rounded-full text-[11px] md:text-sm font-bold transition-all duration-300 shadow-2xl hover:-translate-y-1 overflow-hidden",
                                 slides[current].btnClass,
                                 slides[current].shadowClass
                             )}
                             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}
                         >
                             <span className="relative z-10">{slides[current].buttonText}</span>
-                            <ChevronRight className="w-3 h-3 md:w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
+                            <ChevronRight className="w-2.5 h-2.5 md:w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
                 </div>
@@ -152,14 +152,14 @@ export function HeroCarousel() {
                             className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
                         >
                             <div className="flex items-center gap-3 lg:gap-4">
-                                <div className="bg-brand-mustard/10 w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue group-hover:bg-brand-mustard group-hover:text-white transition-colors duration-300 shrink-0">
+                                <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <Calculator className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
                                 <h3 className="text-sm lg:text-base font-black text-brand-blue uppercase tracking-tighter m-0">
                                     24% Anual
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-white transition-colors">
+                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
                                 Generar Tabla
                                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>
@@ -173,14 +173,14 @@ export function HeroCarousel() {
                         >
                             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-mustard/10 rounded-full blur-xl translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-mustard/20 transition-colors" />
                             <div className="flex items-center gap-3 lg:gap-4 relative z-10">
-                                <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-transform duration-300 shrink-0">
+                                <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
                                 <h3 className="text-sm lg:text-base font-black text-white uppercase tracking-tighter m-0">
                                     14% de Interés
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-brand-blue transition-colors relative z-10">
+                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all relative z-10">
                                 Calcular Rendimiento
                                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>
@@ -192,14 +192,14 @@ export function HeroCarousel() {
                             className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
                         >
                             <div className="flex items-center gap-3 lg:gap-4">
-                                <div className="bg-brand-mustard/10 w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-brand-blue group-hover:bg-brand-mustard group-hover:text-white transition-colors duration-300 shrink-0">
+                                <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <MapPin className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
                                 <h3 className="text-sm lg:text-base font-black text-brand-blue uppercase tracking-tighter m-0">
                                     Nuestras Agencias
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-brand-mustard font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard/10 px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg group-hover:bg-brand-mustard group-hover:text-white transition-colors">
+                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
                                 Ver Ubicaciones
                                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>

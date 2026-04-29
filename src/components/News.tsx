@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Users, Heart, Banknote, CheckCircle2, Building,  TrendingUp } from "lucide-react";
+import { MapPin, Users, Banknote, CheckCircle2, Building,  TrendingUp } from "lucide-react";
 import aculImg from "../assets/images/acul.jpg";
 import agenciaAculImg from "../assets/images/agencia_acul.jpg";
 import { FinancialSummary } from "./FinancialSummary";

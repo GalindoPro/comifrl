@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Clock, Calendar, ArrowRight, MessageCircle } from "lucide-react";
+import { Phone, Clock, ArrowRight } from "lucide-react";
 
 export function Contact() {
     return (
