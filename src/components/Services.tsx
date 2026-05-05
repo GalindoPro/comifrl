@@ -15,13 +15,13 @@ const services = [
     {
         icon: <PiggyBank className="w-10 h-10" />,
         title: "Cuentas de Ahorro",
-        subtitle: "Ahorro seguro y rentable",
-        description: "Ahorra con confianza y obtén rendimientos competitivos.",
+        subtitle: "Tu dinero seguro, creciendo contigo",
+        description: "",
         benefits: [
-            "Tasas de interés competitivas",
-            "Sin comisiones de mantenimiento",
-            "Retiros disponibles",
-            "Seguridad garantizada",
+            "Ahorro a Plazo Fijo: 14%",
+            "Ahorro Programado: 10.5%",
+            "Ahorro Corriente: 7%",
+            "Ahorro Infanto-Infantil: 7%",
         ],
         color: "bg-brand-mustard text-brand-blue shadow-brand-mustard/20",
         iconColor: "text-brand-blue",
@@ -69,7 +69,7 @@ const tasas = [
     { producto: "Préstamos", tasa: 24.0 },
     { producto: "Ahorro Programado", tasa: 10.5 },
     { producto: "Ahorro Corriente", tasa: 7.0 },
-    { producto: "Ahorro Infanto-Juvenil", tasa: 7.0 },
+    { producto: "Ahorro Infanto-Infantil", tasa: 7.0 },
     { producto: "Ahorro Plazo Fijo", tasa: 14.0 },
     { producto: "Plazo Fijo 6 meses", tasa: 6.0 },
 ];
@@ -150,27 +150,38 @@ export function Services() {
                                     </div>
                                     <div className="flex flex-col">
                                         <h3 className="text-base font-bold leading-tight">{service.title}</h3>
-                                        <p className="text-[10px] font-medium opacity-90">{service.subtitle}</p>
+                                        {service.subtitle && (
+                                            <p className="text-[10px] font-medium opacity-90">{service.subtitle}</p>
+                                        )}
                                     </div>
                                 </div>
 
                                 {/* Card Body */}
                                 <div className="p-3 md:p-4 flex-grow flex flex-col bg-white">
-                                    <p className="text-brand-blue/80 mb-3 text-[11px] md:text-xs font-semibold leading-tight">
-                                        {service.description}
-                                    </p>
+                                    {service.description && (
+                                        <p className="text-brand-blue/80 mb-3 text-[11px] md:text-xs font-semibold leading-tight">
+                                            {service.description}
+                                        </p>
+                                    )}
                                     <ul className="space-y-1.5 mb-4 flex-grow">
                                         {service.benefits.map((benefit, i) => (
                                             <li
                                                 key={i}
-                                                className="flex items-start gap-2 text-brand-blue/90"
+                                                className="flex items-start gap-2 text-brand-blue/90 w-full"
                                             >
                                                 <CheckCircle2
                                                     className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${service.iconColor}`}
                                                 />
-                                                <span className="text-[11px] font-bold tracking-tight leading-tight">
-                                                    {benefit}
-                                                </span>
+                                                <div className="flex justify-between items-start w-full gap-2">
+                                                    <span className="text-[11px] font-bold tracking-tight leading-tight">
+                                                        {benefit.includes(":") ? benefit.split(":")[0] + ":" : benefit}
+                                                    </span>
+                                                    {benefit.includes(":") && (
+                                                        <span className="text-[11px] font-black text-brand-mustard whitespace-nowrap">
+                                                            {benefit.split(":")[1].trim()}
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </li>
                                         ))}
                                     </ul>
@@ -255,9 +266,11 @@ export function Services() {
                                         width={140}
                                         tick={{
                                             fill: "#0F1249",
-                                            fontSize: 12,
+                                            fontSize: 11,
                                             fontWeight: 700,
+                                            textAnchor: "start",
                                         }}
+                                        dx={-135}
                                         axisLine={false}
                                         tickLine={false}
                                     />
