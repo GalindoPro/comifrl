@@ -94,23 +94,24 @@ const news2025 = [
         ),
     },
     {
-        categoria: "Financiamiento",
-        fecha: "Diciembre 2025",
-        titulo: "Gestión estratégica de fondos con FEDERURAL",
+        categoria: "Alianza Estratégica",
+        fecha: "Enero 2026",
+        titulo: "ALIANZA COOPERATIVA PARA EL FUTURO",
         resumen:
-            "El Consejo diversificó las captaciones destinando el 75% a gestión con FEDERURAL R.L. y el 25% a inversiones a Plazo Fijo.",
-        icon: <Building className="w-4 h-4 text-brand-mustard" />,
+            "La unión entre COMIF R.L. y FEDERURAL garantiza que los recursos de los socios se administren con responsabilidad y visión de largo plazo.",
+        icon: <Users className="w-4 h-4 text-brand-mustard" />,
         chart: (
             <div className="mt-3">
-                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
-                    Distribución de fondos
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1 text-center">
+                    Ejes de la alianza
                 </p>
                 <ResponsiveContainer width="100%" height={80}>
                     <PieChart>
                         <Pie
                             data={[
-                                { name: "FEDERURAL", value: 75 },
-                                { name: "Plazo Fijo", value: 25 },
+                                { name: "Gestión Cooperativa", value: 33.3 },
+                                { name: "Inversión Segura", value: 33.3 },
+                                { name: "Desarrollo Comunitario", value: 33.3 },
                             ]}
                             cx="50%"
                             cy="50%"
@@ -121,22 +122,26 @@ const news2025 = [
                         >
                             <Cell fill="#0F1249" />
                             <Cell fill="#BF9903" />
+                            <Cell fill="#434892" />
                         </Pie>
                         <Tooltip
                             formatter={(v) =>
                                 typeof v === "number"
-                                    ? `${v}%`
+                                    ? `Equilibrio`
                                     : String(v)
                             }
                         />
                     </PieChart>
                 </ResponsiveContainer>
-                <div className="flex justify-center gap-4 text-[10px] font-bold text-brand-blue/60 -mt-1">
+                <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-[8px] font-black text-brand-blue/60 -mt-1">
                     <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-brand-blue inline-block" />FEDERURAL
+                        <span className="w-2 h-2 rounded-full bg-brand-blue inline-block" />GESTIÓN
                     </span>
                     <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-brand-mustard inline-block" />Plazo Fijo
+                        <span className="w-2 h-2 rounded-full bg-brand-mustard inline-block" />INVERSIÓN
+                    </span>
+                    <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-[#434892] inline-block" />DESARROLLO
                     </span>
                 </div>
             </div>

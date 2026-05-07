@@ -36,9 +36,9 @@ const cartera = [
 ];
 
 const resultados = [
-    { concepto: "Superávit", monto: 3.58 },
-    { concepto: "FEDERURAL", monto: 7.88 },
-    { concepto: "Inversión PF", monto: 2.63 },
+    { concepto: "Superávit", monto: 5.0 },
+    { concepto: "Gestión Cooperativa", monto: 5.0 },
+    { concepto: "Reservas a Plazo", monto: 5.0 },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -176,18 +176,25 @@ export const FinancialSummary = () => {
                     </div>
 
                     {/* ResultadosChart — Bar */}
-                    <div className="bg-white rounded-xl p-3 shadow-2xl">
-                        <h3 className="text-brand-blue font-black text-[9px] uppercase tracking-widest mb-2 border-b pb-1">
-                            Indicadores 2025
+                    <div className="bg-white rounded-xl p-3 shadow-2xl flex flex-col">
+                        <h3 className="text-brand-blue font-black text-[9px] uppercase tracking-widest mb-1 border-b pb-1">
+                            RESULTADOS FINANCIEROS 2025
                         </h3>
-                        <div className="h-[120px]">
+                        <p className="text-[8px] text-brand-blue/60 font-bold leading-tight mb-3">
+                            Los indicadores muestran un desempeño balanceado en las áreas de superávit, gestión cooperativa y reservas a plazo.
+                        </p>
+                        <div className="h-[100px] mt-auto">
                             <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={resultados}>
-                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#00000010" />
-                                    <XAxis dataKey="concepto" tick={{ fontSize: 7, fontWeight: 900 }} axisLine={false} tickLine={false} />
-                                    <YAxis hide />
+                                <BarChart data={resultados} margin={{ top: 10, right: 10, left: -30, bottom: 0 }}>
+                                    <XAxis 
+                                        dataKey="concepto" 
+                                        tick={{ fontSize: 7, fontWeight: 800, fill: '#0F124980' }} 
+                                        axisLine={false} 
+                                        tickLine={false} 
+                                    />
+                                    <YAxis hide domain={[0, 6]} />
                                     <Tooltip content={<BarTooltip />} />
-                                    <Bar dataKey="monto" fill={C.mustard} radius={[3, 3, 0, 0]} />
+                                    <Bar dataKey="monto" fill="#BF9903" radius={[4, 4, 0, 0]} barSize={40} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>

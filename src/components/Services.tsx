@@ -31,7 +31,7 @@ const services = [
     },
     {
         icon: <Wallet className="w-10 h-10" />,
-        title: "Créditos Personales",
+        title: "Crédito Fiduciario",
         subtitle: "Financiamiento flexible",
         description: "Apoyo inmediato para tus proyectos personales y familiares.",
         benefits: [
@@ -48,7 +48,7 @@ const services = [
     },
     {
         icon: <Home className="w-10 h-10" />,
-        title: "Créditos de Vivienda",
+        title: "Crédito Hipotecario",
         subtitle: "Tu casa, tu futuro",
         description: "Haz realidad el sueño de tu hogar con nuestro financiamiento.",
         benefits: [
@@ -66,12 +66,10 @@ const services = [
 ];
 
 const tasas = [
-    { producto: "Préstamos", tasa: 24.0 },
-    { producto: "Ahorro Programado", tasa: 10.5 },
-    { producto: "Ahorro Corriente", tasa: 7.0 },
-    { producto: "Ahorro Infanto-Infantil", tasa: 7.0 },
-    { producto: "Ahorro Plazo Fijo", tasa: 14.0 },
-    { producto: "Plazo Fijo 6 meses", tasa: 6.0 },
+    { producto: "Ahorro Programado", tasa: 10.5, crecimiento: "+12%" },
+    { producto: "Ahorro Corriente", tasa: 7.0, crecimiento: "+9%" },
+    { producto: "Ahorro Infanto-Infantil", tasa: 7.0, crecimiento: "+7%" },
+    { producto: "Ahorro Plazo Fijo", tasa: 14.0, crecimiento: "+46%" },
 ];
 
 const CustomTooltipTasas = ({
@@ -80,14 +78,18 @@ const CustomTooltipTasas = ({
     label,
 }: {
     active?: boolean;
-    payload?: { value: number }[];
+    payload?: { value: number; payload: any }[];
     label?: string;
 }) => {
     if (active && payload && payload.length) {
+        const data = payload[0].payload;
         return (
             <div className="bg-brand-blue text-white px-3 py-2 rounded-lg shadow-xl text-xs font-bold border border-brand-mustard/40">
                 <p className="mb-0.5 text-white/70">{label}</p>
-                <p className="text-brand-mustard">{payload[0].value}% anual</p>
+                <div className="flex flex-col gap-0.5">
+                    <p className="text-brand-mustard">Interés: {payload[0].value}% anual</p>
+                    <p className="text-white">Crecimiento: <span className="text-green-400">{data.crecimiento}</span></p>
+                </div>
             </div>
         );
     }
@@ -251,6 +253,7 @@ export function Services() {
                                     <XAxis
                                         type="number"
                                         domain={[0, 30]}
+                                        ticks={[0, 8, 16, 24, 30]}
                                         tickFormatter={(v) => `${v}%`}
                                         tick={{
                                             fill: "#0F124980",
