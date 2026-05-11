@@ -2,7 +2,17 @@ import { motion } from "framer-motion";
 import { Counter } from "./Counter";
 import { Check } from "lucide-react";
 
-const stats = [
+interface Stat {
+    value: number;
+    decimals: number;
+    suffix: string;
+    title: string;
+    subtitle: string;
+    highlight: boolean;
+    isGoal?: boolean;
+}
+
+const stats: Stat[] = [
     {
         value: 53,
         decimals: 0,
@@ -70,7 +80,7 @@ export function Stats2025() {
                                     : "bg-white border border-white/10"
                             }`}
                         >
-                            {(stat as any).isGoal ? (
+                        {stat.isGoal ? (
                                 <div className="relative flex items-center justify-center w-12 h-12 mb-1">
                                     <svg className="w-full h-full transform -rotate-90">
                                         <circle
@@ -106,6 +116,51 @@ export function Stats2025() {
                                         >
                                             <Check className="w-5 h-5 text-brand-blue" strokeWidth={4} />
                                         </motion.div>
+                                    </div>
+                                </div>
+                            ) : stat.title === "Crecimiento en activos" ? (
+                                <div className="flex flex-col items-center justify-center py-1">
+                                    <div className="flex items-end gap-1 mb-1.5 h-10">
+                                        <div className="flex flex-col items-center">
+                                            <motion.div 
+                                                initial={{ height: 0 }}
+                                                whileInView={{ height: '16px' }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 1, delay: 0.5 }}
+                                                className="w-2 bg-brand-mustard/30 rounded-t-sm"
+                                            />
+                                            <span className="text-[6px] font-bold text-brand-blue/40 mt-0.5">2024</span>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <motion.div 
+                                                initial={{ height: 0 }}
+                                                whileInView={{ height: '32px' }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 1, delay: 0.7 }}
+                                                className="w-2 bg-brand-mustard rounded-t-sm relative"
+                                            >
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    whileInView={{ opacity: 1 }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: 1.5 }}
+                                                    className="absolute -top-3 left-1/2 -translate-x-1/2 text-[7px] font-black text-brand-mustard"
+                                                >
+                                                    ↑
+                                                </motion.div>
+                                            </motion.div>
+                                            <span className="text-[6px] font-black text-brand-blue mt-0.5">2025</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-0.5 mt-1">
+                                        <div className="flex items-center gap-1">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-brand-mustard/30" />
+                                            <span className="text-[7px] font-black text-brand-blue/40 uppercase">2024 Con éxito</span>
+                                        </div>
+                                        <div className="flex items-center gap-1">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-brand-mustard" />
+                                            <span className="text-[7px] font-black text-brand-mustard uppercase">2025 Supera al anterior</span>
+                                        </div>
                                     </div>
                                 </div>
                             ) : (

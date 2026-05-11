@@ -9,14 +9,13 @@ import {
     Tooltip,
     ResponsiveContainer,
     Cell,
+    LabelList,
 } from "recharts";
 
 const services = [
     {
         icon: <PiggyBank className="w-10 h-10" />,
         title: "Cuentas de Ahorro",
-        subtitle: "Tu dinero seguro, creciendo contigo",
-        description: "",
         benefits: [
             "Ahorro a Plazo Fijo: 14%",
             "Ahorro Programado: 10.5%",
@@ -32,63 +31,56 @@ const services = [
     {
         icon: <Wallet className="w-10 h-10" />,
         title: "Crédito Fiduciario",
-        subtitle: "Financiamiento flexible",
-        description: "Apoyo inmediato para tus proyectos personales y familiares.",
         benefits: [
             "Atención inmediata",
             "Plazos flexibles hasta 60 meses",
             "Aprobación rápida",
             "Sin penalización por pago",
         ],
-        color: "bg-white text-brand-blue border-b border-gray-100",
-        iconColor: "text-brand-mustard",
+        color: "bg-brand-mustard text-brand-blue shadow-brand-mustard/20",
+        iconColor: "text-brand-blue",
         buttonText: "Solicitar crédito",
-        buttonColor: "bg-brand-mustard hover:bg-brand-mustard/90 text-white",
+        buttonColor: "bg-brand-blue hover:bg-brand-blue/80 text-white",
         delay: 0.1,
     },
     {
         icon: <Home className="w-10 h-10" />,
         title: "Crédito Hipotecario",
-        subtitle: "Tu casa, tu futuro",
-        description: "Haz realidad el sueño de tu hogar con nuestro financiamiento.",
         benefits: [
             "Financiamiento hasta el 80%",
             "Plazos hasta 6-15 años mayor = Q.500,000.00",
             "Tasas competitivas",
             "Asesoría personalizada",
         ],
-        color: "bg-white text-brand-blue border-b border-gray-100",
-        iconColor: "text-brand-mustard",
+        color: "bg-brand-mustard text-brand-blue shadow-brand-mustard/20",
+        iconColor: "text-brand-blue",
         buttonText: "Solicitar crédito",
-        buttonColor: "bg-brand-mustard hover:bg-brand-mustard/90 text-white",
+        buttonColor: "bg-brand-blue hover:bg-brand-blue/80 text-white",
         delay: 0.2,
     },
 ];
 
 const tasas = [
-    { producto: "Ahorro Programado", tasa: 10.5, crecimiento: "+12%" },
-    { producto: "Ahorro Corriente", tasa: 7.0, crecimiento: "+9%" },
-    { producto: "Ahorro Infanto-Infantil", tasa: 7.0, crecimiento: "+7%" },
-    { producto: "Ahorro Plazo Fijo", tasa: 14.0, crecimiento: "+46%" },
+    { producto: "Ahorro Programado", tasa: 10.5, crecimiento: 12, label: "+12%" },
+    { producto: "Ahorro Corriente", tasa: 7.0, crecimiento: 9, label: "+9%" },
+    { producto: "Ahorro Infanto-Infantil", tasa: 7.0, crecimiento: 7, label: "+7%" },
+    { producto: "Ahorro Plazo Fijo", tasa: 14.0, crecimiento: 46, label: "+46%" },
 ];
 
 const CustomTooltipTasas = ({
     active,
     payload,
-    label,
 }: {
     active?: boolean;
     payload?: { value: number; payload: any }[];
-    label?: string;
 }) => {
     if (active && payload && payload.length) {
         const data = payload[0].payload;
         return (
             <div className="bg-brand-blue text-white px-3 py-2 rounded-lg shadow-xl text-xs font-bold border border-brand-mustard/40">
-                <p className="mb-0.5 text-white/70">{label}</p>
                 <div className="flex flex-col gap-0.5">
-                    <p className="text-brand-mustard">Interés: {payload[0].value}% anual</p>
-                    <p className="text-white">Crecimiento: <span className="text-green-400">{data.crecimiento}</span></p>
+                    <p className="text-brand-mustard font-black text-sm">Crecimiento: {data.label}</p>
+                    <p className="text-white/80 font-medium">Interés Actual: {data.tasa}% anual</p>
                 </div>
             </div>
         );
@@ -252,12 +244,12 @@ export function Services() {
                                     />
                                     <XAxis
                                         type="number"
-                                        domain={[0, 30]}
-                                        ticks={[0, 8, 16, 24, 30]}
+                                        domain={[0, 50]}
+                                        ticks={[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]}
                                         tickFormatter={(v) => `${v}%`}
                                         tick={{
                                             fill: "#0F124980",
-                                            fontSize: 11,
+                                            fontSize: 9,
                                             fontWeight: 600,
                                         }}
                                         axisLine={{ stroke: "#0F124920" }}
@@ -279,7 +271,7 @@ export function Services() {
                                     />
                                     <Tooltip content={<CustomTooltipTasas />} />
                                     <Bar
-                                        dataKey="tasa"
+                                        dataKey="crecimiento"
                                         radius={[0, 6, 6, 0]}
                                         fill="url(#tasaGradient)"
                                     >
@@ -292,30 +284,6 @@ export function Services() {
                                     </Bar>
                                 </BarChart>
                             </ResponsiveContainer>
-                        </motion.div>
-
-                        {/* Growth Badges */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="flex flex-wrap gap-2 justify-center mt-3"
-                        >
-                            <div className="flex items-center gap-2 bg-white shadow-xl px-3 py-1.5 rounded-lg border border-gray-100">
-                                <TrendingUp className="w-3 h-3 text-brand-mustard flex-shrink-0" />
-                                <span className="text-brand-blue font-bold text-[10px]">
-                                    Depósito a Plazo Fijo creció{" "}
-                                    <span className="text-brand-mustard font-black">+46%</span>
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white shadow-xl px-3 py-1.5 rounded-lg border border-gray-100">
-                                <TrendingUp className="w-3 h-3 text-brand-mustard flex-shrink-0" />
-                                <span className="text-brand-blue font-bold text-[10px]">
-                                    Ahorro Corriente creció{" "}
-                                    <span className="text-brand-mustard font-black">+9%</span>
-                                </span>
-                            </div>
                         </motion.div>
                     </div>
                 </div>

@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { MapPin, Users, Banknote, CheckCircle2, Building,  TrendingUp } from "lucide-react";
 import aculImg from "../assets/images/acul.jpg";
 import agenciaAculImg from "../assets/images/agencia_acul.jpg";
-import { FinancialSummary } from "./FinancialSummary";
 import {
     BarChart,
     Bar,
@@ -49,14 +48,14 @@ const news2025 = [
                 <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
                     Colocación vs total cartera
                 </p>
-                <div className="w-full bg-brand-blue/10 rounded-full h-3 mb-1.5">
+                <div className="w-full bg-brand-blue/10 rounded-full h-3 mb-1.5 overflow-hidden">
                     <div
-                        className="bg-brand-mustard h-3 rounded-full transition-all duration-700"
+                        className="bg-brand-blue h-3 rounded-full transition-all duration-700 shadow-sm"
                         style={{ width: "53%" }}
                     />
                 </div>
-                <div className="flex justify-between text-[10px] font-bold text-brand-blue/60">
-                    <span className="text-brand-mustard">53% colocados</span>
+                <div className="flex justify-between text-[10px] font-black text-brand-blue/60">
+                    <span className="text-brand-blue">53% colocados</span>
                     <span>del total de cartera</span>
                 </div>
             </div>
@@ -72,24 +71,32 @@ const news2025 = [
         chart: (
             <div className="mt-3">
                 <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
-                    Crecimiento de activos
+                    Comparativa de Activos
                 </p>
-                <ResponsiveContainer width="100%" height={80}>
-                    <BarChart
-                        data={[
-                            { año: "2024", valor: 100 },
-                            { año: "2025", valor: 126.88 },
-                        ]}
-                        margin={{ top: 0, right: 0, left: -20, bottom: 0 }}
-                    >
-                        <XAxis dataKey="año" tick={{ fill: "#0F1249", fontSize: 10, fontWeight: 700 }} axisLine={false} tickLine={false} />
-                        <Tooltip content={<MiniTooltip suffix="%" />} />
-                        <Bar dataKey="valor" radius={[4, 4, 0, 0]}>
-                            <Cell fill="#0F1249" />
-                            <Cell fill="#BF9903" />
-                        </Bar>
-                    </BarChart>
-                </ResponsiveContainer>
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                        <div className="flex-grow bg-brand-blue/5 h-3 rounded-full overflow-hidden">
+                            <motion.div 
+                                initial={{ width: 0 }}
+                                whileInView={{ width: '60%' }}
+                                viewport={{ once: true }}
+                                className="bg-brand-blue/40 h-full"
+                            />
+                        </div>
+                        <span className="text-[8px] font-black text-brand-blue/50 uppercase whitespace-nowrap">2024 Con éxito</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="flex-grow bg-brand-blue/5 h-3 rounded-full overflow-hidden">
+                            <motion.div 
+                                initial={{ width: 0 }}
+                                whileInView={{ width: '90%' }}
+                                viewport={{ once: true }}
+                                className="bg-brand-blue h-full"
+                            />
+                        </div>
+                        <span className="text-[8px] font-black text-brand-blue uppercase whitespace-nowrap">2025 Supera al anterior</span>
+                    </div>
+                </div>
             </div>
         ),
     },
@@ -181,26 +188,26 @@ export function News() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.08, duration: 0.5 }}
-                                    className="bg-white rounded-xl shadow-xl p-4 flex flex-col border border-gray-100 hover:border-brand-mustard/30 transition-all duration-300"
+                                    className="bg-brand-mustard rounded-xl shadow-xl p-4 flex flex-col border border-white/20 hover:shadow-2xl transition-all duration-300 group"
                                 >
                                     <div className="flex items-center gap-2 mb-1.5">
-                                        <div className="bg-brand-mustard/10 p-1 rounded-lg">
+                                        <div className="bg-brand-blue/10 p-1 rounded-lg">
                                             {item.icon}
                                         </div>
-                                        <span className="text-[9px] font-black text-brand-mustard uppercase tracking-widest">
+                                        <span className="text-[9px] font-black text-brand-blue uppercase tracking-widest">
                                             {item.categoria}
                                         </span>
-                                        <span className="ml-auto text-[8px] text-brand-blue/40 font-bold">
+                                        <span className="ml-auto text-[8px] text-brand-blue/60 font-bold">
                                             {item.fecha}
                                         </span>
                                     </div>
                                     <h4 className="text-brand-blue font-black text-xs leading-snug mb-1 uppercase tracking-tight">
                                         {item.titulo}
                                     </h4>
-                                    <p className="text-brand-blue/70 text-[10px] leading-tight font-medium flex-grow line-clamp-2">
+                                    <p className="text-brand-blue/80 text-[10px] leading-tight font-bold flex-grow line-clamp-2">
                                         {item.resumen}
                                     </p>
-                                    <div className="mt-2">
+                                    <div className="mt-2 bg-white rounded-lg p-2 shadow-inner">
                                         {item.chart}
                                     </div>
                                 </motion.div>
@@ -324,8 +331,6 @@ export function News() {
                 </div>
             </section>
 
-            {/* Financial Transparency Integrated */}
-            <FinancialSummary />
         </div>
     );
 }

@@ -1,22 +1,15 @@
 import { motion } from "framer-motion";
 import {
-    DollarSign,
     Calendar,
     FileText,
     Download,
     CheckCircle,
-    TrendingUp,
-    TrendingDown,
 } from "lucide-react";
 import { financialData } from "../types/financial.types";
 import {
     PieChart,
     Pie,
     Cell,
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
@@ -34,10 +27,16 @@ const cartera = [
     { name: "Cartera vigente", value: 58.91, color: C.blue },
 ];
 
-const resultados = [
-    { concepto: "Superávit", monto: 5.0 },
-    { concepto: "Gestión Cooperativa", monto: 5.0 },
-    { concepto: "Reservas a Plazo", monto: 5.0 },
+const egresosBreakdown = [
+    { name: "Gastos Operativos", value: 40, color: C.blue },
+    { name: "Colocación de Créditos", value: 26.37, color: C.mustard },
+    { name: "Otros Gastos", value: 10, color: C.gold },
+];
+
+const reservasFondos = [
+    { concepto: "Reserva Legal", monto: 5.0 },
+    { concepto: "Educación", monto: 5.0 },
+    { concepto: "Bienestar Social", monto: 5.0 },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -66,23 +65,6 @@ const PieTooltip = ({
     );
 };
 
-const BarTooltip = ({
-    active,
-    payload,
-    label,
-}: {
-    active?: boolean;
-    payload?: { value: number }[];
-    label?: string;
-}) => {
-    if (!active || !payload?.length) return null;
-    return (
-        <div className="bg-brand-blue text-white text-xs px-3 py-2 rounded-lg shadow-xl border border-brand-mustard/30">
-            <p className="font-bold text-brand-mustard mb-0.5">{label}</p>
-            <p>{fmtPercent(payload[0].value)}</p>
-        </div>
-    );
-};
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export const FinancialSummary = () => {
@@ -110,26 +92,17 @@ export const FinancialSummary = () => {
                 </motion.div>
 
                 {/* ── KPI Cards ────────────────────────────────────────────── */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                    {[
-                        { label: "Ingresos", val: financialData.totalIncome, icon: <TrendingUp size={20} /> },
-                        { label: "Egresos", val: financialData.totalExpenses, icon: <TrendingDown size={20} /> },
-                        { label: "Superávit", val: financialData.netResult, icon: <DollarSign size={20} /> },
-                    ].map((kpi, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-brand-mustard rounded-xl p-3 shadow-xl text-brand-blue"
-                        >
-                            <div className="flex items-center gap-2 mb-1 opacity-60">
-                                {kpi.icon}
-                                <span className="text-[8px] font-black uppercase tracking-widest">{kpi.label}</span>
-                            </div>
-                            <p className="text-sm md:text-lg font-black">{fmtBasic(kpi.val)}%</p>
-                        </motion.div>
-                    ))}
+                <div className="bg-brand-mustard rounded-2xl p-4 md:p-6 shadow-2xl mb-4 text-brand-blue relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+                        <div className="text-center md:text-left">
+                            <h3 className="text-2xl md:text-4xl font-black leading-tight uppercase text-white">Balances <span className="text-brand-blue">2025</span></h3>
+                        </div>
+                        <div className="bg-brand-blue text-brand-mustard px-6 py-3 rounded-xl shadow-lg flex flex-col items-center">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Superávit Neto</span>
+                            <span className="text-2xl font-black">{fmtBasic(23.63)}%</span>
+                        </div>
+                    </div>
                 </div>
 
                 {/* ── Period info ───────────────────────────────────────────── */}
@@ -174,28 +147,51 @@ export const FinancialSummary = () => {
                         </div>
                     </div>
 
-                    {/* ResultadosChart — Bar */}
+                    {/* Egresos Breakdown — Pie */}
                     <div className="bg-white rounded-xl p-3 shadow-2xl flex flex-col">
                         <h3 className="text-brand-blue font-black text-[9px] uppercase tracking-widest mb-1 border-b pb-1">
-                            RESULTADOS FINANCIEROS 2025
+                            Distribución de Egresos 2025
                         </h3>
-                        <p className="text-[8px] text-brand-blue/60 font-bold leading-tight mb-3">
-                            Los indicadores muestran un desempeño balanceado en las áreas de superávit, gestión cooperativa y reservas a plazo.
+                        <p className="text-[8px] text-brand-blue/60 font-bold leading-tight mb-2">
+                            Muestra cómo se invierte el capital en la cooperativa para el beneficio de todos.
                         </p>
-                        <div className="h-[100px] mt-auto">
+                        <div className="h-[120px]">
                             <ResponsiveContainer width="100%" height="100%">
-                                <BarChart data={resultados} margin={{ top: 10, right: 10, left: -30, bottom: 0 }}>
-                                    <XAxis 
-                                        dataKey="concepto" 
-                                        tick={{ fontSize: 7, fontWeight: 800, fill: '#0F124980' }} 
-                                        axisLine={false} 
-                                        tickLine={false} 
-                                    />
-                                    <YAxis hide domain={[0, 6]} />
-                                    <Tooltip content={<BarTooltip />} />
-                                    <Bar dataKey="monto" fill="#BF9903" radius={[4, 4, 0, 0]} barSize={40} />
-                                </BarChart>
+                                <PieChart>
+                                    <Pie data={egresosBreakdown} cx="50%" cy="50%" outerRadius={50} paddingAngle={5} dataKey="value">
+                                        {egresosBreakdown.map((entry, i) => <Cell key={`e-${i}`} fill={entry.color} />)}
+                                    </Pie>
+                                    <Tooltip content={<PieTooltip />} />
+                                </PieChart>
                             </ResponsiveContainer>
+                        </div>
+                        <div className="grid grid-cols-1 gap-1 mt-auto">
+                            {egresosBreakdown.map((d, i) => (
+                                <div key={i} className="flex items-center justify-between text-[7px] font-black uppercase text-brand-blue/80">
+                                    <div className="flex items-center gap-1">
+                                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: d.color }} />
+                                        <span>{d.name}</span>
+                                    </div>
+                                    <span className="text-brand-mustard">{fmtPercent(d.value)}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Fondos y Reservas — Custom List */}
+                    <div className="bg-white rounded-xl p-3 shadow-2xl flex flex-col">
+                        <h3 className="text-brand-blue font-black text-[9px] uppercase tracking-widest mb-1 border-b pb-1">
+                            Reserva y Fondos Sociales
+                        </h3>
+                        <div className="space-y-2 flex-grow">
+                            {reservasFondos.map((item, i) => (
+                                <div key={i} className="flex flex-col gap-0.5 border-l-2 border-brand-mustard pl-2">
+                                    <div className="flex justify-between items-center py-1">
+                                        <span className="text-[9px] font-black text-brand-blue uppercase">{item.concepto}</span>
+                                        <span className="text-[9px] font-black text-brand-mustard">{fmtPercent(item.monto)}</span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
