@@ -1,8 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Calculator, TrendingUp, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
+import { Counter } from "./Counter";
 import hero1 from "../assets/images/tasa de interés anual.png";
 import hero2 from "../assets/images/cuenta.png";
 import hero3 from "../assets/images/punto de presencia.png";
@@ -54,8 +55,21 @@ export function HeroCarousel() {
         setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
     }, []);
 
+    useEffect(() => {
+        const timer = setInterval(nextSlide, 15000);
+        return () => clearInterval(timer);
+    }, [nextSlide, current]);
+
     return (
-        <div className="flex flex-col w-full bg-white">
+        <motion.div 
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+                duration: 1.2, 
+                ease: [0.22, 1, 0.36, 1] // Custom cubic-bezier for premium feel
+            }}
+            className="flex flex-col w-full bg-white"
+        >
             <div 
                 className="group relative w-full overflow-hidden bg-white flex items-center justify-center h-[30vh] min-h-[250px] md:h-[45vh] md:min-h-[350px] lg:h-[60vh] lg:min-h-[500px] pt-12 md:pt-16" 
                 id="inicio"
@@ -146,17 +160,23 @@ export function HeroCarousel() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 max-w-5xl mx-auto">
                         
                         {/* Quick Action 1: Loan */}
-                        <Link 
-                            to="/cotizar"
-                            state={{ initialView: 'loan', fromHome: true }}
-                            className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full"
                         >
+                            <Link 
+                                to="/cotizar"
+                                state={{ initialView: 'loan', fromHome: true }}
+                                className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer w-full"
+                            >
                             <div className="flex items-center gap-3 lg:gap-4">
                                 <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <Calculator className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
                                 <h3 className="text-sm lg:text-base font-black text-brand-blue uppercase tracking-tighter m-0">
-                                    24% Anual
+                                    <Counter to={24} suffix="% " delay={1} duration={1.5} />
+                                    Anual
                                 </h3>
                             </div>
                             <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
@@ -164,20 +184,27 @@ export function HeroCarousel() {
                                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>
                         </Link>
+                    </motion.div>
 
                         {/* Quick Action 2: Investment */}
-                        <Link 
-                            to="/cotizar"
-                            state={{ initialView: 'investment', fromHome: true }}
-                            className="bg-brand-blue p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-brand-blue hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1 relative overflow-hidden"
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full"
                         >
+                            <Link 
+                                to="/cotizar"
+                                state={{ initialView: 'investment', fromHome: true }}
+                                className="bg-brand-blue p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-brand-blue hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer relative overflow-hidden w-full"
+                            >
                             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-mustard/10 rounded-full blur-xl translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-mustard/20 transition-colors" />
                             <div className="flex items-center gap-3 lg:gap-4 relative z-10">
                                 <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
                                 <h3 className="text-sm lg:text-base font-black text-white uppercase tracking-tighter m-0">
-                                    14% de Interés
+                                    <Counter to={14} suffix="% " delay={1.2} duration={1.5} />
+                                    de Interés
                                 </h3>
                             </div>
                             <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all relative z-10">
@@ -185,6 +212,7 @@ export function HeroCarousel() {
                                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                             </div>
                         </Link>
+                    </motion.div>
 
                         {/* Quick Action 3: Agencies */}
                         <Link 
@@ -208,6 +236,6 @@ export function HeroCarousel() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

@@ -1,33 +1,6 @@
-import { motion, useInView, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
-
-const Counter = ({
-    to,
-    decimals = 0,
-    duration = 2,
-}: {
-    to: number;
-    decimals?: number;
-    duration?: number;
-}) => {
-    const nodeRef = useRef<HTMLSpanElement>(null);
-    const inView = useInView(nodeRef, { once: true, margin: "-10px" });
-
-    useEffect(() => {
-        const node = nodeRef.current;
-        if (!node || !inView) return;
-        const controls = animate(0, to, {
-            duration,
-            onUpdate(value) {
-                node.textContent = value.toFixed(decimals);
-            },
-            ease: "easeOut",
-        });
-        return () => controls.stop();
-    }, [to, decimals, duration, inView]);
-
-    return <span ref={nodeRef}>0</span>;
-};
+import { motion } from "framer-motion";
+import { Counter } from "./Counter";
+import { Check } from "lucide-react";
 
 const stats = [
     {
@@ -51,15 +24,21 @@ const stats = [
         decimals: 0,
         suffix: "%",
         title: "Rentabilidad positiva",
-        subtitle: "7 años de superávit continuo",
+        subtitle: "Objetivo Alcanzado",
+        isGoal: true,
         highlight: true,
     },
-
 ];
 
 export function Stats2025() {
     return (
-        <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
+        <motion.section 
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="pt-4 pb-4 bg-brand-blue relative overflow-hidden"
+        >
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-mustard/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
             <div className="container mx-auto px-4">
@@ -77,24 +56,67 @@ export function Stats2025() {
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.05, duration: 0.4 }}
-                            className={`rounded-xl p-3 shadow-xl flex flex-col items-center text-center transition-all ${
+                            transition={{ 
+                                delay: idx * 0.2, 
+                                duration: 0.6,
+                                ease: "backOut" 
+                            }}
+                            className={`rounded-xl p-3 shadow-xl flex flex-col items-center text-center transition-all relative overflow-hidden ${
                                 stat.highlight
                                     ? "bg-brand-mustard"
                                     : "bg-white border border-white/10"
                             }`}
                         >
-                            <div
-                                className={`text-xl md:text-2xl font-black mb-0.5 leading-tight ${
-                                    stat.highlight ? "text-brand-blue" : "text-brand-mustard"
-                                }`}
-                            >
-                                <Counter to={stat.value} decimals={stat.decimals} />
-                                <span className="text-sm">{stat.suffix}</span>
-                            </div>
+                            {(stat as any).isGoal ? (
+                                <div className="relative flex items-center justify-center w-12 h-12 mb-1">
+                                    <svg className="w-full h-full transform -rotate-90">
+                                        <circle
+                                            cx="24"
+                                            cy="24"
+                                            r="20"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            fill="transparent"
+                                            className="text-brand-blue/10"
+                                        />
+                                        <motion.circle
+                                            cx="24"
+                                            cy="24"
+                                            r="20"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            fill="transparent"
+                                            strokeDasharray="126"
+                                            initial={{ strokeDashoffset: 126 }}
+                                            whileInView={{ strokeDashoffset: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 1.5, delay: 0.5 }}
+                                            className="text-brand-blue"
+                                        />
+                                    </svg>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                        <motion.div
+                                            initial={{ scale: 0 }}
+                                            whileInView={{ scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 1.5, type: "spring" }}
+                                        >
+                                            <Check className="w-5 h-5 text-brand-blue" strokeWidth={4} />
+                                        </motion.div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div
+                                    className={`text-xl md:text-2xl font-black mb-0.5 leading-tight ${
+                                        stat.highlight ? "text-brand-blue" : "text-brand-mustard"
+                                    }`}
+                                >
+                                    <Counter to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+                                </div>
+                            )}
                             <h4
                                 className="font-black uppercase tracking-tight text-[9px] text-brand-blue"
                             >
@@ -104,6 +126,6 @@ export function Stats2025() {
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

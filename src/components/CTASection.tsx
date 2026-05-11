@@ -4,7 +4,13 @@ import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
     return (
-        <section className="pt-4 pb-4 bg-brand-blue relative overflow-hidden">
+        <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="pt-4 pb-4 bg-brand-blue relative overflow-hidden"
+        >
             {/* Artistic Background */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #BF9903 0.5px, transparent 0)', backgroundSize: '30px 30px' }} />
@@ -74,6 +80,6 @@ export function CTASection() {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }
