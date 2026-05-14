@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PiggyBank, Wallet, Home, CheckCircle2, ArrowRight, TrendingUp } from "lucide-react";
+import { PiggyBank, Wallet, Home, CheckCircle2, ArrowRight } from "lucide-react";
 import {
     BarChart,
     Bar,
@@ -12,10 +12,32 @@ import {
     LabelList,
 } from "recharts";
 
-const services = [
+interface Service {
+    icon: React.ReactNode;
+    title: string;
+    subtitle?: string;
+    description?: string;
+    benefits: string[];
+    color: string;
+    iconColor: string;
+    buttonText: string;
+    buttonColor: string;
+    delay: number;
+}
+
+interface Tasa {
+    producto: string;
+    tasa: number;
+    crecimiento: number;
+    label: string;
+}
+
+const services: Service[] = [
     {
         icon: <PiggyBank className="w-10 h-10" />,
         title: "Cuentas de Ahorro",
+        subtitle: "Ahorra y Crece",
+        description: "Elige la cuenta que mejor se adapte a tus metas financieras.",
         benefits: [
             "Ahorro a Plazo Fijo: 14%",
             "Ahorro Programado: 10.5%",
@@ -31,6 +53,8 @@ const services = [
     {
         icon: <Wallet className="w-10 h-10" />,
         title: "Crédito Fiduciario",
+        subtitle: "Respaldo Inmediato",
+        description: "Soluciones rápidas y flexibles para tus necesidades personales.",
         benefits: [
             "Atención inmediata",
             "Plazos flexibles hasta 60 meses",
@@ -46,10 +70,12 @@ const services = [
     {
         icon: <Home className="w-10 h-10" />,
         title: "Crédito Hipotecario",
+        subtitle: "Tu Hogar Propio",
+        description: "Financiamiento accesible para adquirir o mejorar tu vivienda.",
         benefits: [
             "Financiamiento hasta el 80%",
-            "Plazos hasta 6-15 años mayor = Q.500,000.00",
-            "Tasas competitivas",
+            "Plazos hasta 6-15 años",
+            "Monto mayor a Q.500,000.00",
             "Asesoría personalizada",
         ],
         color: "bg-brand-mustard text-brand-blue shadow-brand-mustard/20",
@@ -60,7 +86,7 @@ const services = [
     },
 ];
 
-const tasas = [
+const tasas: Tasa[] = [
     { producto: "Ahorro Programado", tasa: 10.5, crecimiento: 12, label: "+12%" },
     { producto: "Ahorro Corriente", tasa: 7.0, crecimiento: 9, label: "+9%" },
     { producto: "Ahorro Infanto-Infantil", tasa: 7.0, crecimiento: 7, label: "+7%" },
@@ -72,7 +98,7 @@ const CustomTooltipTasas = ({
     payload,
 }: {
     active?: boolean;
-    payload?: { value: number; payload: any }[];
+    payload?: { payload: Tasa }[];
 }) => {
     if (active && payload && payload.length) {
         const data = payload[0].payload;
@@ -219,71 +245,69 @@ export function Services() {
                             transition={{ delay: 0.1 }}
                             className="bg-white rounded-xl p-3 md:p-4 shadow-2xl"
                         >
-                            <ResponsiveContainer width="100%" height={220}>
-                                <BarChart
-                                    layout="vertical"
-                                    data={tasas}
-                                    margin={{ top: 4, right: 40, left: 10, bottom: 4 }}
-                                >
-                                    <defs>
-                                        <linearGradient
-                                            id="tasaGradient"
-                                            x1="0"
-                                            y1="0"
-                                            x2="1"
-                                            y2="0"
-                                        >
-                                            <stop offset="0%" stopColor="#0F1249" />
-                                            <stop offset="100%" stopColor="#BF9903" />
-                                        </linearGradient>
-                                    </defs>
-                                    <CartesianGrid
-                                        strokeDasharray="3 3"
-                                        stroke="#0F124910"
-                                        horizontal={false}
-                                    />
-                                    <XAxis
-                                        type="number"
-                                        domain={[0, 50]}
-                                        ticks={[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]}
-                                        tickFormatter={(v) => `${v}%`}
-                                        tick={{
-                                            fill: "#0F124980",
-                                            fontSize: 9,
-                                            fontWeight: 600,
-                                        }}
-                                        axisLine={{ stroke: "#0F124920" }}
-                                        tickLine={false}
-                                    />
-                                    <YAxis
-                                        type="category"
-                                        dataKey="producto"
-                                        width={140}
-                                        tick={{
-                                            fill: "#0F1249",
-                                            fontSize: 11,
-                                            fontWeight: 700,
-                                            textAnchor: "start",
-                                        }}
-                                        dx={-135}
-                                        axisLine={false}
-                                        tickLine={false}
-                                    />
-                                    <Tooltip content={<CustomTooltipTasas />} />
-                                    <Bar
-                                        dataKey="crecimiento"
-                                        radius={[0, 6, 6, 0]}
-                                        fill="url(#tasaGradient)"
+                            <div className="h-[250px] w-full">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <BarChart
+                                        layout="vertical"
+                                        data={tasas}
+                                        margin={{ top: 5, right: 60, left: 10, bottom: 5 }}
                                     >
-                                        {tasas.map((_, index) => (
-                                            <Cell
-                                                key={`cell-${index}`}
-                                                fill="url(#tasaGradient)"
+                                        <defs>
+                                            <linearGradient
+                                                id="tasaGradient"
+                                                x1="0"
+                                                y1="0"
+                                                x2="1"
+                                                y2="0"
+                                            >
+                                                <stop offset="0%" stopColor="#0F1249" />
+                                                <stop offset="100%" stopColor="#BF9903" />
+                                            </linearGradient>
+                                        </defs>
+                                        <CartesianGrid
+                                            strokeDasharray="3 3"
+                                            stroke="#0F124910"
+                                            horizontal={false}
+                                        />
+                                        <XAxis
+                                            type="number"
+                                            domain={[0, 55]}
+                                            hide
+                                        />
+                                        <YAxis
+                                            type="category"
+                                            dataKey="producto"
+                                            width={140}
+                                            tick={{
+                                                fill: "#0F1249",
+                                                fontSize: 11,
+                                                fontWeight: 800,
+                                            }}
+                                            axisLine={false}
+                                            tickLine={false}
+                                        />
+                                        <Tooltip content={<CustomTooltipTasas />} cursor={{ fill: 'transparent' }} />
+                                        <Bar
+                                            dataKey="crecimiento"
+                                            radius={[0, 10, 10, 0]}
+                                            barSize={30}
+                                        >
+                                            {tasas.map((entry, index) => (
+                                                <Cell
+                                                    key={`cell-${index}`}
+                                                    fill="url(#tasaGradient)"
+                                                />
+                                            ))}
+                                            <LabelList
+                                                dataKey="label"
+                                                position="right"
+                                                style={{ fill: '#BF9903', fontSize: 12, fontWeight: 900 }}
+                                                offset={10}
                                             />
-                                        ))}
-                                    </Bar>
-                                </BarChart>
-                            </ResponsiveContainer>
+                                        </Bar>
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
