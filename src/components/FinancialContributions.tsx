@@ -50,7 +50,7 @@ export function FinancialContributions() {
 
                 <div className="grid grid-cols-3 gap-2 max-w-4xl mx-auto">
                     {[
-                        { val: 100, label: "Aportación Interna", icon: <Wallet size={20} />, bg: "bg-brand-mustard" },
+                        { val: 100, label: "Aportación Ordinaria", icon: <Wallet size={20} />, bg: "bg-brand-mustard" },
                         { val: 50, label: "Cuota de Ingreso", icon: <PiggyBank size={20} />, bg: "bg-white" },
                         { val: 25, label: "Infanto-Juvenil", icon: <Users size={20} />, bg: "bg-white" },
                     ].map((item, idx) => (

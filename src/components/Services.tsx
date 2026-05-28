@@ -9,7 +9,6 @@ import {
     Tooltip,
     ResponsiveContainer,
     Cell,
-    LabelList,
 } from "recharts";
 
 interface Service {
@@ -36,8 +35,6 @@ const services: Service[] = [
     {
         icon: <PiggyBank className="w-10 h-10" />,
         title: "Cuentas de Ahorro",
-        subtitle: "Ahorra y Crece",
-        description: "Elige la cuenta que mejor se adapte a tus metas financieras.",
         benefits: [
             "Ahorro a Plazo Fijo: 14%",
             "Ahorro Programado: 10.5%",
@@ -53,8 +50,6 @@ const services: Service[] = [
     {
         icon: <Wallet className="w-10 h-10" />,
         title: "Crédito Fiduciario",
-        subtitle: "Respaldo Inmediato",
-        description: "Soluciones rápidas y flexibles para tus necesidades personales.",
         benefits: [
             "Atención inmediata",
             "Plazos flexibles hasta 60 meses",
@@ -70,8 +65,6 @@ const services: Service[] = [
     {
         icon: <Home className="w-10 h-10" />,
         title: "Crédito Hipotecario",
-        subtitle: "Tu Hogar Propio",
-        description: "Financiamiento accesible para adquirir o mejorar tu vivienda.",
         benefits: [
             "Financiamiento hasta el 80%",
             "Plazos hasta 6-15 años",
@@ -250,7 +243,7 @@ export function Services() {
                                     <BarChart
                                         layout="vertical"
                                         data={tasas}
-                                        margin={{ top: 5, right: 60, left: 10, bottom: 5 }}
+                                        margin={{ top: 5, right: 30, left: 10, bottom: 20 }}
                                     >
                                         <defs>
                                             <linearGradient
@@ -267,12 +260,20 @@ export function Services() {
                                         <CartesianGrid
                                             strokeDasharray="3 3"
                                             stroke="#0F124910"
+                                            vertical={true}
                                             horizontal={false}
                                         />
                                         <XAxis
                                             type="number"
-                                            domain={[0, 55]}
-                                            hide
+                                            domain={[0, 50]}
+                                            ticks={[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]}
+                                            tick={{
+                                                fill: "#0F1249",
+                                                fontSize: 9,
+                                                fontWeight: 700,
+                                            }}
+                                            axisLine={{ stroke: '#0F124920' }}
+                                            tickLine={{ stroke: '#0F124920' }}
                                         />
                                         <YAxis
                                             type="category"
@@ -286,24 +287,21 @@ export function Services() {
                                             axisLine={false}
                                             tickLine={false}
                                         />
-                                        <Tooltip content={<CustomTooltipTasas />} cursor={{ fill: 'transparent' }} />
+                                        <Tooltip 
+                                            content={<CustomTooltipTasas />} 
+                                            cursor={{ fill: 'rgba(15, 18, 73, 0.05)' }} 
+                                        />
                                         <Bar
                                             dataKey="crecimiento"
                                             radius={[0, 10, 10, 0]}
-                                            barSize={30}
+                                            barSize={24}
                                         >
-                                            {tasas.map((entry, index) => (
+                                            {tasas.map((_, index) => (
                                                 <Cell
                                                     key={`cell-${index}`}
                                                     fill="url(#tasaGradient)"
                                                 />
                                             ))}
-                                            <LabelList
-                                                dataKey="label"
-                                                position="right"
-                                                style={{ fill: '#BF9903', fontSize: 12, fontWeight: 900 }}
-                                                offset={10}
-                                            />
                                         </Bar>
                                     </BarChart>
                                 </ResponsiveContainer>

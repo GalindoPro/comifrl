@@ -6,6 +6,7 @@ import {
     BarChart,
     Bar,
     XAxis,
+    YAxis,
     Cell,
     PieChart,
     Pie,
@@ -13,26 +14,7 @@ import {
     Tooltip,
 } from "recharts";
 
-// ── Mini-chart tooltip ────────────────────────────────────────────────────────
-const MiniTooltip = ({
-    active,
-    payload,
-    label,
-    suffix = "",
-}: {
-    active?: boolean;
-    payload?: { value: number }[];
-    label?: string;
-    suffix?: string;
-}) => {
-    if (!active || !payload?.length) return null;
-    return (
-        <div className="bg-brand-blue text-white text-[10px] px-2 py-1 rounded shadow-lg border border-brand-mustard/30">
-            <span className="font-bold text-brand-mustard">{label}: </span>
-            {payload[0].value}{suffix}
-        </div>
-    );
-};
+
 
 // ── News 2025 cards data ──────────────────────────────────────────────────────
 const news2025 = [
@@ -70,33 +52,61 @@ const news2025 = [
         icon: <TrendingUp className="w-4 h-4 text-brand-mustard" />,
         chart: (
             <div className="mt-3">
-                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-1">
-                    Comparativa de Activos
+                <p className="text-[10px] font-bold text-brand-blue/50 uppercase tracking-wider mb-2">
+                    Comparativa de Activos (Crecimiento %)
                 </p>
-                <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                        <div className="flex-grow bg-brand-blue/5 h-3 rounded-full overflow-hidden">
-                            <motion.div 
-                                initial={{ width: 0 }}
-                                whileInView={{ width: '60%' }}
-                                viewport={{ once: true }}
-                                className="bg-brand-blue/40 h-full"
+                <div className="h-[80px] w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                            layout="vertical"
+                            data={[
+                                { year: "2024", valor: 100, display: "Base 2024", info: "Cierre de año exitoso" },
+                                { year: "2025", valor: 126.88, display: "Actual 2025", info: "+26.88% de crecimiento real" },
+                            ]}
+                            margin={{ top: 0, right: 40, left: 0, bottom: 0 }}
+                        >
+                            <XAxis type="number" hide domain={[0, 150]} />
+                            <YAxis 
+                                type="category" 
+                                dataKey="year" 
+                                width={35}
+                                tick={{ fill: '#0F1249', fontSize: 10, fontWeight: 900 }}
+                                axisLine={false}
+                                tickLine={false}
                             />
-                        </div>
-                        <span className="text-[8px] font-black text-brand-blue/50 uppercase whitespace-nowrap">2024 Con éxito</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="flex-grow bg-brand-blue/5 h-3 rounded-full overflow-hidden">
-                            <motion.div 
-                                initial={{ width: 0 }}
-                                whileInView={{ width: '90%' }}
-                                viewport={{ once: true }}
-                                className="bg-brand-blue h-full"
+                            <Tooltip 
+                                content={({ active, payload }) => {
+                                    if (active && payload && payload.length) {
+                                        const data = payload[0].payload;
+                                        return (
+                                            <div className="bg-brand-blue text-white text-[10px] px-3 py-2 rounded-lg shadow-xl border border-brand-mustard/30">
+                                                <p className="text-brand-mustard font-black mb-0.5">{data.display}</p>
+                                                <p className="font-bold opacity-90">{data.info}</p>
+                                            </div>
+                                        );
+                                    }
+                                    return null;
+                                }}
+                                cursor={{ fill: 'rgba(15, 18, 73, 0.05)' }}
                             />
-                        </div>
-                        <span className="text-[8px] font-black text-brand-blue uppercase whitespace-nowrap">2025 Supera al anterior</span>
-                    </div>
+                            <Bar 
+                                dataKey="valor" 
+                                radius={[0, 4, 4, 0]}
+                                barSize={16}
+                            >
+                                {[{ year: "2024" }, { year: "2025" }].map((_, index) => (
+                                    <Cell 
+                                        key={`cell-${index}`} 
+                                        fill={index === 0 ? "#0F124940" : "#BF9903"} 
+                                    />
+                                ))}
+                            </Bar>
+                        </BarChart>
+                    </ResponsiveContainer>
                 </div>
+                <p className="mt-2 text-[8px] font-bold text-brand-blue/70 leading-tight text-justify w-full">
+                    El incremento de activos refleja el compromiso de la cooperativa con el bienestar y desarrollo de la comunidad.
+                </p>
             </div>
         ),
     },

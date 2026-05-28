@@ -17,8 +17,8 @@ const stats: Stat[] = [
         value: 53,
         decimals: 0,
         suffix: "%",
-        title: "Colocación de cartera",
-        subtitle: "De la cartera total en 2025",
+        title: "Colocación de cartera 2026",
+        subtitle: "De la cartera total proyectada",
         highlight: true,
     },
     {
@@ -59,7 +59,7 @@ export function Stats2025() {
                         viewport={{ once: true }}
                         className="text-xl md:text-2xl font-black text-white tracking-tighter uppercase"
                     >
-                        Resultados <span className="text-brand-mustard">2025</span>
+                        Resultados
                     </motion.h2>
                 </div>
                 <div className="grid grid-cols-3 gap-2 max-w-4xl mx-auto">
@@ -152,24 +152,32 @@ export function Stats2025() {
                                             <span className="text-[6px] font-black text-brand-blue mt-0.5">2025</span>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col gap-0.5 mt-1">
-                                        <div className="flex items-center gap-1">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-brand-mustard/30" />
-                                            <span className="text-[7px] font-black text-brand-blue/40 uppercase">2024 Con éxito</span>
-                                        </div>
-                                        <div className="flex items-center gap-1">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-brand-mustard" />
-                                            <span className="text-[7px] font-black text-brand-mustard uppercase">2025 Supera al anterior</span>
-                                        </div>
+                                    <div className="mt-2 w-full">
+                                        <p className="text-[8px] font-bold text-brand-blue/70 leading-tight text-justify">
+                                            El incremento de activos refleja el compromiso de la cooperativa con el bienestar y desarrollo de la comunidad.
+                                        </p>
                                     </div>
                                 </div>
                             ) : (
-                                <div
-                                    className={`text-xl md:text-2xl font-black mb-0.5 leading-tight ${
-                                        stat.highlight ? "text-brand-blue" : "text-brand-mustard"
-                                    }`}
-                                >
-                                    <Counter to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+                                <div className="flex flex-col items-center">
+                                    <div
+                                        className={`text-xl md:text-2xl font-black mb-1 leading-tight ${
+                                            stat.highlight ? "text-brand-blue" : "text-brand-mustard"
+                                        }`}
+                                    >
+                                        <Counter to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+                                    </div>
+                                    {stat.title.includes("Colocación") && (
+                                        <div className="w-16 h-1.5 bg-brand-blue/10 rounded-full overflow-hidden mb-2">
+                                            <motion.div 
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: '53%' }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 1, delay: 0.5 }}
+                                                className="h-full bg-brand-blue"
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                             )}
                             <h4

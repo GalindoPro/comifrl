@@ -1,4 +1,4 @@
-import { motion, useInView, animate } from "framer-motion";
+import { useInView, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export const Counter = ({
