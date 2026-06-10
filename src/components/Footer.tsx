@@ -32,9 +32,9 @@ export function Footer() {
                                 <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />
                                 Cantón Vipila, Nebaj, Quiché
                             </p>
-                            <a href="mailto:comifrl@gmail.com" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
+                            <a href="mailto:comifrl.gt" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
                                 <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard" />
-                                comifrl@gmail.com
+                                comifrl.gt
                             </a>
                         </div>
                     </div>
