@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Phone, Clock, ArrowRight } from "lucide-react";
+import { Phone, Clock, ArrowRight, Globe, Mail } from "lucide-react";
 
 export function Contact() {
     return (
@@ -31,7 +31,7 @@ export function Contact() {
 
             <section className="pt-1 pb-4 bg-brand-blue text-white relative overflow-hidden">
                 <div className="container mx-auto px-4">
-                    <div className="grid lg:grid-cols-3 gap-2 max-w-4xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-3 max-w-5xl mx-auto">
 
                         {/* Líneas Oficiales */}
                         <motion.div
@@ -105,6 +105,36 @@ export function Contact() {
                                 Ver Mapa
                                 <ArrowRight className="w-3 h-3 text-brand-mustard" />
                             </Link>
+                        </motion.div>
+
+                        {/* Contacto Digital */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white p-3 rounded-xl shadow-2xl border border-gray-100 flex flex-col relative z-10"
+                        >
+                            <div className="flex items-center gap-2 mb-2">
+                                <Globe className="w-3.5 h-3.5 text-brand-mustard" />
+                                <h3 className="text-sm font-black text-brand-blue uppercase tracking-tighter">En Línea</h3>
+                            </div>
+
+                            <ul className="space-y-2 text-brand-blue flex-1 flex flex-col justify-center">
+                                <li className="flex items-center justify-between border-b border-gray-50 pb-1">
+                                    <div className="flex items-center gap-2">
+                                        <Globe className="w-3 h-3 text-brand-blue/40" />
+                                        <span className="font-black text-[9px] uppercase">Sitio Web</span>
+                                    </div>
+                                    <a href="https://comifrl.gt" target="_blank" rel="noopener noreferrer" className="text-brand-mustard font-black text-[10px] hover:underline">comifrl.gt</a>
+                                </li>
+                                <li className="flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                        <Mail className="w-3 h-3 text-brand-blue/40" />
+                                        <span className="font-black text-[9px] uppercase">Correo</span>
+                                    </div>
+                                    <a href="mailto:info@comifrl.gt" className="text-brand-mustard font-black text-[10px] hover:underline">info@comifrl.gt</a>
+                                </li>
+                            </ul>
                         </motion.div>
 
                     </div>

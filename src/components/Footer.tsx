@@ -1,4 +1,4 @@
-import { Facebook, Building2, UserPlus, Mail } from "lucide-react";
+import { Facebook, Building2, UserPlus, Mail, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -26,15 +26,19 @@ export function Footer() {
 
                     {/* Colon 2: Contacto */}
                     <div className="space-y-2 md:space-y-3">
-                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Agencia Central</h4>
+                        <h4 className="text-[10px] md:text-xs font-black text-white/40 uppercase tracking-[0.2em]">Contacto</h4>
                         <div className="space-y-1 md:space-y-2">
                             <p className="flex items-start gap-3 text-[11px] md:text-xs text-white/80 font-medium">
                                 <Building2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />
                                 Cantón Vipila, Nebaj, Quiché
                             </p>
-                            <a href="mailto:comifrl.gt" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
-                                <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard" />
+                            <a href="https://comifrl.gt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
+                                <Globe className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />
                                 comifrl.gt
+                            </a>
+                            <a href="mailto:info@comifrl.gt" className="flex items-center gap-3 text-[11px] md:text-xs text-white/80 hover:text-brand-mustard transition-colors font-medium">
+                                <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-mustard flex-shrink-0" />
+                                info@comifrl.gt
                             </a>
                         </div>
                     </div>
