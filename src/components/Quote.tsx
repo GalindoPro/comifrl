@@ -461,47 +461,6 @@ function InvestmentCalculator({ onBack }: { onBack: () => void }) {
                                             <div className="text-brand-mustard font-black text-[10px] md:text-[11px]">Q {netInterest.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
                                         </div>
                                     </div>
-
-                                    {/* Detailed Investment Table */}
-                                    <div className="bg-white rounded-2xl overflow-hidden shadow-xl">
-                                        <div className="overflow-x-auto max-h-[300px] overflow-y-auto custom-scrollbar">
-                                            <table className="w-full text-left border-collapse">
-                                                <thead className="sticky top-0 bg-gray-50 z-20 border-b border-gray-100">
-                                                    <tr>
-                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Mes</th>
-                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Fecha</th>
-                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Interés Mensual</th>
-                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-blue/40 uppercase text-center tracking-widest">Interés Acum.</th>
-                                                        <th className="px-3 py-2 text-[8px] font-black text-brand-mustard uppercase text-center bg-brand-blue/5 border-l border-gray-100">Capital</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {Array.from({ length: Number(months) + 1 }).map((_, i) => {
-                                                        const rowDate = new Date(startDate);
-                                                        rowDate.setMonth(rowDate.getMonth() + i);
-                                                        const monthlyInt = i === 0 ? 0 : (grossInterest / Number(months));
-                                                        const accumInt = i === 0 ? 0 : (monthlyInt * i);
-                                                        
-                                                        return (
-                                                            <tr key={i} className="hover:bg-brand-blue/5 transition-all group border-b border-gray-100 last:border-0">
-                                                                <td className="px-3 py-1.5 text-[9px] font-bold text-brand-blue/40 text-center">{i}</td>
-                                                                <td className="px-3 py-1.5 text-[9px] font-black text-brand-blue text-center">{rowDate.toLocaleDateString()}</td>
-                                                                <td className="px-3 py-1.5 text-[9px] font-bold text-green-600 text-center">
-                                                                    {i > 0 ? `Q ${monthlyInt.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
-                                                                </td>
-                                                                <td className="px-3 py-1.5 text-[9px] font-medium text-brand-blue/60 text-center">
-                                                                    {i > 0 ? `Q ${accumInt.toLocaleString('en-US', { minimumFractionDigits: 2 })}` : '--'}
-                                                                </td>
-                                                                <td className="px-3 py-1.5 text-[10px] font-black text-brand-mustard text-center bg-brand-blue/5 border-l border-gray-100">
-                                                                    Q {Number(amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                                                                </td>
-                                                            </tr>
-                                                        );
-                                                    })}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
                             </motion.div>
                         )}
