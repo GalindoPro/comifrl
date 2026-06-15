@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import { Counter } from "./Counter";
 import hero1 from "../assets/images/tasa de interés anual.png";
-import hero2 from "../assets/images/cuenta.png";
+import hero2 from "../assets/images/cuenta-banner.png";
 import hero3 from "../assets/images/punto de presencia.png";
 
 const slides = [
@@ -168,9 +168,9 @@ export function HeroCarousel() {
                             <Link 
                                 to="/cotizar"
                                 state={{ initialView: 'loan', fromHome: true }}
-                                className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer w-full"
+                                className="bg-white p-4 lg:p-5 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex flex-col gap-3 lg:gap-4 cursor-pointer w-full"
                             >
-                            <div className="flex items-center gap-3 lg:gap-4">
+                            <div className="flex items-center gap-3 lg:gap-4 w-full">
                                 <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <Calculator className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
@@ -179,9 +179,9 @@ export function HeroCarousel() {
                                     Anual
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
-                                Generar Tabla
-                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            <div className="flex items-center justify-center gap-1.5 w-full text-white font-black uppercase text-[8px] lg:text-[9px] tracking-widest bg-brand-mustard px-2 py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all text-center">
+                                Generar Tabla de Pagos-Préstamos
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
                             </div>
                         </Link>
                     </motion.div>
@@ -195,10 +195,10 @@ export function HeroCarousel() {
                             <Link 
                                 to="/cotizar"
                                 state={{ initialView: 'investment', fromHome: true }}
-                                className="bg-brand-blue p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-brand-blue hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer relative overflow-hidden w-full"
+                                className="bg-brand-blue p-4 lg:p-5 rounded-2xl shadow-sm hover:shadow-md border border-brand-blue hover:border-brand-mustard/50 transition-all duration-300 group flex flex-col gap-3 lg:gap-4 cursor-pointer relative overflow-hidden w-full"
                             >
                             <div className="absolute top-0 right-0 w-24 h-24 bg-brand-mustard/10 rounded-full blur-xl translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-mustard/20 transition-colors" />
-                            <div className="flex items-center gap-3 lg:gap-4 relative z-10">
+                            <div className="flex items-center gap-3 lg:gap-4 relative z-10 w-full">
                                 <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
@@ -207,9 +207,9 @@ export function HeroCarousel() {
                                     de Interés
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all relative z-10">
-                                Calcular Rendimiento
-                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            <div className="flex items-center justify-center gap-1.5 w-full text-white font-black uppercase text-[8px] lg:text-[9px] tracking-widest bg-brand-mustard px-2 py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all relative z-10 text-center">
+                                Calcular Interés Plazo Fijo
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
                             </div>
                         </Link>
                     </motion.div>
@@ -217,9 +217,9 @@ export function HeroCarousel() {
                         {/* Quick Action 3: Agencies */}
                         <Link 
                             to="/maps"
-                            className="bg-white p-3 lg:p-4 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex items-center justify-between cursor-pointer transform hover:-translate-y-1"
+                            className="bg-white p-4 lg:p-5 rounded-2xl shadow-sm hover:shadow-md border border-gray-100 hover:border-brand-mustard/50 transition-all duration-300 group flex flex-col gap-3 lg:gap-4 cursor-pointer transform hover:-translate-y-1 w-full"
                         >
-                            <div className="flex items-center gap-3 lg:gap-4">
+                            <div className="flex items-center gap-3 lg:gap-4 w-full">
                                 <div className="bg-brand-mustard w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-mustard/20 group-hover:scale-110 transition-all duration-300 shrink-0">
                                     <MapPin className="w-5 h-5 lg:w-6 lg:h-6" />
                                 </div>
@@ -227,9 +227,9 @@ export function HeroCarousel() {
                                     Nuestras Agencias
                                 </h3>
                             </div>
-                            <div className="flex items-center gap-1.5 text-white font-black uppercase text-[9px] lg:text-[10px] tracking-widest bg-brand-mustard px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all">
+                            <div className="flex items-center justify-center gap-1.5 w-full text-white font-black uppercase text-[8px] lg:text-[9px] tracking-widest bg-brand-mustard px-2 py-2 rounded-lg shadow-sm group-hover:shadow-md transition-all text-center">
                                 Ver Ubicaciones
-                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
                             </div>
                         </Link>
 

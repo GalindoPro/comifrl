@@ -73,7 +73,7 @@ export function Quote() {
                                         Simula un préstamo con tasa del 24% anual y genera tu tabla detallada.
                                     </p>
                                     <div className="flex items-center gap-2 text-brand-mustard font-black uppercase text-[9px] tracking-widest">
-                                        Generar Tabla <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-2 transition-transform" />
+                                        Generar Tabla de Pagos-Préstamos <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-2 transition-transform" />
                                     </div>
                                 </motion.div>
 
@@ -96,7 +96,7 @@ export function Quote() {
                                         Calcula tu rendimiento con un 14% de interés anual garantizado.
                                     </p>
                                     <div className="flex items-center gap-2 text-brand-mustard font-black uppercase text-[9px] tracking-widest">
-                                        Calcular Rendimiento <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-2 transition-transform" />
+                                        Calcular Interés Plazo Fijo <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-2 transition-transform" />
                                     </div>
                                 </motion.div>
                             </div>
