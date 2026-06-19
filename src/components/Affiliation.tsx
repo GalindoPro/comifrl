@@ -50,11 +50,12 @@ export function Affiliation() {
 
                         <ul className="space-y-1.5">
                             {[
-                                "DPI vigente (adultos)",
-                                "Certificado nacimiento y DPI (menores)",
+                                "DPI Vigente - Para Mayores de 18 años",
+                                "Certificado de nacimiento (menores) y DPI del padre o tutor",
                                 "Recibo de luz reciente",
                                 "Aporte inicial de Q100.00",
-                                "Solicitud completa"
+                                "Solicitud completa",
+                                "DPI Vigente para Beneficiarios"
                             ].map((req, i) => (
                                 <li key={i} className="flex items-center gap-3 p-2 bg-brand-blue/5 border border-brand-blue/5 rounded-lg hover:bg-brand-blue/10 transition-all group">
                                     <div className="bg-brand-mustard w-5 h-5 rounded-full text-brand-blue flex items-center justify-center font-black text-[9px] shadow-lg flex-shrink-0">

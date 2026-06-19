@@ -226,8 +226,8 @@ export function Services() {
                             className="text-center mb-3"
                         >
                             <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter mb-1">
-                                Tasas de{" "}
-                                <span className="text-brand-mustard">Interés 2025</span>
+                                Captaciones de Ahorro -{" "}
+                                <span className="text-brand-mustard">Año 2025</span>
                             </h3>
                         </motion.div>
 
