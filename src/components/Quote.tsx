@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calculator, TrendingUp, ArrowRight, ChevronLeft, Percent, Table as TableIcon, RefreshCw } from "lucide-react";
 import { cn } from "../lib/utils";
@@ -6,19 +6,28 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 type CalculatorType = 'selection' | 'loan' | 'investment';
 
+interface QuoteLocationState {
+    initialView?: CalculatorType;
+    fromHome?: boolean;
+}
+
 export function Quote() {
     const location = useLocation();
     const navigate = useNavigate();
-    const [view, setView] = useState<CalculatorType>((location.state as any)?.initialView || 'selection');
+    
+    const state = location.state as QuoteLocationState | null;
+    const [view, setView] = useState<CalculatorType>(state?.initialView || 'selection');
+    const [prevLocation, setPrevLocation] = useState(location);
 
-    useEffect(() => {
-        if ((location.state as any)?.initialView) {
-            setView((location.state as any).initialView);
+    if (location !== prevLocation) {
+        setPrevLocation(location);
+        if (state?.initialView) {
+            setView(state.initialView);
         }
-    }, [location]);
+    }
 
     const handleBack = () => {
-        if ((location.state as any)?.fromHome) {
+        if (state?.fromHome) {
             navigate('/');
         } else {
             setView('selection');
@@ -326,6 +335,21 @@ function LoanCalculator({ onBack }: { onBack: () => void }) {
                                                     </tr>
                                                 ))}
                                             </tbody>
+                                            <tfoot className="bg-brand-blue text-white sticky bottom-0 z-20">
+                                                <tr>
+                                                    <td colSpan={2} className="px-3 py-2 md:px-4 md:py-3 text-[10px] md:text-[11px] font-black uppercase text-right tracking-widest border-t-2 border-brand-mustard">Totales Finales</td>
+                                                    <td className="px-1.5 py-2 md:px-4 md:py-3 text-[10px] md:text-[12px] font-black text-center border-t-2 border-brand-mustard">
+                                                        Q {schedule.reduce((acc, row) => acc + row.payment, 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                                    </td>
+                                                    <td className="px-1.5 py-2 md:px-4 md:py-3 text-[10px] md:text-[12px] font-black text-red-400 text-center border-t-2 border-brand-mustard">
+                                                        Q {schedule.reduce((acc, row) => acc + row.interest, 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                                    </td>
+                                                    <td className="px-1.5 py-2 md:px-4 md:py-3 text-[10px] md:text-[12px] font-black text-center border-t-2 border-brand-mustard">
+                                                        Q {schedule.reduce((acc, row) => acc + row.principal, 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                                    </td>
+                                                    <td className="px-1.5 py-2 md:px-4 md:py-3 border-t-2 border-brand-mustard"></td>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>

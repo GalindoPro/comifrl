@@ -125,7 +125,7 @@ export function AboutUs() {
             <section className="pt-4 pb-12 bg-brand-blue overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-72 h-72 bg-brand-mustard/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 <div className="container mx-auto px-4">
-                    <div className="max-w-5xl mx-auto">
+                    <div className="max-w-6xl mx-auto">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +137,7 @@ export function AboutUs() {
                             </h3>
                         </motion.div>
 
-                        <div className="grid md:grid-cols-2 gap-6">
+                        <div className="grid md:grid-cols-3 gap-6">
                             {/* Consejo de Administración */}
                             <motion.div
                                 initial={{ opacity: 0, x: -30 }}
@@ -213,6 +213,41 @@ export function AboutUs() {
                                         "COMIF R.L. registra superávit en los últimos 7 años. En 2025, los activos crecieron un 26.88%."
                                     </p>
                                 </div>
+                            </motion.div>
+
+                            {/* Comisión de Vigilancia */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+                            >
+                                <div className="bg-brand-mustard px-4 py-2 flex items-center gap-2">
+                                    <Scale className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                                    <h4 className="text-brand-blue font-black uppercase tracking-wider text-[11px]">
+                                        Comisión de Vigilancia
+                                    </h4>
+                                </div>
+                                <ul className="divide-y divide-brand-blue/5">
+                                    {[
+                                        { cargo: "Presidente", nombre: "Rutilo Estanislao Sáenz Rivera" },
+                                        { cargo: "Secretaria", nombre: "Magdalena Guzmán Marcos" },
+                                        { cargo: "Vocal", nombre: "Catarina Guzmán Raymundo" },
+                                    ].map((m, i) => (
+                                        <li key={i} className="flex items-center gap-3 px-4 py-1.5">
+                                            <Users className="w-3 h-3 text-brand-mustard flex-shrink-0" />
+                                            <div className="flex items-center gap-2">
+                                                <p className="text-[9px] font-black text-brand-mustard uppercase tracking-widest min-w-[80px]">
+                                                    {m.cargo}
+                                                </p>
+                                                <p className="text-brand-blue font-bold text-xs">
+                                                    {m.nombre}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
                             </motion.div>
                         </div>
                     </div>

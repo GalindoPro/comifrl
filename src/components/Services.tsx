@@ -67,7 +67,7 @@ const services: Service[] = [
         title: "Crédito Hipotecario",
         benefits: [
             "Financiamiento hasta el 80%",
-            "Plazos hasta 6-15 años",
+            "Plazos hasta 6 a 10 años",
             "Monto mayor a Q.500,000.00",
             "Asesoría personalizada",
         ],
